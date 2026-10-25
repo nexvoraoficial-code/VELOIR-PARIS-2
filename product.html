@@ -1,0 +1,2598 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Manteau Cinq â€” VELOIR PARIS</title>
+  <meta name="description" content="Le Manteau Cinq en double cachemire des vallÃ©es de Biella. Cinq coutures, confection manuelle. Veloir Paris, Maison fondÃ©e en 1947. L'essentiel invisible.">
+
+  <!-- Google Fonts: Cormorant Garamond & Raleway -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Raleway:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* ==========================================================================
+       DESIGN SYSTEM & VARIABLES â€” VELOIR PARIS
+       ========================================================================== */
+    :root {
+      --ivory: #F5F2ED;
+      --bone: #EDE9E2;
+      --warm-white: #FAF8F5;
+      --parchment: #E8E2D9;
+      --ash: #C8C2B8;
+      --taupe: #9C9488;
+      --charcoal: #3A3630;
+      --noir: #1A1714;
+      --ink: #0D0B09;
+      --gold: #B8A878;
+
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+      --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --duration-reveal: 1.2s;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      background-color: var(--warm-white);
+      color: var(--charcoal);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      font-weight: 300;
+      background-color: var(--warm-white);
+      color: var(--charcoal);
+      line-height: 1.7;
+      overflow-x: hidden;
+      cursor: default;
+    }
+
+    /* Custom Selection */
+    ::selection {
+      background: var(--charcoal);
+      color: var(--ivory);
+    }
+
+    /* ==========================================================================
+       CUSTOM CURSOR
+       ========================================================================== */
+    .cursor-dot,
+    .cursor-ring {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 99999;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.3s ease;
+    }
+
+    .cursor-dot {
+      width: 5px;
+      height: 5px;
+      background-color: var(--charcoal);
+      transition: transform 0.15s ease-out, background-color 0.3s ease;
+    }
+
+    .cursor-ring {
+      width: 32px;
+      height: 32px;
+      border: 1px solid rgba(58, 54, 48, 0.35);
+      transition: width 0.35s var(--ease-expo),
+                  height 0.35s var(--ease-expo),
+                  border-color 0.35s var(--ease-expo),
+                  transform 0.08s linear;
+    }
+
+    body.cursor-hover .cursor-ring {
+      width: 54px;
+      height: 54px;
+      border-color: var(--gold);
+      background-color: rgba(184, 168, 120, 0.06);
+    }
+
+    body.cursor-hover .cursor-dot {
+      background-color: var(--gold);
+      transform: translate(-50%, -50%) scale(0.6);
+    }
+
+    @media (pointer: coarse) {
+      .cursor-dot, .cursor-ring {
+        display: none !important;
+      }
+    }
+
+    /* ==========================================================================
+       TOP ANNOUNCEMENT RIBBON (Ultra-refined luxury)
+       ========================================================================== */
+    .top-ribbon {
+      background-color: var(--ivory);
+      border-bottom: 1px solid var(--parchment);
+      padding: 0.55rem 1.5rem;
+      text-align: center;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      font-weight: 400;
+    }
+
+    /* ==========================================================================
+       NAVIGATION â€” Fixed, Transparent -> Frosted Glass on Scroll
+       ========================================================================== */
+    .luxury-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 1.8rem 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background-color 0.6s var(--ease-expo),
+                  backdrop-filter 0.6s var(--ease-expo),
+                  -webkit-backdrop-filter 0.6s var(--ease-expo),
+                  border-bottom 0.6s var(--ease-expo),
+                  padding 0.6s var(--ease-expo);
+      background-color: transparent;
+      border-bottom: 1px solid transparent;
+    }
+
+    .luxury-nav.is-scrolled {
+      background-color: rgba(245, 242, 237, 0.92);
+      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(232, 226, 217, 0.85);
+      padding: 1.1rem 3.5rem;
+    }
+
+    .nav-left, .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 2.2rem;
+      flex: 1;
+    }
+
+    .nav-right {
+      justify-content: flex-end;
+    }
+
+    .nav-link {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 1px;
+      background-color: var(--charcoal);
+      transition: width 0.4s var(--ease-expo);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .nav-brand {
+      text-align: center;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+    }
+
+    .brand-name {
+      font-family: var(--font-serif);
+      font-size: 1.85rem;
+      letter-spacing: 0.38em;
+      color: var(--noir);
+      font-weight: 300;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-right: -0.38em; /* balance letter-spacing visually */
+      transition: opacity 0.3s ease;
+    }
+
+    .brand-tagline {
+      font-size: 0.58rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      margin-top: 0.35rem;
+      margin-right: -0.32em;
+      font-weight: 400;
+    }
+
+    .nav-action-btn {
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.3s ease;
+    }
+
+    .nav-action-btn:hover {
+      color: var(--noir);
+    }
+
+    .cart-count {
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: var(--taupe);
+    }
+
+    /* Mobile menu hamburger */
+    .mobile-menu-trigger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .hamburger-bar {
+      display: block;
+      width: 22px;
+      height: 1px;
+      background-color: var(--noir);
+      margin: 5px 0;
+      transition: transform 0.3s ease;
+    }
+
+    /* ==========================================================================
+       MAIN PRODUCT CONTAINER (Two-Column Desktop)
+       ========================================================================== */
+    .product-page-main {
+      padding-top: 8.5rem;
+      padding-bottom: 5rem;
+      max-width: 1540px;
+      margin: 0 auto;
+      padding-left: 3.5rem;
+      padding-right: 3.5rem;
+    }
+
+    .product-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 58%) minmax(0, 42%);
+      gap: 5rem;
+      align-items: flex-start;
+      position: relative;
+    }
+
+    /* ==========================================================================
+       LEFT COLUMN â€” Sticky Image Gallery (60%)
+       ========================================================================== */
+    .gallery-column {
+      position: sticky;
+      top: 6.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* Main Featured Image */
+    .main-image-stage {
+      position: relative;
+      width: 100%;
+      height: 760px;
+      background-color: var(--bone);
+      overflow: hidden;
+      border: 1px solid rgba(232, 226, 217, 0.6);
+    }
+
+    .main-image-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .gallery-main-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      opacity: 0;
+      transform: scale(1.04);
+      transition: opacity 0.75s var(--ease-expo),
+                  transform 1.8s var(--ease-expo);
+      pointer-events: none;
+      will-change: opacity, transform;
+    }
+
+    .gallery-main-img.active {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+    }
+
+    /* Page load subtle initial zoom trigger */
+    .gallery-main-img.initial-zoom {
+      animation: subtleLoadZoom 2.4s var(--ease-expo) forwards;
+    }
+
+    @keyframes subtleLoadZoom {
+      0% {
+        transform: scale(1.08);
+      }
+      100% {
+        transform: scale(1.0);
+      }
+    }
+
+    /* Image zoom overlay badge */
+    .image-tag-badge {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      background: rgba(245, 242, 237, 0.85);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--parchment);
+      padding: 0.45rem 0.95rem;
+      font-size: 0.64rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .zoom-hint-btn {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: rgba(245, 242, 237, 0.85);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--parchment);
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--charcoal);
+      cursor: pointer;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+
+    .zoom-hint-btn:hover {
+      background: var(--warm-white);
+      border-color: var(--charcoal);
+    }
+
+    .zoom-hint-btn svg {
+      width: 14px;
+      height: 14px;
+      stroke-width: 1.5;
+    }
+
+    /* Thumbnails Row */
+    .thumbnails-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      width: 100%;
+    }
+
+    .thumb-item {
+      position: relative;
+      aspect-ratio: 3 / 4;
+      background-color: var(--bone);
+      overflow: hidden;
+      cursor: pointer;
+      border: 1px solid var(--parchment);
+      opacity: 0.55;
+      transition: opacity 0.45s var(--ease-expo),
+                  border-color 0.45s var(--ease-expo),
+                  transform 0.45s var(--ease-expo);
+      padding: 0;
+    }
+
+    .thumb-item:hover {
+      opacity: 0.88;
+    }
+
+    .thumb-item.active {
+      opacity: 1;
+      border-color: var(--charcoal);
+      box-shadow: 0 0 0 1px var(--charcoal);
+    }
+
+    .thumb-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+      transition: transform 0.6s var(--ease-expo);
+    }
+
+    .thumb-item:hover .thumb-img {
+      transform: scale(1.05);
+    }
+
+    .thumb-caption {
+      position: absolute;
+      bottom: 0.4rem;
+      left: 0.4rem;
+      right: 0.4rem;
+      font-size: 0.55rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      background: rgba(245, 242, 237, 0.88);
+      padding: 0.2rem 0.35rem;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    /* ==========================================================================
+       RIGHT COLUMN â€” Product Details & Controls (40%)
+       ========================================================================== */
+    .product-info-column {
+      display: flex;
+      flex-direction: column;
+      padding-top: 0.5rem;
+    }
+
+    /* Breadcrumbs */
+    .product-breadcrumb {
+      font-size: 0.68rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      margin-bottom: 1.25rem;
+    }
+
+    .product-breadcrumb a {
+      color: var(--taupe);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .product-breadcrumb a:hover {
+      color: var(--noir);
+    }
+
+    .product-breadcrumb .sep {
+      margin: 0 0.5rem;
+      opacity: 0.5;
+    }
+
+    .product-breadcrumb .current {
+      color: var(--charcoal);
+    }
+
+    /* Product Title */
+    .product-title {
+      font-family: var(--font-serif);
+      font-size: 3.4rem;
+      font-weight: 300;
+      color: var(--noir);
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.6rem;
+    }
+
+    /* Category */
+    .product-category {
+      font-size: 0.7rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      font-weight: 400;
+      margin-bottom: 1.4rem;
+    }
+
+    /* Price */
+    .product-price-wrapper {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .product-price {
+      font-family: var(--font-sans);
+      font-size: 1.35rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--noir);
+    }
+
+    .product-vat-info {
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--taupe);
+    }
+
+    /* Horizontal Divider */
+    .product-divider {
+      border: none;
+      height: 1px;
+      background-color: var(--parchment);
+      width: 100%;
+      margin: 0 0 2rem 0;
+    }
+
+    /* Description */
+    .product-description {
+      font-family: var(--font-serif);
+      font-size: 1.18rem;
+      line-height: 1.75;
+      font-weight: 300;
+      color: var(--charcoal);
+      margin-bottom: 2.2rem;
+      max-width: 95%;
+    }
+
+    /* Ateliers Detail Pill */
+    .product-provenance {
+      display: flex;
+      gap: 1.8rem;
+      padding-bottom: 2rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--parchment);
+    }
+
+    .provenance-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .provenance-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--taupe);
+    }
+
+    .provenance-val {
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      color: var(--noir);
+      font-weight: 400;
+    }
+
+    /* Size Selector */
+    .size-section {
+      margin-bottom: 2.2rem;
+    }
+
+    .size-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.9rem;
+    }
+
+    .size-label-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+
+    .size-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      font-weight: 400;
+    }
+
+    .selected-size-display {
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      color: var(--noir);
+      font-weight: 400;
+    }
+
+    .size-guide-link {
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    .size-guide-link:hover {
+      color: var(--noir);
+    }
+
+    .size-options {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .size-btn {
+      width: 3.4rem;
+      height: 3.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--parchment);
+      background-color: transparent;
+      color: var(--charcoal);
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: all 0.3s var(--ease-expo);
+      position: relative;
+    }
+
+    .size-btn:hover {
+      border-color: var(--charcoal);
+    }
+
+    .size-btn.selected {
+      background-color: var(--charcoal);
+      color: var(--ivory);
+      border-color: var(--charcoal);
+    }
+
+    /* Action Buttons Area */
+    .cta-area {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      margin-bottom: 3.2rem;
+    }
+
+    .btn-add-to-selection {
+      width: 100%;
+      height: 54px;
+      background-color: var(--noir);
+      color: var(--ivory);
+      border: 1px solid var(--noir);
+      font-family: var(--font-sans);
+      font-size: 0.76rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      transition: background-color 0.45s var(--ease-expo),
+                  color 0.45s var(--ease-expo),
+                  border-color 0.45s var(--ease-expo);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-add-to-selection:hover {
+      background-color: transparent;
+      color: var(--noir);
+    }
+
+    .btn-add-to-selection.added {
+      background-color: var(--charcoal);
+      border-color: var(--charcoal);
+      color: var(--ivory);
+    }
+
+    .btn-icon-arrow {
+      transition: transform 0.4s var(--ease-expo);
+    }
+
+    .btn-add-to-selection:hover .btn-icon-arrow {
+      transform: translateX(4px);
+    }
+
+    .private-appointment-wrap {
+      text-align: center;
+      padding-top: 0.25rem;
+    }
+
+    .request-appointment-link {
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      background: none;
+      border: none;
+    }
+
+    .request-appointment-link:hover {
+      color: var(--gold);
+    }
+
+    /* Reassurance Strip */
+    .reassurance-strip {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.85rem;
+      padding: 1.4rem 0;
+      border-top: 1px solid var(--parchment);
+      border-bottom: 1px solid var(--parchment);
+      margin-bottom: 2.8rem;
+    }
+
+    .reassurance-point {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--taupe);
+    }
+
+    .reassurance-bullet {
+      width: 4px;
+      height: 4px;
+      background-color: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ==========================================================================
+       ACCORDIONS
+       ========================================================================== */
+    .product-accordions {
+      border-top: 1px solid var(--parchment);
+      margin-bottom: 2rem;
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid var(--parchment);
+    }
+
+    .accordion-header {
+      width: 100%;
+      padding: 1.35rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      transition: color 0.3s ease;
+    }
+
+    .accordion-header:hover .accordion-title {
+      color: var(--noir);
+    }
+
+    .accordion-title {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      letter-spacing: 0.04em;
+      transition: color 0.3s ease;
+    }
+
+    .accordion-icon {
+      position: relative;
+      width: 14px;
+      height: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .accordion-icon::before,
+    .accordion-icon::after {
+      content: '';
+      position: absolute;
+      background-color: var(--charcoal);
+      transition: transform 0.45s var(--ease-expo);
+    }
+
+    /* horizontal bar */
+    .accordion-icon::before {
+      width: 12px;
+      height: 1px;
+    }
+
+    /* vertical bar */
+    .accordion-icon::after {
+      width: 1px;
+      height: 12px;
+    }
+
+    .accordion-item.open .accordion-icon::after {
+      transform: rotate(90deg);
+      opacity: 0;
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.65s var(--ease-expo);
+    }
+
+    .accordion-body {
+      padding-bottom: 1.6rem;
+      font-size: 0.88rem;
+      line-height: 1.8;
+      color: var(--charcoal);
+      font-weight: 300;
+    }
+
+    .accordion-body p {
+      margin-bottom: 0.75rem;
+    }
+
+    .accordion-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ==========================================================================
+       EDITORIAL STRIP â€” Full-width bone background, 6rem padding
+       ========================================================================== */
+    .editorial-strip {
+      background-color: var(--bone);
+      padding: 6.5rem 2rem;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin-top: 3rem;
+    }
+
+    .editorial-inner {
+      max-width: 820px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .editorial-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .editorial-eyebrow::after {
+      content: '';
+      position: absolute;
+      bottom: -0.75rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 28px;
+      height: 1px;
+      background-color: var(--ash);
+    }
+
+    .editorial-quote {
+      font-family: var(--font-serif);
+      font-size: 2.75rem;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.35;
+      color: var(--noir);
+      letter-spacing: 0.02em;
+      margin: 1.5rem 0 1.8rem 0;
+    }
+
+    .editorial-atelier-note {
+      font-size: 0.82rem;
+      line-height: 1.8;
+      color: var(--taupe);
+      letter-spacing: 0.06em;
+      max-width: 620px;
+    }
+
+    .editorial-signature {
+      margin-top: 2rem;
+      font-size: 0.64rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+    }
+
+    /* ==========================================================================
+       RELATED PRODUCTS SECTION â€” Generous Spacing (8rem+)
+       ========================================================================== */
+    .related-section {
+      padding: 8.5rem 3.5rem;
+      max-width: 1540px;
+      margin: 0 auto;
+    }
+
+    .related-header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .related-eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      margin-bottom: 0.9rem;
+    }
+
+    .related-title {
+      font-family: var(--font-serif);
+      font-size: 2.6rem;
+      font-weight: 300;
+      color: var(--noir);
+      letter-spacing: 0.02em;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3.5rem;
+    }
+
+    .related-card {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+    }
+
+    .related-image-box {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      background-color: var(--bone);
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      position: relative;
+      border: 1px solid rgba(232, 226, 217, 0.6);
+    }
+
+    .related-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      transition: transform 1.2s var(--ease-expo);
+    }
+
+    .related-card:hover .related-card-img {
+      transform: scale(1.05);
+    }
+
+    .related-hover-tag {
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      background: rgba(245, 242, 237, 0.9);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--parchment);
+      padding: 0.4rem 0.9rem;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--noir);
+      opacity: 0;
+      transition: opacity 0.4s var(--ease-expo),
+                  transform 0.4s var(--ease-expo);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .related-card:hover .related-hover-tag {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .related-card-info {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .related-card-title {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--noir);
+      letter-spacing: 0.02em;
+      transition: color 0.3s ease;
+    }
+
+    .related-card:hover .related-card-title {
+      color: var(--charcoal);
+    }
+
+    .related-card-category {
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--taupe);
+    }
+
+    .related-card-price {
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--charcoal);
+      margin-top: 0.2rem;
+    }
+
+    /* ==========================================================================
+       FOOTER â€” Luxury House Footer
+       ========================================================================== */
+    .luxury-footer {
+      background-color: var(--noir);
+      color: var(--ivory);
+      padding: 6.5rem 3.5rem 3rem 3.5rem;
+      position: relative;
+    }
+
+    .footer-top-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+      gap: 4rem;
+      margin-bottom: 5.5rem;
+    }
+
+    .footer-brand-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .footer-brand-title {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      font-weight: 300;
+      color: var(--warm-white);
+      margin-bottom: 0.6rem;
+    }
+
+    .footer-brand-tagline {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-brand-history {
+      font-size: 0.78rem;
+      line-height: 1.8;
+      color: var(--ash);
+      max-width: 320px;
+    }
+
+    .footer-col-title {
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.6rem;
+      font-weight: 400;
+    }
+
+    .footer-links-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .footer-links-list a {
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      color: var(--ash);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links-list a:hover {
+      color: var(--warm-white);
+    }
+
+    .footer-salon-address {
+      font-size: 0.78rem;
+      line-height: 1.8;
+      color: var(--ash);
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-salon-address strong {
+      color: var(--ivory);
+      font-weight: 400;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    /* Newsletter Box */
+    .newsletter-box {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+
+    .newsletter-prompt {
+      font-size: 0.78rem;
+      line-height: 1.7;
+      color: var(--ash);
+    }
+
+    .newsletter-form {
+      display: flex;
+      border-bottom: 1px solid var(--charcoal);
+      padding-bottom: 0.5rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .newsletter-form:focus-within {
+      border-color: var(--gold);
+    }
+
+    .newsletter-input {
+      background: none;
+      border: none;
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: var(--warm-white);
+      outline: none;
+      flex: 1;
+    }
+
+    .newsletter-input::placeholder {
+      color: var(--taupe);
+      font-weight: 300;
+    }
+
+    .newsletter-submit-btn {
+      background: none;
+      border: none;
+      color: var(--gold);
+      font-size: 0.9rem;
+      cursor: pointer;
+      padding: 0 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .newsletter-submit-btn:hover {
+      transform: translateX(3px);
+    }
+
+    /* Footer Bottom Strip */
+    .footer-bottom {
+      border-top: 1px solid rgba(232, 226, 217, 0.15);
+      padding-top: 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-bottom-links a {
+      color: var(--taupe);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-bottom-links a:hover {
+      color: var(--ivory);
+    }
+
+    /* ==========================================================================
+       ANIMATIONS & REVEAL SYSTEM (1.2s cubic-bezier(0.16, 1, 0.3, 1))
+       ========================================================================== */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity var(--duration-reveal) var(--ease-expo),
+                  transform var(--duration-reveal) var(--ease-expo);
+      will-change: opacity, transform;
+    }
+
+    .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.12s; }
+    .reveal-delay-2 { transition-delay: 0.24s; }
+    .reveal-delay-3 { transition-delay: 0.36s; }
+
+    /* ==========================================================================
+       MODALS & TOASTS
+       ========================================================================== */
+    /* Toast Notification */
+    .toast-notification {
+      position: fixed;
+      top: 5.5rem;
+      right: 3rem;
+      background: var(--noir);
+      color: var(--ivory);
+      border: 1px solid var(--charcoal);
+      padding: 1.1rem 1.8rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      z-index: 10000;
+      opacity: 0;
+      transform: translateY(-20px);
+      pointer-events: none;
+      transition: opacity 0.5s var(--ease-expo),
+                  transform 0.5s var(--ease-expo);
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .toast-notification.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .toast-dot {
+      width: 6px;
+      height: 6px;
+      background-color: var(--gold);
+      border-radius: 50%;
+    }
+
+    /* Modal Backdrop & Container */
+    .luxury-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(26, 23, 20, 0.65);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      z-index: 10005;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s var(--ease-expo);
+    }
+
+    .luxury-modal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      background: var(--warm-white);
+      border: 1px solid var(--parchment);
+      width: 100%;
+      max-width: 580px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 3.5rem;
+      position: relative;
+      transform: translateY(30px);
+      transition: transform 0.6s var(--ease-expo);
+    }
+
+    .luxury-modal.active .modal-card {
+      transform: translateY(0);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 1.8rem;
+      right: 1.8rem;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: var(--charcoal);
+      line-height: 1;
+      transition: transform 0.3s ease;
+    }
+
+    .modal-close-btn:hover {
+      transform: rotate(90deg);
+    }
+
+    .modal-eyebrow {
+      font-size: 0.65rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      margin-bottom: 0.8rem;
+    }
+
+    .modal-title {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--noir);
+      margin-bottom: 1.2rem;
+      line-height: 1.2;
+    }
+
+    .modal-desc {
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: var(--charcoal);
+      margin-bottom: 2rem;
+    }
+
+    .modal-form-group {
+      margin-bottom: 1.4rem;
+    }
+
+    .modal-label {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-input, .modal-select {
+      width: 100%;
+      background: var(--ivory);
+      border: 1px solid var(--parchment);
+      padding: 0.85rem 1rem;
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      color: var(--noir);
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    .modal-input:focus, .modal-select:focus {
+      border-color: var(--charcoal);
+    }
+
+    .modal-submit-btn {
+      width: 100%;
+      height: 50px;
+      background: var(--noir);
+      color: var(--ivory);
+      border: 1px solid var(--noir);
+      font-family: var(--font-sans);
+      font-size: 0.74rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .modal-submit-btn:hover {
+      background: transparent;
+      color: var(--noir);
+    }
+
+    /* Size Guide Table */
+    .size-guide-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.78rem;
+      text-align: left;
+      margin-top: 1.5rem;
+    }
+
+    .size-guide-table th, .size-guide-table td {
+      padding: 0.75rem 0.6rem;
+      border-bottom: 1px solid var(--parchment);
+    }
+
+    .size-guide-table th {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      font-weight: 400;
+    }
+
+    .size-guide-table td {
+      color: var(--charcoal);
+    }
+
+    /* Fullscreen Image Lightbox */
+    .lightbox-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(13, 11, 9, 0.94);
+      z-index: 10010;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.45s var(--ease-expo);
+      padding: 2rem;
+    }
+
+    .lightbox-modal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lightbox-img {
+      max-height: 90vh;
+      max-width: 90vw;
+      object-fit: contain;
+      border: 1px solid rgba(232, 226, 217, 0.2);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 2rem;
+      right: 2.5rem;
+      color: var(--ivory);
+      font-size: 2rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    /* ==========================================================================
+       RESPONSIVE DESIGN (Mobile Stack & Horizontal Swipe Strip)
+       ========================================================================== */
+    @media (max-width: 1024px) {
+      .product-page-main {
+        padding-top: 6.5rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+
+      .product-layout {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .gallery-column {
+        position: relative;
+        top: 0;
+      }
+
+      .main-image-stage {
+        height: 600px;
+      }
+
+      .luxury-nav {
+        padding: 1.2rem 2rem;
+      }
+
+      .luxury-nav.is-scrolled {
+        padding: 0.9rem 2rem;
+      }
+
+      .footer-top-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+      }
+
+      .related-grid {
+        grid-template-columns: 1fr;
+        gap: 3.5rem;
+        max-width: 520px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .top-ribbon {
+        font-size: 0.6rem;
+        padding: 0.45rem 1rem;
+      }
+
+      .luxury-nav {
+        padding: 1rem 1.5rem;
+      }
+
+      .nav-left {
+        display: none;
+      }
+
+      .mobile-menu-trigger {
+        display: block;
+      }
+
+      .brand-name {
+        font-size: 1.45rem;
+        letter-spacing: 0.3em;
+      }
+
+      .product-page-main {
+        padding-top: 5.5rem;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+      }
+
+      /* Mobile Horizontal Swipeable Gallery */
+      .gallery-column {
+        gap: 1rem;
+      }
+
+      .main-image-stage {
+        height: 480px;
+      }
+
+      .thumbnails-row {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 0.75rem;
+        padding-bottom: 0.5rem;
+        scrollbar-width: none;
+      }
+
+      .thumbnails-row::-webkit-scrollbar {
+        display: none;
+      }
+
+      .thumb-item {
+        flex: 0 0 78px;
+        scroll-snap-align: start;
+      }
+
+      .product-title {
+        font-size: 2.5rem;
+      }
+
+      .editorial-strip {
+        padding: 4.5rem 1.5rem;
+      }
+
+      .editorial-quote {
+        font-size: 1.9rem;
+      }
+
+      .related-section {
+        padding: 5rem 1.5rem;
+      }
+
+      .footer-top-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .luxury-footer {
+        padding: 4.5rem 1.5rem 2.5rem 1.5rem;
+      }
+
+      .modal-card {
+        padding: 2.2rem 1.5rem;
+      }
+
+      .toast-notification {
+        top: auto;
+        bottom: 2rem;
+        right: 1.5rem;
+        left: 1.5rem;
+        text-align: center;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom Luxury Cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Announcement Ribbon -->
+  <div class="top-ribbon">
+    Maison Veloir &bull; Confection artisanale d'exception &bull; PrÃ©sentation privÃ©e en salon disponible
+  </div>
+
+  <!-- Luxury Navigation (Fixed, transparent -> frosted glass on scroll) -->
+  <nav class="luxury-nav" id="mainNav" role="navigation" aria-label="Menu principal">
+    <div class="nav-left">
+      <a href="index.html" class="nav-link cursor-target">Maison</a>
+      <a href="collection.html" class="nav-link cursor-target">Collections</a>
+      <a href="collection.html" class="nav-link cursor-target">PrÃªt-Ã -Porter</a>
+      <a href="lookbook.html" class="nav-link cursor-target">Haute Couture</a>
+    </div>
+
+    <button class="mobile-menu-trigger cursor-target" id="mobileMenuBtn" aria-label="Ouvrir le menu">
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+    </button>
+
+    <a href="index.html" class="nav-brand cursor-target" aria-label="Veloir Paris â€” Page d'accueil">
+      <span class="brand-name">VELOIR</span>
+      <span class="brand-tagline">PARIS &bull; 1947</span>
+    </a>
+
+    <div class="nav-right">
+      <button class="nav-action-btn cursor-target" id="openSearchBtn" aria-label="Rechercher">
+        <span>Recherche</span>
+      </button>
+      <button class="nav-action-btn cursor-target" id="openNavSalonsBtn" aria-label="Salons">
+        <span>Salons</span>
+      </button>
+      <button class="nav-action-btn cursor-target" id="navCartBtn" aria-label="Votre SÃ©lection">
+        <span>SÃ©lection</span>
+        <span class="cart-count">(<span id="cartCount">0</span>)</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Product Detail Page Container -->
+  <main class="product-page-main">
+    <div class="product-layout">
+
+      <!-- ====================================================================
+           LEFT COLUMN: Sticky Image Gallery (60% Desktop)
+           ==================================================================== -->
+      <section class="gallery-column" aria-label="Galerie photographique du produit">
+        
+        <!-- Large Main Image Viewport -->
+        <div class="main-image-stage" id="mainImageStage">
+          <div class="main-image-wrapper">
+            <!-- Main Product Image -->
+            <img 
+              id="mainImage0"
+              class="gallery-main-img active initial-zoom"
+              src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=900&q=90" 
+              alt="Le Manteau Cinq â€” Veloir Paris â€” Coupe maÃ®tresse en double cachemire noir"
+              data-index="0"
+              loading="eager"
+            >
+            <!-- Alt Image 1 -->
+            <img 
+              id="mainImage1"
+              class="gallery-main-img"
+              src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=900&q=90" 
+              alt="Le Manteau Cinq â€” Veloir Paris â€” Vue profil et revers sans surpiqÃ»re"
+              data-index="1"
+              loading="lazy"
+            >
+            <!-- Alt Image 2 -->
+            <img 
+              id="mainImage2"
+              class="gallery-main-img"
+              src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900&q=90" 
+              alt="Le Manteau Cinq â€” Veloir Paris â€” TombÃ© naturel et fluiditÃ© du drap"
+              data-index="2"
+              loading="lazy"
+            >
+            <!-- Alt Image 3 -->
+            <img 
+              id="mainImage3"
+              class="gallery-main-img"
+              src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=900&q=90" 
+              alt="Le Manteau Cinq â€” Veloir Paris â€” DÃ©tail de confection et cinquiÃ¨me couture d'Ã©paule"
+              data-index="3"
+              loading="lazy"
+            >
+          </div>
+
+          <!-- Subtle Atelier Provenance Badge -->
+          <div class="image-tag-badge">
+            <span id="activeImageLabel">Atelier Paris &bull; Silhouette NÂ° 05</span>
+          </div>
+
+          <!-- Lightbox Expansion Trigger -->
+          <button class="zoom-hint-btn cursor-target" id="lightboxTriggerBtn" aria-label="Agrandir la photographie">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- 4 Thumbnail Images Below Main (Horizontal Row) -->
+        <div class="thumbnails-row" role="tablist" aria-label="SÃ©lecteur d'angles de vue">
+          <!-- Thumbnail 0 -->
+          <button 
+            class="thumb-item active cursor-target" 
+            role="tab" 
+            aria-selected="true" 
+            data-target-index="0"
+            data-label="Coupe MaÃ®tresse &bull; Silhouette NÂ° 05"
+            aria-label="Vue 1 : Coupe maÃ®tresse">
+            <img 
+              class="thumb-img" 
+              src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=300&q=80" 
+              alt="Miniature Vue 1 Le Manteau Cinq"
+            >
+            <span class="thumb-caption">I &bull; Silhouette</span>
+          </button>
+
+          <!-- Thumbnail 1 -->
+          <button 
+            class="thumb-item cursor-target" 
+            role="tab" 
+            aria-selected="false" 
+            data-target-index="1"
+            data-label="Ligne & Revers &bull; Cachemire Biella"
+            aria-label="Vue 2 : Profil et revers">
+            <img 
+              class="thumb-img" 
+              src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=300&q=80" 
+              alt="Miniature Vue 2 Le Manteau Cinq"
+            >
+            <span class="thumb-caption">II &bull; Profil</span>
+          </button>
+
+          <!-- Thumbnail 2 -->
+          <button 
+            class="thumb-item cursor-target" 
+            role="tab" 
+            aria-selected="false" 
+            data-target-index="2"
+            data-label="Mouvement & TombÃ© &bull; Doublure Soie"
+            aria-label="Vue 3 : Mouvement et drapÃ©">
+            <img 
+              class="thumb-img" 
+              src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=300&q=80" 
+              alt="Miniature Vue 3 Le Manteau Cinq"
+            >
+            <span class="thumb-caption">III &bull; TombÃ©</span>
+          </button>
+
+          <!-- Thumbnail 3 -->
+          <button 
+            class="thumb-item cursor-target" 
+            role="tab" 
+            aria-selected="false" 
+            data-target-index="3"
+            data-label="CinquiÃ¨me Couture &bull; Point Invisible"
+            aria-label="Vue 4 : DÃ©tail de couture">
+            <img 
+              class="thumb-img" 
+              src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=300&q=80" 
+              alt="Miniature Vue 4 Le Manteau Cinq"
+            >
+            <span class="thumb-caption">IV &bull; DÃ©tail</span>
+          </button>
+        </div>
+
+      </section>
+
+      <!-- ====================================================================
+           RIGHT COLUMN: Product Info Panel (40% Desktop, Scrollable)
+           ==================================================================== -->
+      <section class="product-info-column" aria-label="Informations sur la piÃ¨ce">
+        
+        <!-- Breadcrumb: PrÃªt-Ã -Porter / Manteaux in tiny uppercase -->
+        <nav class="product-breadcrumb" aria-label="Fil d'ariane">
+          <a href="#pret-a-porter" class="cursor-target">PrÃªt-Ã -Porter</a>
+          <span class="sep">/</span>
+          <span class="current">Manteaux</span>
+        </nav>
+
+        <!-- Product Name in large Cormorant Garamond serif -->
+        <h1 class="product-title">Le Manteau Cinq</h1>
+
+        <!-- Category: tiny tracked uppercase -->
+        <div class="product-category">PrÃªt-Ã -Porter &mdash; Collection Permanente</div>
+
+        <!-- Price: â‚¬4,200 in clean sans-serif -->
+        <div class="product-price-wrapper">
+          <span class="product-price">â‚¬4,200</span>
+          <span class="product-vat-info">Taxes incluses &bull; Livraison offerte</span>
+        </div>
+
+        <!-- Horizontal divider (1px, parchment) -->
+        <hr class="product-divider">
+
+        <!-- Description -->
+        <p class="product-description">
+          A manteau of uninterrupted line. Cut in double-faced cashmere from the Biella valleys, its weight is its poetry. Five seams. No more. Worn over everything and beneath nothing.
+        </p>
+
+        <!-- Provenance details -->
+        <div class="product-provenance">
+          <div class="provenance-item">
+            <span class="provenance-label">MatiÃ¨re</span>
+            <span class="provenance-val">Cachemire Biella Double Face</span>
+          </div>
+          <div class="provenance-item">
+            <span class="provenance-label">Atelier</span>
+            <span class="provenance-val">Milan & Paris</span>
+          </div>
+          <div class="provenance-item">
+            <span class="provenance-label">Temps d'Ouvrage</span>
+            <span class="provenance-val">42 Heures</span>
+          </div>
+        </div>
+
+        <!-- Size selector: XS, S, M, L, XL -->
+        <div class="size-section">
+          <div class="size-header">
+            <div class="size-label-wrap">
+              <span class="size-label">Taille (FR) :</span>
+              <span class="selected-size-display" id="selectedSizeDisplay">S</span>
+            </div>
+            <button class="size-guide-link cursor-target" id="openSizeGuideBtn">Guide des tailles</button>
+          </div>
+
+          <div class="size-options" role="radiogroup" aria-label="Choix de la taille">
+            <button type="button" class="size-btn cursor-target" role="radio" aria-checked="false" data-size="XS">XS</button>
+            <button type="button" class="size-btn selected cursor-target" role="radio" aria-checked="true" data-size="S">S</button>
+            <button type="button" class="size-btn cursor-target" role="radio" aria-checked="false" data-size="M">M</button>
+            <button type="button" class="size-btn cursor-target" role="radio" aria-checked="false" data-size="L">L</button>
+            <button type="button" class="size-btn cursor-target" role="radio" aria-checked="false" data-size="XL">XL</button>
+          </div>
+        </div>
+
+        <!-- CTA & Appointments -->
+        <div class="cta-area">
+          <!-- Add to selection button (elegant bordered button, 'Ajouter Ã  la SÃ©lection') -->
+          <button class="btn-add-to-selection cursor-target" id="btnAddToSelection">
+            <span id="addToSelectionText">Ajouter Ã  la SÃ©lection</span>
+            <span class="btn-icon-arrow">&rarr;</span>
+          </button>
+
+          <!-- 'Request Private Appointment' link (tiny, underlined) -->
+          <div class="private-appointment-wrap">
+            <button class="request-appointment-link cursor-target" id="openAppointmentBtn">
+              Request Private Appointment &bull; Salons Veloir
+            </button>
+          </div>
+        </div>
+
+        <!-- Reassurance Points -->
+        <div class="reassurance-strip">
+          <div class="reassurance-point">
+            <span class="reassurance-bullet"></span>
+            <span>Livraison personnalisÃ©e sÃ©curisÃ©e sous 24h Ã  48h</span>
+          </div>
+          <div class="reassurance-point">
+            <span class="reassurance-bullet"></span>
+            <span>Ã‰crin signature & cintre en frÃªne massif gravÃ© Veloir</span>
+          </div>
+          <div class="reassurance-point">
+            <span class="reassurance-bullet"></span>
+            <span>Retours gracieux sous 14 jours & service conciergerie</span>
+          </div>
+        </div>
+
+        <!-- Accordion sections below -->
+        <div class="product-accordions">
+          
+          <!-- Accordion 1: Composition & Entretien -->
+          <div class="accordion-item" id="accItem1">
+            <button class="accordion-header cursor-target" aria-expanded="false" aria-controls="accContent1">
+              <span class="accordion-title">Composition & Entretien</span>
+              <span class="accordion-icon" aria-hidden="true"></span>
+            </button>
+            <div class="accordion-content" id="accContent1">
+              <div class="accordion-body">
+                <p>100% CaschmÃ¨re double face. Doublure soie. Produit en Italie. Nettoyage Ã  sec uniquement. Ranger Ã  plat.</p>
+                <p style="margin-top: 0.6rem; font-size: 0.8rem; color: var(--taupe);">
+                  Chaque piÃ¨ce est accompagnÃ©e de sa housse de protection en lin naturel non traitÃ© et d'un peigne Ã  cachemire en corne gravÃ©e.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Accordion 2: Livraison & Retours -->
+          <div class="accordion-item" id="accItem2">
+            <button class="accordion-header cursor-target" aria-expanded="false" aria-controls="accContent2">
+              <span class="accordion-title">Livraison & Retours</span>
+              <span class="accordion-icon" aria-hidden="true"></span>
+            </button>
+            <div class="accordion-content" id="accContent2">
+              <div class="accordion-body">
+                <p>Livraison offerte en France mÃ©tropolitaine. Livraison internationale disponible. Retours acceptÃ©s sous 14 jours.</p>
+                <p style="margin-top: 0.6rem; font-size: 0.8rem; color: var(--taupe);">
+                  Votre commande est remise en mains propres contre signature avec assurance intÃ©grale. Pour toute demande de coursier sur Paris, notre conciergerie organise la dÃ©pose dans le crÃ©neau de votre convenance.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Accordion 3: Le Savoir-Faire -->
+          <div class="accordion-item" id="accItem3">
+            <button class="accordion-header cursor-target" aria-expanded="false" aria-controls="accContent3">
+              <span class="accordion-title">Le Savoir-Faire</span>
+              <span class="accordion-icon" aria-hidden="true"></span>
+            </button>
+            <div class="accordion-content" id="accContent3">
+              <div class="accordion-body">
+                <p>ChÃ que piÃ¨ce Veloir est confectionnÃ©e Ã  la main dans nos ateliers partenaires en Italie et en France. Le Manteau Cinq demande 42 heures de travail.</p>
+                <p style="margin-top: 0.6rem; font-size: 0.8rem; color: var(--taupe);">
+                  Le secret de cette silhouette rÃ©side dans la sÃ©paration manuelle des deux Ã©paisseurs de cachemire en lisiÃ¨re, repliÃ©es ensuite vers l'intÃ©rieur et fixÃ©es par des points invisibles espacÃ©s de 2 millimÃ¨tres.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ========================================================================
+       EDITORIAL STRIP â€” Full-width bone background, padding 6rem
+       ======================================================================== -->
+  <section class="editorial-strip reveal-on-scroll" aria-label="L'art du geste">
+    <div class="editorial-inner">
+      <span class="editorial-eyebrow">LE GESTE PARFAIT</span>
+      <blockquote class="editorial-quote">
+        &laquo; 42 heures de travail. Deux mains. Un manteau. &raquo;
+      </blockquote>
+      <p class="editorial-atelier-note">
+        Dans les vallÃ©es de Biella, les fibres les plus longues de duvet de chÃ¨vre sont triÃ©es avant d'Ãªtre filÃ©es Ã  basse tension. L'assemblage des cinq pans s'opÃ¨re sans renfort synthÃ©tique, offrant au manteau sa fluiditÃ© d'armure vivante.
+      </p>
+      <span class="editorial-signature">&mdash; Maison Veloir &bull; Carnet d'Atelier 1947 &mdash;</span>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       RELATED PRODUCTS â€” 3-Column Grid
+       ======================================================================== -->
+  <section class="related-section reveal-on-scroll" aria-label="Produits suggÃ©rÃ©s">
+    <div class="related-header">
+      <div class="related-eyebrow">COMPLÃ‰TER LA SILHOUETTE</div>
+      <h2 class="related-title">Vous aimerez peut-Ãªtre aussi</h2>
+    </div>
+
+    <div class="related-grid">
+      <!-- Related Product 1: Le Blazer 1947 -->
+      <article class="related-card cursor-target">
+        <a href="#blazer-1947" style="text-decoration: none; color: inherit;">
+          <div class="related-image-box">
+            <img 
+              class="related-card-img" 
+              src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=600&q=85" 
+              alt="Le Blazer 1947 â€” Veloir Paris"
+              loading="lazy"
+            >
+            <div class="related-hover-tag">DÃ©couvrir la piÃ¨ce</div>
+          </div>
+          <div class="related-card-info">
+            <h3 class="related-card-title">Le Blazer 1947</h3>
+            <span class="related-card-category">PrÃªt-Ã -Porter</span>
+            <span class="related-card-price">â‚¬3,200</span>
+          </div>
+        </a>
+      </article>
+
+      <!-- Related Product 2: La Robe Silence -->
+      <article class="related-card cursor-target">
+        <a href="#robe-silence" style="text-decoration: none; color: inherit;">
+          <div class="related-image-box">
+            <img 
+              class="related-card-img" 
+              src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=85" 
+              alt="La Robe Silence â€” Veloir Paris"
+              loading="lazy"
+            >
+            <div class="related-hover-tag">DÃ©couvrir la piÃ¨ce</div>
+          </div>
+          <div class="related-card-info">
+            <h3 class="related-card-title">La Robe Silence</h3>
+            <span class="related-card-category">PrÃªt-Ã -Porter</span>
+            <span class="related-card-price">â‚¬6,500</span>
+          </div>
+        </a>
+      </article>
+
+      <!-- Related Product 3: Veste LinÃ©aire -->
+      <article class="related-card cursor-target">
+        <a href="#veste-lineaire" style="text-decoration: none; color: inherit;">
+          <div class="related-image-box">
+            <img 
+              class="related-card-img" 
+              src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&q=85" 
+              alt="Veste LinÃ©aire â€” Veloir Paris"
+              loading="lazy"
+            >
+            <div class="related-hover-tag">DÃ©couvrir la piÃ¨ce</div>
+          </div>
+          <div class="related-card-info">
+            <h3 class="related-card-title">Veste LinÃ©aire</h3>
+            <span class="related-card-category">PrÃªt-Ã -Porter</span>
+            <span class="related-card-price">â‚¬2,900</span>
+          </div>
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       LUXURY FOOTER
+       ======================================================================== -->
+  <footer class="luxury-footer" role="contentinfo">
+    <div class="footer-top-grid">
+      
+      <!-- Brand column -->
+      <div class="footer-brand-wrap">
+        <span class="footer-brand-title">VELOIR</span>
+        <span class="footer-brand-tagline">&laquo; L'essentiel invisible. &raquo;</span>
+        <p class="footer-brand-history">
+          Maison fondÃ©e Ã  Paris en 1947. Architectes d'une Ã©lÃ©gance dÃ©pouillÃ©e, dÃ©diÃ©e Ã  la rigueur de la ligne et Ã  la sensualitÃ© des matiÃ¨res nobles.
+        </p>
+      </div>
+
+      <!-- Salons privÃ©s -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">Les Salons PrivÃ©s</h4>
+        <div class="footer-salon-address">
+          <strong>Paris</strong>
+          31, rue Cambon &bull; 75001 Paris
+        </div>
+        <div class="footer-salon-address">
+          <strong>Milano</strong>
+          Via Monte Napoleone, 12 &bull; 20121 Milano
+        </div>
+        <div class="footer-salon-address">
+          <strong>London</strong>
+          14 New Bond Street &bull; Mayfair W1S
+        </div>
+        <div class="footer-salon-address">
+          <strong>New York</strong>
+          742 Madison Avenue &bull; NY 10065
+        </div>
+      </div>
+
+      <!-- Services -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">Services & Conciergerie</h4>
+        <ul class="footer-links-list">
+          <li><a href="#rendez-vous" class="cursor-target">Rendez-vous en Salon</a></li>
+          <li><a href="#sur-mesure" class="cursor-target">Atelier Sur-Mesure</a></li>
+          <li><a href="#entretien" class="cursor-target">Entretien & Restauration</a></li>
+          <li><a href="#suivi-commande" class="cursor-target">Suivi de PiÃ¨ce</a></li>
+          <li><a href="#contact" class="cursor-target">Conciergerie Veloir</a></li>
+        </ul>
+      </div>
+
+      <!-- Gazette / Correspondance -->
+      <div class="footer-col newsletter-box">
+        <h4 class="footer-col-title">La Gazette Veloir</h4>
+        <p class="newsletter-prompt">
+          Recevez nos correspondances discrÃ¨tes, les prÃ©sentations d'ateliers et les invitations aux salons Ã©phÃ©mÃ¨res.
+        </p>
+        <form class="newsletter-form" id="newsletterForm" onsubmit="event.preventDefault(); alert('Merci. Vous Ãªtes dÃ©sormais inscrit(e) aux correspondances privÃ©es de la Maison Veloir.');">
+          <input type="email" class="newsletter-input" placeholder="Votre adresse Ã©lectronique" required aria-label="Adresse Ã©lectronique pour la newsletter">
+          <button type="submit" class="newsletter-submit-btn cursor-target" aria-label="S'inscrire Ã  la Gazette">&rarr;</button>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- Bottom Legal Strip -->
+    <div class="footer-bottom">
+      <div>&copy; 1947&ndash;2026 VELOIR PARIS &bull; TOUS DROITS RÃ‰SERVÃ‰S</div>
+      <div class="footer-bottom-links">
+        <a href="#mentions" class="cursor-target">Mentions LÃ©gales</a>
+        <a href="#confidentialite" class="cursor-target">ConfidentialitÃ©</a>
+        <a href="#tracabilite" class="cursor-target">TraÃ§abilitÃ© & Ã‰thique</a>
+        <a href="#accessibilite" class="cursor-target">AccessibilitÃ©</a>
+      </div>
+      <div>FRANCE &bull; EUR (â‚¬)</div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       MODAL 1: REQUEST PRIVATE APPOINTMENT
+       ======================================================================== -->
+  <div class="luxury-modal" id="appointmentModal" role="dialog" aria-modal="true" aria-labelledby="modalAppTitle">
+    <div class="modal-card">
+      <button class="modal-close-btn cursor-target" id="closeAppointmentBtn" aria-label="Fermer la boÃ®te de dialogue">&times;</button>
+      <div class="modal-eyebrow">SALONS PARTICULIERS VELOIR</div>
+      <h3 class="modal-title" id="modalAppTitle">Rendez-vous PrivÃ©</h3>
+      <p class="modal-desc">
+        Un conseiller dÃ©diÃ© vous accueille en salon particulier pour l'essayage de <em>Le Manteau Cinq</em> et la dÃ©couverte personnalisÃ©e de la collection.
+      </p>
+
+      <form id="appointmentForm" onsubmit="handleAppointmentSubmit(event)">
+        <div class="modal-form-group">
+          <label class="modal-label" for="salonSelect">Choix du Salon</label>
+          <select id="salonSelect" class="modal-select">
+            <option value="paris">Paris &mdash; 31, rue Cambon</option>
+            <option value="milan">Milano &mdash; Via Monte Napoleone, 12</option>
+            <option value="london">London &mdash; 14 New Bond Street</option>
+            <option value="newyork">New York &mdash; 742 Madison Avenue</option>
+          </select>
+        </div>
+
+        <div class="modal-form-group">
+          <label class="modal-label" for="clientName">Nom & PrÃ©nom</label>
+          <input type="text" id="clientName" class="modal-input" placeholder="Mme / M. ..." required>
+        </div>
+
+        <div class="modal-form-group">
+          <label class="modal-label" for="clientEmail">Adresse Ã‰lectronique</label>
+          <input type="email" id="clientEmail" class="modal-input" placeholder="courrier@domaine.com" required>
+        </div>
+
+        <div class="modal-form-group">
+          <label class="modal-label" for="clientDate">Date SouhaitÃ©e</label>
+          <input type="date" id="clientDate" class="modal-input" required>
+        </div>
+
+        <button type="submit" class="modal-submit-btn cursor-target">Confirmer la demande</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL 2: SIZE GUIDE
+       ======================================================================== -->
+  <div class="luxury-modal" id="sizeGuideModal" role="dialog" aria-modal="true" aria-labelledby="sizeGuideTitle">
+    <div class="modal-card">
+      <button class="modal-close-btn cursor-target" id="closeSizeGuideBtn" aria-label="Fermer le guide des tailles">&times;</button>
+      <div class="modal-eyebrow">BARÃˆME DE COUPE</div>
+      <h3 class="modal-title" id="sizeGuideTitle">Guide des Tailles</h3>
+      <p class="modal-desc">
+        Le Manteau Cinq a Ã©tÃ© conÃ§u avec une coupe gÃ©nÃ©reuse et structurÃ©e aux Ã©paules. Nous vous recommandons de sÃ©lectionner votre taille habituelle pour un tombÃ© naturel.
+      </p>
+
+      <table class="size-guide-table">
+        <thead>
+          <tr>
+            <th>Taille FR</th>
+            <th>Tour de Poitrine</th>
+            <th>Tour de Taille</th>
+            <th>Longueur Dos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>XS (34)</td>
+            <td>82 &ndash; 86 cm</td>
+            <td>62 &ndash; 66 cm</td>
+            <td>118 cm</td>
+          </tr>
+          <tr>
+            <td>S (36)</td>
+            <td>86 &ndash; 90 cm</td>
+            <td>66 &ndash; 70 cm</td>
+            <td>120 cm</td>
+          </tr>
+          <tr>
+            <td>M (38)</td>
+            <td>90 &ndash; 94 cm</td>
+            <td>70 &ndash; 74 cm</td>
+            <td>121 cm</td>
+          </tr>
+          <tr>
+            <td>L (40)</td>
+            <td>94 &ndash; 98 cm</td>
+            <td>74 &ndash; 78 cm</td>
+            <td>122 cm</td>
+          </tr>
+          <tr>
+            <td>XL (42)</td>
+            <td>98 &ndash; 104 cm</td>
+            <td>78 &ndash; 84 cm</td>
+            <td>123 cm</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       LIGHTBOX MODAL FOR HIGH-RES VIEWING
+       ======================================================================== -->
+  <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true">
+    <button class="lightbox-close cursor-target" id="closeLightboxBtn">&times;</button>
+    <img class="lightbox-img" id="lightboxImage" src="" alt="Photographie haute rÃ©solution">
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-notification" id="selectionToast">
+    <span class="toast-dot"></span>
+    <span id="toastMessage">Le Manteau Cinq &bull; AjoutÃ© Ã  votre sÃ©lection</span>
+  </div>
+
+  <!-- ========================================================================
+       JAVASCRIPT INTERACTIONS
+       ======================================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      /* ------------------------------------------------------------------------
+         1. CUSTOM CURSOR (Dot + Ring with smooth lerping)
+         ------------------------------------------------------------------------ */
+      const cursorDot = document.getElementById('cursorDot');
+      const cursorRing = document.getElementById('cursorRing');
+      
+      let mouseX = window.innerWidth / 2;
+      let mouseY = window.innerHeight / 2;
+      let ringX = mouseX;
+      let ringY = mouseY;
+
+      window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        if (cursorDot) {
+          cursorDot.style.left = `${mouseX}px`;
+          cursorDot.style.top = `${mouseY}px`;
+        }
+      });
+
+      function renderCursor() {
+        ringX += (mouseX - ringX) * 0.16;
+        ringY += (mouseY - ringY) * 0.16;
+        if (cursorRing) {
+          cursorRing.style.left = `${ringX}px`;
+          cursorRing.style.top = `${ringY}px`;
+        }
+        requestAnimationFrame(renderCursor);
+      }
+      renderCursor();
+
+      // Interactive hover targets for cursor expansion
+      const interactiveElements = document.querySelectorAll(
+        'a, button, .thumb-item, .size-btn, .accordion-header, .cursor-target'
+      );
+      interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+      });
+
+      /* ------------------------------------------------------------------------
+         2. NAVIGATION SCROLL BEHAVIOR (Transparent -> Frosted Glass)
+         ------------------------------------------------------------------------ */
+      const mainNav = document.getElementById('mainNav');
+      function updateNavOnScroll() {
+        if (window.scrollY > 40) {
+          mainNav.classList.add('is-scrolled');
+        } else {
+          mainNav.classList.remove('is-scrolled');
+        }
+      }
+      window.addEventListener('scroll', updateNavOnScroll, { passive: true });
+      updateNavOnScroll();
+
+      /* ------------------------------------------------------------------------
+         3. IMAGE GALLERY SWITCHING WITH CROSSFADE TRANSITION
+         ------------------------------------------------------------------------ */
+      const mainImages = document.querySelectorAll('.gallery-main-img');
+      const thumbButtons = document.querySelectorAll('.thumb-item');
+      const activeLabel = document.getElementById('activeImageLabel');
+      let currentIndex = 0;
+
+      function switchGalleryImage(targetIndex) {
+        if (targetIndex === currentIndex) return;
+
+        // Deactivate previous
+        mainImages.forEach(img => {
+          img.classList.remove('active');
+          img.classList.remove('initial-zoom');
+        });
+        thumbButtons.forEach(btn => {
+          btn.classList.remove('active');
+          btn.setAttribute('aria-selected', 'false');
+        });
+
+        // Activate new
+        const nextImg = document.getElementById(`mainImage${targetIndex}`);
+        if (nextImg) {
+          nextImg.classList.add('active');
+        }
+
+        const activeThumb = document.querySelector(`.thumb-item[data-target-index="${targetIndex}"]`);
+        if (activeThumb) {
+          activeThumb.classList.add('active');
+          activeThumb.setAttribute('aria-selected', 'true');
+          const labelText = activeThumb.getAttribute('data-label');
+          if (labelText && activeLabel) {
+            activeLabel.textContent = labelText;
+          }
+        }
+
+        currentIndex = targetIndex;
+      }
+
+      thumbButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const targetIndex = parseInt(button.getAttribute('data-target-index'), 10);
+          switchGalleryImage(targetIndex);
+        });
+      });
+
+      // Swipe support on mobile for image gallery
+      const stage = document.getElementById('mainImageStage');
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      stage.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      stage.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      }, { passive: true });
+
+      function handleSwipe() {
+        const threshold = 40;
+        if (touchEndX < touchStartX - threshold) {
+          // Swipe left -> next image
+          const nextIdx = (currentIndex + 1) % mainImages.length;
+          switchGalleryImage(nextIdx);
+        } else if (touchEndX > touchStartX + threshold) {
+          // Swipe right -> prev image
+          const prevIdx = (currentIndex - 1 + mainImages.length) % mainImages.length;
+          switchGalleryImage(prevIdx);
+        }
+      }
+
+      /* ------------------------------------------------------------------------
+         4. SIZE SELECTOR INTERACTION
+         ------------------------------------------------------------------------ */
+      const sizeBtns = document.querySelectorAll('.size-btn');
+      const sizeDisplay = document.getElementById('selectedSizeDisplay');
+      let currentSelectedSize = 'S';
+
+      sizeBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          sizeBtns.forEach(b => {
+            b.classList.remove('selected');
+            b.setAttribute('aria-checked', 'false');
+          });
+          btn.classList.add('selected');
+          btn.setAttribute('aria-checked', 'true');
+          currentSelectedSize = btn.getAttribute('data-size');
+          if (sizeDisplay) {
+            sizeDisplay.textContent = currentSelectedSize;
+          }
+        });
+      });
+
+      /* ------------------------------------------------------------------------
+         5. ACCORDION OPEN / CLOSE WITH SMOOTH LUXURY TIMING
+         ------------------------------------------------------------------------ */
+      const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+      accordionHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+          const parentItem = header.parentElement;
+          const content = parentItem.querySelector('.accordion-content');
+          const isOpen = parentItem.classList.contains('open');
+
+          // Optional: close other accordions or leave multi-open. In luxury design, single active focuses attention
+          accordionHeaders.forEach(otherHeader => {
+            const otherItem = otherHeader.parentElement;
+            if (otherItem !== parentItem && otherItem.classList.contains('open')) {
+              otherItem.classList.remove('open');
+              otherHeader.setAttribute('aria-expanded', 'false');
+              otherItem.querySelector('.accordion-content').style.maxHeight = null;
+            }
+          });
+
+          if (isOpen) {
+            parentItem.classList.remove('open');
+            header.setAttribute('aria-expanded', 'false');
+            content.style.maxHeight = null;
+          } else {
+            parentItem.classList.add('open');
+            header.setAttribute('aria-expanded', 'true');
+            content.style.maxHeight = content.scrollHeight + 'px';
+          }
+        });
+      });
+
+      /* ------------------------------------------------------------------------
+         6. ADD TO SELECTION INTERACTION & TOAST
+         ------------------------------------------------------------------------ */
+      const btnAddToSelection = document.getElementById('btnAddToSelection');
+      const btnText = document.getElementById('addToSelectionText');
+      const cartCount = document.getElementById('cartCount');
+      const toast = document.getElementById('selectionToast');
+      const toastMessage = document.getElementById('toastMessage');
+      let count = 0;
+      let toastTimer = null;
+
+      btnAddToSelection.addEventListener('click', () => {
+        count += 1;
+        if (cartCount) cartCount.textContent = count;
+
+        btnAddToSelection.classList.add('added');
+        btnText.textContent = `AjoutÃ© (Taille ${currentSelectedSize})`;
+
+        // Show Toast
+        if (toastMessage) {
+          toastMessage.textContent = `Le Manteau Cinq (Taille ${currentSelectedSize}) &bull; AjoutÃ© Ã  votre sÃ©lection`;
+        }
+        toast.classList.add('active');
+
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          toast.classList.remove('active');
+          setTimeout(() => {
+            btnAddToSelection.classList.remove('added');
+            btnText.textContent = 'Ajouter Ã  la SÃ©lection';
+          }, 800);
+        }, 3200);
+      });
+
+      /* ------------------------------------------------------------------------
+         7. INTERSECTION OBSERVER FOR REVEALS (1.2s cubic-bezier(0.16, 1, 0.3, 1))
+         ------------------------------------------------------------------------ */
+      const revealElements = document.querySelectorAll('.reveal-on-scroll');
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      revealElements.forEach(el => revealObserver.observe(el));
+
+      /* ------------------------------------------------------------------------
+         8. MODALS (Private Appointment & Size Guide)
+         ------------------------------------------------------------------------ */
+      const appointmentModal = document.getElementById('appointmentModal');
+      const openAppointmentBtn = document.getElementById('openAppointmentBtn');
+      const closeAppointmentBtn = document.getElementById('closeAppointmentBtn');
+      const openNavSalonsBtn = document.getElementById('openNavSalonsBtn');
+
+      function openModal(modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal(modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      if (openAppointmentBtn) {
+        openAppointmentBtn.addEventListener('click', () => openModal(appointmentModal));
+      }
+      if (openNavSalonsBtn) {
+        openNavSalonsBtn.addEventListener('click', () => openModal(appointmentModal));
+      }
+      if (closeAppointmentBtn) {
+        closeAppointmentBtn.addEventListener('click', () => closeModal(appointmentModal));
+      }
+
+      // Size Guide Modal
+      const sizeGuideModal = document.getElementById('sizeGuideModal');
+      const openSizeGuideBtn = document.getElementById('openSizeGuideBtn');
+      const closeSizeGuideBtn = document.getElementById('closeSizeGuideBtn');
+
+      if (openSizeGuideBtn) {
+        openSizeGuideBtn.addEventListener('click', () => openModal(sizeGuideModal));
+      }
+      if (closeSizeGuideBtn) {
+        closeSizeGuideBtn.addEventListener('click', () => closeModal(sizeGuideModal));
+      }
+
+      // Lightbox Modal
+      const lightboxModal = document.getElementById('lightboxModal');
+      const lightboxTriggerBtn = document.getElementById('lightboxTriggerBtn');
+      const closeLightboxBtn = document.getElementById('closeLightboxBtn');
+      const lightboxImage = document.getElementById('lightboxImage');
+
+      if (lightboxTriggerBtn) {
+        lightboxTriggerBtn.addEventListener('click', () => {
+          const currentImg = document.getElementById(`mainImage${currentIndex}`);
+          if (currentImg && lightboxImage) {
+            lightboxImage.src = currentImg.src;
+            openModal(lightboxModal);
+          }
+        });
+      }
+      if (closeLightboxBtn) {
+        closeLightboxBtn.addEventListener('click', () => closeModal(lightboxModal));
+      }
+
+      // Close modal on click outside card
+      [appointmentModal, sizeGuideModal, lightboxModal].forEach(modal => {
+        if (!modal) return;
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            closeModal(modal);
+          }
+        });
+      });
+
+      // Escape key closes modals
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeModal(appointmentModal);
+          closeModal(sizeGuideModal);
+          closeModal(lightboxModal);
+        }
+      });
+
+      // Mobile Menu Trigger demo notice
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', () => {
+          alert('Menu Veloir Paris â€” Maison, Collections, PrÃªt-Ã -Porter, Haute Couture.');
+        });
+      }
+
+    });
+
+    // Appointment form handler
+    function handleAppointmentSubmit(event) {
+      event.preventDefault();
+      const salon = document.getElementById('salonSelect').value;
+      const clientName = document.getElementById('clientName').value;
+      alert(`Merci, ${clientName}. Votre demande de rendez-vous privÃ© au salon de ${salon.toUpperCase()} pour l'essayage de Le Manteau Cinq a bien Ã©tÃ© enregistrÃ©e. Notre conciergerie vous contactera sous 4 heures.`);
+      const modal = document.getElementById('appointmentModal');
+      if (modal) modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  </script>
+</body>
+</html>
+
+
+
