@@ -1,0 +1,1962 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CARNETS DE MODE â€” VELOIR PARIS</title>
+  <meta name="description" content="VELOIR PARIS â€” Carnets de Mode Printemps-Ã‰tÃ© 2025. L'essentiel invisible. Une exploration Ã©ditoriale entre Paris, New York et Kyoto.">
+  
+  <!-- Google Fonts: Cormorant Garamond & Raleway -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Raleway:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       DESIGN SYSTEM & TOKENS â€” VELOIR PARIS
+       References: Chanel, Celine, Loewe, Bottega Veneta, Maison Margiela
+       ========================================================================== */
+    :root {
+      --ivory: #F5F2ED;
+      --bone: #EDE9E2;
+      --warm-white: #FAF8F5;
+      --parchment: #E8E2D9;
+      --ash: #C8C2B8;
+      --taupe: #9C9488;
+      --charcoal: #3A3630;
+      --noir: #1A1714;
+      --ink: #0D0B09;
+      --gold: #B8A878;
+
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Raleway', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-slow: 1.2s var(--ease-luxury);
+      --transition-medium: 0.8s var(--ease-luxury);
+      --transition-fast: 0.4s var(--ease-luxury);
+    }
+
+    /* Reset & Base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      background-color: var(--ink);
+      color: var(--charcoal);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.7;
+      background-color: var(--warm-white);
+      color: var(--charcoal);
+      overflow-x: hidden;
+      cursor: none; /* Custom cursor */
+    }
+
+    ::selection {
+      background: var(--gold);
+      color: var(--noir);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      cursor: none;
+    }
+
+    button {
+      background: none;
+      border: none;
+      font: inherit;
+      color: inherit;
+      cursor: none;
+    }
+
+    /* ==========================================================================
+       CUSTOM CURSOR
+       ========================================================================== */
+    .custom-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 99999;
+      mix-blend-mode: difference;
+    }
+
+    .cursor-dot {
+      width: 5px;
+      height: 5px;
+      background-color: #FFFFFF;
+      border-radius: 50%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+    }
+
+    .cursor-ring {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      transform: translate(-50%, -50%);
+      transition: width 0.35s var(--ease-luxury), height 0.35s var(--ease-luxury), border-color 0.35s ease, background-color 0.35s ease;
+    }
+
+    .custom-cursor.is-hover .cursor-ring {
+      width: 64px;
+      height: 64px;
+      background-color: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .custom-cursor.is-hover .cursor-dot {
+      opacity: 0;
+    }
+
+    @media (hover: none) and (pointer: coarse) {
+      body {
+        cursor: auto;
+      }
+      .custom-cursor {
+        display: none;
+      }
+      a, button {
+        cursor: pointer;
+      }
+    }
+
+    /* ==========================================================================
+       SITE LOADER â€” POETIC & EPHEMERAL
+       ========================================================================== */
+    .site-loader {
+      position: fixed;
+      inset: 0;
+      background-color: var(--ink);
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 1.2s var(--ease-luxury), visibility 1.2s var(--ease-luxury);
+      pointer-events: auto;
+    }
+
+    .site-loader.is-loaded {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader-content {
+      text-align: center;
+      color: var(--ivory);
+    }
+
+    .loader-wordmark {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      font-weight: 300;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: loaderFadeIn 1s var(--ease-luxury) 0.2s forwards;
+    }
+
+    .loader-divider {
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.4rem auto;
+      opacity: 0;
+      transform: scaleX(0);
+      animation: loaderDividerExpand 0.8s var(--ease-luxury) 0.4s forwards;
+    }
+
+    .loader-tagline {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.15rem;
+      letter-spacing: 0.1em;
+      color: var(--ash);
+      opacity: 0;
+      transform: translateY(10px);
+      animation: loaderFadeIn 1s var(--ease-luxury) 0.5s forwards;
+    }
+
+    @keyframes loaderFadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes loaderDividerExpand {
+      to {
+        opacity: 0.7;
+        transform: scaleX(1);
+      }
+    }
+
+    /* ==========================================================================
+       TYPOGRAPHY UTILITIES & LINE-MASK REVEALS
+       ========================================================================== */
+    .font-serif {
+      font-family: var(--font-serif);
+    }
+
+    .font-sans {
+      font-family: var(--font-sans);
+    }
+
+    .italic {
+      font-style: italic;
+    }
+
+    .eyebrow {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      font-weight: 400;
+      display: block;
+    }
+
+    .line-mask {
+      display: block;
+      overflow: hidden;
+      line-height: 1.05;
+      padding-bottom: 0.1em;
+    }
+
+    .line-mask-inner {
+      display: block;
+      transform: translateY(115%);
+      transition: transform 1.3s var(--ease-luxury);
+      will-change: transform;
+    }
+
+    .is-revealed .line-mask-inner {
+      transform: translateY(0%);
+    }
+
+    .line-mask:nth-child(2) .line-mask-inner {
+      transition-delay: 0.14s;
+    }
+
+    .line-mask:nth-child(3) .line-mask-inner {
+      transition-delay: 0.28s;
+    }
+
+    /* Simple fade reveal for elements */
+    .reveal-fade {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1.2s var(--ease-luxury), transform 1.2s var(--ease-luxury);
+      will-change: opacity, transform;
+    }
+
+    .reveal-fade.is-revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Delay helpers */
+    .delay-1 { transition-delay: 0.15s; }
+    .delay-2 { transition-delay: 0.3s; }
+    .delay-3 { transition-delay: 0.45s; }
+    .delay-4 { transition-delay: 0.6s; }
+
+    /* ==========================================================================
+       NAVIGATION â€” ULTRA MINIMAL & ADAPTIVE
+       ========================================================================== */
+    .site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 4.5rem;
+      z-index: 1000;
+      transition: background-color 0.8s var(--ease-luxury), color 0.8s var(--ease-luxury), border-color 0.8s var(--ease-luxury), backdrop-filter 0.8s var(--ease-luxury);
+      border-bottom: 1px solid transparent;
+    }
+
+    /* Default Nav: Dark Mode for dark opening */
+    .site-nav.is-dark {
+      color: var(--warm-white);
+      border-bottom-color: rgba(245, 242, 237, 0.08);
+      background-color: transparent;
+    }
+
+    .site-nav.is-dark.has-scrolled {
+      background-color: rgba(13, 11, 9, 0.82);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    /* Light Mode Nav for light content spreads */
+    .site-nav.is-light {
+      color: var(--noir);
+      border-bottom-color: rgba(26, 23, 20, 0.08);
+      background-color: rgba(250, 248, 245, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .nav-col-left, .nav-col-right {
+      display: flex;
+      align-items: center;
+      gap: 2.8rem;
+      flex: 1;
+    }
+
+    .nav-col-right {
+      justify-content: flex-end;
+    }
+
+    .nav-col-center {
+      text-align: center;
+      flex: 1;
+    }
+
+    .nav-brand {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      font-weight: 400;
+      display: inline-block;
+      transition: opacity 0.3s ease;
+    }
+
+    .nav-brand:hover {
+      opacity: 0.7;
+    }
+
+    .nav-link {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      font-weight: 400;
+      position: relative;
+      padding-bottom: 4px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 1px;
+      background-color: currentColor;
+      transition: width 0.4s var(--ease-luxury);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.is-active::after {
+      width: 100%;
+    }
+
+    .nav-edition-badge {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      padding: 0.25rem 0.6rem;
+      border: 1px solid currentColor;
+      opacity: 0.75;
+      text-transform: uppercase;
+    }
+
+    /* Mobile Menu Toggle */
+    .nav-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: inherit;
+    }
+
+    /* Mobile Drawer */
+    .mobile-drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: var(--ink);
+      color: var(--ivory);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 4rem 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.6s var(--ease-luxury);
+    }
+
+    .mobile-drawer.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .mobile-drawer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      text-align: center;
+      list-style: none;
+    }
+
+    .mobile-drawer-links a {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-style: italic;
+      letter-spacing: 0.05em;
+      color: var(--ivory);
+      transition: color 0.3s ease;
+    }
+
+    .mobile-drawer-links a:hover {
+      color: var(--gold);
+    }
+
+    /* ==========================================================================
+       SECTION 1: OPENING SPREAD (100vh Dark Text Only)
+       ========================================================================== */
+    .section-opening {
+      min-height: 100vh;
+      background-color: var(--ink);
+      color: var(--ivory);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      text-align: center;
+      padding: 6rem 2rem;
+      overflow: hidden;
+    }
+
+    .opening-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      z-index: 2;
+    }
+
+    .opening-eyebrow {
+      color: var(--gold);
+      margin-bottom: 2.8rem;
+    }
+
+    .opening-title {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(4.5rem, 9.8vw, 9.2rem);
+      line-height: 0.95;
+      letter-spacing: -0.015em;
+      color: var(--warm-white);
+      margin: 0 auto;
+    }
+
+    .opening-cities {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--ash);
+      margin-top: 3.5rem;
+      font-weight: 300;
+    }
+
+    .opening-scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+      color: var(--ash);
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    .scroll-line-anim {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(180deg, var(--gold) 0%, transparent 100%);
+      animation: scrollPulse 2.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+    }
+
+    @keyframes scrollPulse {
+      0% {
+        transform: scaleY(0);
+        transform-origin: top;
+      }
+      50% {
+        transform: scaleY(1);
+        transform-origin: top;
+      }
+      50.1% {
+        transform: scaleY(1);
+        transform-origin: bottom;
+      }
+      100% {
+        transform: scaleY(0);
+        transform-origin: bottom;
+      }
+    }
+
+    /* ==========================================================================
+       SECTION 2: EDITORIAL OPENING IMAGE (100vh Full-Bleed)
+       ========================================================================== */
+    .section-hero-image {
+      height: 100vh;
+      min-height: 600px;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--ink);
+    }
+
+    .parallax-image-wrapper {
+      position: absolute;
+      top: -15%;
+      left: 0;
+      width: 100%;
+      height: 130%;
+      will-change: transform;
+    }
+
+    .parallax-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      filter: contrast(98%) brightness(96%);
+    }
+
+    .hero-image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(13,11,9,0.25) 0%, rgba(13,11,9,0) 30%, rgba(13,11,9,0.45) 100%);
+      pointer-events: none;
+    }
+
+    .hero-floating-caption {
+      position: absolute;
+      bottom: 4rem;
+      left: 4.5rem;
+      z-index: 10;
+      color: var(--warm-white);
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      font-weight: 300;
+      background: rgba(13, 11, 9, 0.35);
+      padding: 0.6rem 1.4rem;
+      border-left: 1px solid var(--gold);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    /* ==========================================================================
+       SECTION 3: CHAPTER ONE â€” TWO COLUMN WITH PULL QUOTE
+       ========================================================================== */
+    .section-chapter-one {
+      background-color: var(--warm-white);
+      padding: 12rem 8vw 10rem;
+      position: relative;
+    }
+
+    .chapter-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 7vw;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .chapter-img-col {
+      position: relative;
+    }
+
+    .chapter-img-frame {
+      aspect-ratio: 2 / 3;
+      overflow: hidden;
+      background-color: var(--bone);
+      position: relative;
+    }
+
+    .chapter-img-frame img {
+      width: 100%;
+      height: 115%;
+      object-fit: cover;
+      object-position: center;
+      will-change: transform;
+      transition: transform 1.2s var(--ease-luxury);
+    }
+
+    .chapter-text-col {
+      padding-left: 2vw;
+    }
+
+    .chapter-index {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      display: inline-block;
+    }
+
+    .chapter-title {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(3.2rem, 5.4vw, 5.2rem);
+      line-height: 1.05;
+      color: var(--noir);
+      margin-bottom: 2.8rem;
+      letter-spacing: -0.01em;
+    }
+
+    .chapter-body {
+      font-family: var(--font-sans);
+      font-size: 1.05rem;
+      line-height: 2;
+      color: var(--charcoal);
+      font-weight: 300;
+      max-width: 440px;
+      margin-bottom: 2.5rem;
+    }
+
+    .chapter-location-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      border-top: 1px solid var(--parchment);
+      padding-top: 1.2rem;
+      display: inline-block;
+    }
+
+    /* Pull Quote Block */
+    .pull-quote-wrapper {
+      margin-top: 14rem;
+      padding: 0 4vw;
+      text-align: center;
+      position: relative;
+    }
+
+    .pull-quote-line {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 3.5rem;
+      opacity: 0.7;
+    }
+
+    .pull-quote-text {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(2.2rem, 4vw, 3.8rem);
+      line-height: 1.3;
+      color: var(--noir);
+      max-width: 950px;
+      margin: 0 auto;
+      letter-spacing: -0.01em;
+    }
+
+    .pull-quote-caption {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      margin-top: 2.8rem;
+    }
+
+    /* ==========================================================================
+       SECTION 4: FULL BLEED DETAIL (80vh Close-up Fabric)
+       ========================================================================== */
+    .section-detail-bleed {
+      height: 80vh;
+      min-height: 550px;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--noir);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .detail-scrim {
+      position: absolute;
+      inset: 0;
+      background: rgba(13, 11, 9, 0.42);
+      z-index: 2;
+    }
+
+    .detail-content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      color: var(--warm-white);
+      padding: 2rem;
+      max-width: 800px;
+    }
+
+    .detail-eyebrow {
+      color: var(--gold);
+      margin-bottom: 1.8rem;
+    }
+
+    .detail-text {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(2.2rem, 4.2vw, 3.6rem);
+      line-height: 1.35;
+      color: var(--ivory);
+      letter-spacing: 0.01em;
+    }
+
+    /* ==========================================================================
+       SECTION 5: CHAPTER TWO â€” ASYMMETRIC OVERLAPPING SPREAD
+       ========================================================================== */
+    .section-chapter-two {
+      background-color: var(--ivory);
+      padding: 12rem 8vw;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .asymmetric-spread {
+      display: flex;
+      align-items: flex-end;
+      position: relative;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .asymmetric-image-col {
+      width: 65%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .asymmetric-img-frame {
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background-color: var(--bone);
+    }
+
+    .asymmetric-img-frame img {
+      width: 100%;
+      height: 115%;
+      object-fit: cover;
+      object-position: center;
+      will-change: transform;
+    }
+
+    .asymmetric-content-box {
+      width: 45%;
+      margin-left: -10%;
+      margin-bottom: -4rem;
+      background-color: var(--warm-white);
+      padding: 5rem 4.5rem;
+      position: relative;
+      z-index: 2;
+      border-left: 1px solid var(--parchment);
+    }
+
+    .asymmetric-index {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      display: block;
+    }
+
+    .asymmetric-title {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(3rem, 5.2vw, 4.8rem);
+      line-height: 1.05;
+      color: var(--noir);
+      margin-bottom: 2.2rem;
+      letter-spacing: -0.01em;
+    }
+
+    .asymmetric-body {
+      font-family: var(--font-sans);
+      font-size: 1.05rem;
+      line-height: 2;
+      color: var(--charcoal);
+      font-weight: 300;
+    }
+
+    /* ==========================================================================
+       SECTION 6: HORIZONTAL EDITORIAL â€” TRIPTYCH ROW
+       ========================================================================== */
+    .section-horizontal-editorial {
+      background-color: var(--bone);
+      padding: 12rem 6vw;
+      position: relative;
+    }
+
+    .triptych-header {
+      text-align: center;
+      margin-bottom: 6rem;
+    }
+
+    .triptych-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3.5vw;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .triptych-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .triptych-img-wrapper {
+      aspect-ratio: 9 / 14;
+      overflow: hidden;
+      background-color: var(--parchment);
+      position: relative;
+    }
+
+    .triptych-img-wrapper img {
+      width: 100%;
+      height: 110%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 1.2s var(--ease-luxury);
+      will-change: transform;
+    }
+
+    .triptych-card:hover .triptych-img-wrapper img {
+      transform: scale(1.04);
+    }
+
+    .triptych-caption-box {
+      margin-top: 1.8rem;
+      text-align: center;
+    }
+
+    .triptych-plate {
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+    }
+
+    .triptych-title {
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--noir);
+      font-weight: 400;
+    }
+
+    /* ==========================================================================
+       SECTION 7: CHAPTER THREE â€” CENTER ALIGNED TEXT-ONLY SPREAD
+       ========================================================================== */
+    .section-chapter-three {
+      min-height: 85vh;
+      background-color: var(--bone);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 12rem 8vw;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .chapter-three-number {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: clamp(9rem, 20vw, 18rem);
+      line-height: 0.75;
+      color: var(--parchment);
+      user-select: none;
+      pointer-events: none;
+      margin-bottom: -2.5rem;
+      letter-spacing: -0.05em;
+      opacity: 0.85;
+      position: relative;
+      z-index: 1;
+    }
+
+    .chapter-three-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+    }
+
+    .chapter-three-title {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(3.2rem, 6.2vw, 6.2rem);
+      line-height: 1.05;
+      color: var(--noir);
+      margin-bottom: 2.8rem;
+      letter-spacing: -0.015em;
+    }
+
+    .chapter-three-body {
+      font-family: var(--font-sans);
+      font-size: 1.1rem;
+      line-height: 2.1;
+      color: var(--charcoal);
+      font-weight: 300;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    /* ==========================================================================
+       SECTION 8: FULL BLEED CLOSING (100vh Dark)
+       ========================================================================== */
+    .section-closing-image {
+      height: 100vh;
+      min-height: 600px;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--ink);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .closing-scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(13,11,9,0.3) 0%, rgba(13,11,9,0) 40%, rgba(13,11,9,0.65) 100%);
+      pointer-events: none;
+    }
+
+    .closing-content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      padding-bottom: 5.5rem;
+      color: var(--warm-white);
+    }
+
+    .closing-wordmark {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      font-weight: 300;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .closing-tagline {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.45rem;
+      letter-spacing: 0.05em;
+      color: var(--ash);
+      font-weight: 300;
+    }
+
+    /* ==========================================================================
+       SECTION 9: NEXT CHAPTER TEASER (Bone Background)
+       ========================================================================== */
+    .section-next-teaser {
+      background-color: var(--bone);
+      padding: 13rem 8vw;
+      text-align: center;
+      position: relative;
+      border-top: 1px solid var(--parchment);
+    }
+
+    .teaser-eyebrow {
+      color: var(--taupe);
+      margin-bottom: 2.2rem;
+    }
+
+    .teaser-title {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(3.2rem, 6.5vw, 6.8rem);
+      line-height: 1.1;
+      color: var(--noir);
+      margin-bottom: 3.5rem;
+      letter-spacing: -0.015em;
+    }
+
+    .teaser-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--noir);
+      font-weight: 400;
+      padding-bottom: 6px;
+      position: relative;
+      transition: color 0.4s ease;
+    }
+
+    .teaser-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--noir);
+      transition: transform 0.4s var(--ease-luxury);
+      transform-origin: right;
+    }
+
+    .teaser-link:hover::after {
+      transform: scaleX(0);
+      transform-origin: right;
+    }
+
+    .teaser-link-arrow {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      transition: transform 0.4s var(--ease-luxury);
+    }
+
+    .teaser-link:hover .teaser-link-arrow {
+      transform: translateX(6px);
+    }
+
+    /* ==========================================================================
+       LUXURY FOOTER â€” PARISIAN ATELIER
+       ========================================================================== */
+    .site-footer {
+      background-color: var(--noir);
+      color: var(--parchment);
+      padding: 9rem 8vw 4.5rem;
+      position: relative;
+      border-top: 1px solid rgba(232, 226, 217, 0.08);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+      gap: 6vw;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .footer-brand-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .footer-wordmark {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      font-weight: 400;
+      color: var(--warm-white);
+      margin-bottom: 1.4rem;
+      display: inline-block;
+    }
+
+    .footer-atelier-desc {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--ash);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      max-width: 320px;
+    }
+
+    .footer-address {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      line-height: 1.9;
+    }
+
+    .footer-col-title {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2.2rem;
+      font-weight: 400;
+    }
+
+    .footer-nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+
+    .footer-nav-link {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ash);
+      transition: color 0.3s ease;
+      font-weight: 300;
+    }
+
+    .footer-nav-link:hover {
+      color: var(--warm-white);
+    }
+
+    .footer-newsletter-text {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      line-height: 1.9;
+      color: var(--ash);
+      margin-bottom: 1.8rem;
+    }
+
+    .footer-input-group {
+      position: relative;
+      border-bottom: 1px solid rgba(232, 226, 217, 0.25);
+      padding-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: border-color 0.4s ease;
+    }
+
+    .footer-input-group:focus-within {
+      border-bottom-color: var(--gold);
+    }
+
+    .footer-input {
+      background: none;
+      border: none;
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      color: var(--warm-white);
+      width: 100%;
+      outline: none;
+    }
+
+    .footer-input::placeholder {
+      color: var(--taupe);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-size: 0.68rem;
+    }
+
+    .footer-submit-btn {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      color: var(--gold);
+      padding-left: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .footer-submit-btn:hover {
+      transform: translateX(4px);
+    }
+
+    /* Footer Bottom Bar */
+    .footer-bottom-bar {
+      margin-top: 8rem;
+      padding-top: 3rem;
+      border-top: 1px solid rgba(232, 226, 217, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      max-width: 1440px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    .footer-bottom-links a:hover {
+      color: var(--warm-white);
+    }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS
+       ========================================================================== */
+    @media (max-width: 1080px) {
+      .site-nav {
+        padding: 0 2.5rem;
+      }
+      .chapter-grid {
+        grid-template-columns: 1fr;
+        gap: 5rem;
+      }
+      .chapter-img-col {
+        max-width: 600px;
+        margin: 0 auto;
+        width: 100%;
+      }
+      .chapter-text-col {
+        padding-left: 0;
+        text-align: center;
+      }
+      .chapter-body {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .asymmetric-spread {
+        flex-direction: column;
+        align-items: center;
+      }
+      .asymmetric-image-col {
+        width: 100%;
+        max-width: 640px;
+      }
+      .asymmetric-content-box {
+        width: 90%;
+        max-width: 540px;
+        margin-left: 0;
+        margin-top: -3rem;
+        padding: 3.5rem 2.5rem;
+      }
+      .triptych-grid {
+        grid-template-columns: 1fr;
+        gap: 6rem;
+        max-width: 520px;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .site-nav {
+        padding: 0 1.5rem;
+        height: 70px;
+      }
+      .nav-col-left, .nav-col-right {
+        display: none;
+      }
+      .nav-menu-btn {
+        display: block;
+      }
+      .hero-floating-caption {
+        bottom: 2rem;
+        left: 1.5rem;
+        right: 1.5rem;
+        font-size: 0.65rem;
+      }
+      .section-chapter-one {
+        padding: 8rem 6vw 6rem;
+      }
+      .pull-quote-wrapper {
+        margin-top: 8rem;
+      }
+      .section-chapter-two {
+        padding: 8rem 6vw;
+      }
+      .asymmetric-content-box {
+        width: 100%;
+        padding: 2.8rem 1.8rem;
+      }
+      .section-horizontal-editorial {
+        padding: 8rem 6vw;
+      }
+      .section-chapter-three {
+        padding: 8rem 6vw;
+      }
+      .section-next-teaser {
+        padding: 8rem 6vw;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 3.5rem;
+      }
+      .footer-bottom-bar {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+      }
+      .footer-bottom-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.2rem;
+      }
+    }
+  
+    /* UPDATED ACCORDING TO USER REQUIREMENTS */
+    :root {
+      --ivory: #FFFFFF !important;
+      --bone: #FFFFFF !important;
+      --warm-white: #FFFFFF !important;
+      --parchment: #F5F5F5 !important;
+      --noir: #000000 !important;
+      --charcoal: #000000 !important;
+    }
+    body, .section-chapter-one, .section-chapter-two, .section-horizontal-editorial, .section-chapter-three, .section-next-teaser {
+      background-color: #FFFFFF !important;
+      color: #000000 !important;
+    }
+    .chapter-title, .chapter-body, .asymmetric-title, .asymmetric-body, .triptych-title, .chapter-three-title, .chapter-three-body, .teaser-title, .eyebrow {
+      color: #000000 !important;
+      font-weight: 700 !important;
+    }
+    
+</style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       CUSTOM CURSOR MARKUP
+       ========================================================================== -->
+  <div class="custom-cursor" id="custom-cursor">
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+  </div>
+
+  <!-- ==========================================================================
+       SITE LOADER
+       ========================================================================== -->
+  <div class="site-loader" id="site-loader" aria-hidden="true">
+    <div class="loader-content">
+      <div class="loader-wordmark">VELOIR PARIS</div>
+      <div class="loader-divider"></div>
+      <div class="loader-tagline">L'essentiel invisible.</div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MOBILE NAVIGATION DRAWER
+       ========================================================================== -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <button class="nav-menu-btn" id="mobile-drawer-close" style="position: absolute; top: 2rem; right: 2rem; font-size: 0.8rem; letter-spacing: 0.3em; color: var(--ivory);">FERMER âœ•</button>
+    <ul class="mobile-drawer-links">
+      <li><a href="#spread" class="mobile-nav-link">Carnets de Mode</a></li>
+      <li><a href="#chapitre-01" class="mobile-nav-link">01 â€” L'Air du Matin</a></li>
+      <li><a href="#chapitre-02" class="mobile-nav-link">02 â€” L'Heure Bleue</a></li>
+      <li><a href="#silhouettes" class="mobile-nav-link">Silhouettes</a></li>
+      <li><a href="#chapitre-03" class="mobile-nav-link">03 â€” La Nuit Bien PortÃ©e</a></li>
+      <li><a href="#next-chapter" class="mobile-nav-link">Automne â€” Hiver 2025</a></li>
+    </ul>
+    <div style="margin-top: 4rem; text-align: center;">
+      <span class="eyebrow" style="color: var(--gold); margin-bottom: 0.8rem;">MAISON DE HAUTE COUTURE</span>
+      <span style="font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--taupe);">2 Place VendÃ´me, Paris</span>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       SITE NAVIGATION
+       ========================================================================== -->
+  <header class="site-nav is-dark" id="site-nav" role="banner">
+    <div class="nav-col-left">
+      <a href="lookbook.html" class="nav-link is-active">Carnets</a>
+      <a href="collection.html" class="nav-link">Silhouettes</a>
+      <a href="maison-circle.html" class="nav-link">Archives</a>
+    </div>
+
+    <div class="nav-col-center">
+      <a href="index.html" class="nav-brand" aria-label="VELOIR PARIS Home">VELOIR PARIS</a>
+    </div>
+
+    <div class="nav-col-right">
+      <span class="nav-edition-badge">NÂ° 07 â€” Ã‰DITION LIMITÃ‰E</span>
+      <a href="#footer" class="nav-link">Contact</a>
+      <button class="nav-menu-btn" id="mobile-drawer-open" aria-label="Ouvrir le menu">MENU</button>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ==========================================================================
+         SECTION 1: OPENING SPREAD (100vh Dark, Text Only)
+         ========================================================================== -->
+    <section class="section-opening" id="spread" data-theme="dark">
+      <div class="opening-content">
+        <span class="eyebrow opening-eyebrow reveal-fade">CARNETS DE MODE</span>
+        
+        <h1 class="opening-title">
+          <span class="line-mask">
+            <span class="line-mask-inner">Printemps</span>
+          </span>
+          <span class="line-mask">
+            <span class="line-mask-inner">Ã‰tÃ© 2025</span>
+          </span>
+        </h1>
+
+        <p class="opening-cities reveal-fade delay-2">Paris. New York. Kyoto.</p>
+      </div>
+
+      <div class="opening-scroll-hint reveal-fade delay-3">
+        <div class="scroll-line-anim"></div>
+        <span>DÃ‰FILER</span>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 2: EDITORIAL OPENING IMAGE (100vh Full Bleed)
+         ========================================================================== -->
+    <section class="section-hero-image" id="editorial-opening" data-theme="dark">
+      <div class="parallax-image-wrapper" data-parallax-speed="0.18">
+        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1920&q=95" alt="Veloir Paris â€” Ã‰ditorial Printemps Ã‰tÃ© 2025" loading="eager">
+      </div>
+      <div class="hero-image-overlay"></div>
+      <div class="hero-floating-caption reveal-fade">
+        01 â€” L'Air du Matin
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 3: CHAPTER ONE (Two Columns & Pull Quote)
+         ========================================================================== -->
+    <section class="section-chapter-one" id="chapitre-01" data-theme="light">
+      <div class="chapter-grid">
+        <div class="chapter-img-col">
+          <div class="chapter-img-frame" data-parallax-container>
+            <img class="parallax-subtle" data-parallax-speed="0.12" src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=90" alt="L'Air du Matin â€” Silhouette en cachemire Veloir" loading="lazy">
+          </div>
+        </div>
+
+        <div class="chapter-text-col">
+          <span class="chapter-index reveal-fade">01</span>
+          
+          <h2 class="chapter-title">
+            <span class="line-mask">
+              <span class="line-mask-inner">L'Air</span>
+            </span>
+            <span class="line-mask">
+              <span class="line-mask-inner">du Matin</span>
+            </span>
+          </h2>
+
+          <p class="chapter-body reveal-fade delay-1">
+            She dresses before the city wakes. Not for the day â€” for herself. The cashmere settles. The door closes. Paris begins.
+          </p>
+
+          <span class="chapter-location-tag reveal-fade delay-2">07:14 â€” RUE DE VAUGIRARD, PARIS</span>
+        </div>
+      </div>
+
+      <!-- Pull Quote -->
+      <div class="pull-quote-wrapper">
+        <div class="pull-quote-line reveal-fade"></div>
+        <blockquote class="pull-quote-text">
+          <span class="line-mask">
+            <span class="line-mask-inner">To dress well is to say nothing,</span>
+          </span>
+          <span class="line-mask">
+            <span class="line-mask-inner">and mean everything.</span>
+          </span>
+        </blockquote>
+        <div class="pull-quote-caption reveal-fade delay-2">
+          CARNET DE RECHERCHE â€” CAHIER IV
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 4: FULL BLEED DETAIL (80vh Close-up Fabric)
+         ========================================================================== -->
+    <section class="section-detail-bleed" id="composition-detail" data-theme="dark">
+      <div class="parallax-image-wrapper" data-parallax-speed="0.2">
+        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1920&q=95" alt="MatiÃ¨res Nobles â€” Double-faced cashmere" loading="lazy">
+      </div>
+      <div class="detail-scrim"></div>
+      
+      <div class="detail-content">
+        <span class="eyebrow detail-eyebrow reveal-fade">COMPOSITION</span>
+        <p class="detail-text reveal-fade delay-1">
+          Double-faced cashmere.<br>
+          Biella, Italy. 2024.
+        </p>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 5: CHAPTER TWO (Asymmetric Layout)
+         ========================================================================== -->
+    <section class="section-chapter-two" id="chapitre-02" data-theme="light">
+      <div class="asymmetric-spread">
+        <div class="asymmetric-image-col">
+          <div class="asymmetric-img-frame" data-parallax-container>
+            <img class="parallax-subtle" data-parallax-speed="0.14" src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=1000&q=90" alt="L'Heure Bleue â€” Silhouette dans le Marais" loading="lazy">
+          </div>
+        </div>
+
+        <div class="asymmetric-content-box reveal-fade delay-1">
+          <span class="asymmetric-index">02</span>
+          
+          <h2 class="asymmetric-title">
+            <span class="line-mask">
+              <span class="line-mask-inner">L'Heure</span>
+            </span>
+            <span class="line-mask">
+              <span class="line-mask-inner">Bleue</span>
+            </span>
+          </h2>
+
+          <p class="asymmetric-body">
+            The hour before dusk. The Marais empties. A woman moves through it unseen â€” which is to say, she is exactly where she wants to be.
+          </p>
+
+          <div style="margin-top: 2rem;">
+            <span class="eyebrow" style="color: var(--taupe); font-size: 0.62rem;">19:42 â€” PASSAGE SAINT-PAUL</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 6: HORIZONTAL EDITORIAL (Row of 3 Tall Images)
+         ========================================================================== -->
+    <section class="section-horizontal-editorial" id="silhouettes" data-theme="light">
+      <div class="triptych-header">
+        <span class="eyebrow reveal-fade" style="color: var(--gold); margin-bottom: 1rem;">NOTATIONS D'ATELIER</span>
+        <h2 class="font-serif italic reveal-fade delay-1" style="font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; color: var(--noir);">Trois Ã‰lÃ©ments Essentiels</h2>
+      </div>
+
+      <div class="triptych-grid">
+        <!-- Card 1 -->
+        <article class="triptych-card reveal-fade">
+          <div class="triptych-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=500&q=85" alt="Le Blazer 1947" loading="lazy">
+          </div>
+          <div class="triptych-caption-box">
+            <span class="triptych-plate">[ I ]</span>
+            <h3 class="triptych-title">Le Blazer 1947</h3>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="triptych-card reveal-fade delay-1">
+          <div class="triptych-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=500&q=85" alt="Sac Brume" loading="lazy">
+          </div>
+          <div class="triptych-caption-box">
+            <span class="triptych-plate">[ II ]</span>
+            <h3 class="triptych-title">Sac Brume</h3>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="triptych-card reveal-fade delay-2">
+          <div class="triptych-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=500&q=85" alt="Sac Velours" loading="lazy">
+          </div>
+          <div class="triptych-caption-box">
+            <span class="triptych-plate">[ III ]</span>
+            <h3 class="triptych-title">Sac Velours</h3>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 7: CHAPTER THREE (Center-Aligned Text-Only Spread on Bone)
+         ========================================================================== -->
+    <section class="section-chapter-three" id="chapitre-03" data-theme="light">
+      <div class="chapter-three-number reveal-fade">03</div>
+
+      <div class="chapter-three-content">
+        <h2 class="chapter-three-title">
+          <span class="line-mask">
+            <span class="line-mask-inner">La Nuit</span>
+          </span>
+          <span class="line-mask">
+            <span class="line-mask-inner">Bien PortÃ©e</span>
+          </span>
+        </h2>
+
+        <p class="chapter-three-body reveal-fade delay-2">
+          Veloir does not make eveningwear. It makes the kind of clothing that becomes eveningwear when the lights change. There is no occasion it was not made for.
+        </p>
+
+        <div class="reveal-fade delay-3" style="margin-top: 3.5rem;">
+          <span class="eyebrow" style="color: var(--taupe);">FRAGMENT 38 â€” CAHIERS VELOIR</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 8: FULL BLEED CLOSING (100vh Dark)
+         ========================================================================== -->
+    <section class="section-closing-image" id="closing-spread" data-theme="dark">
+      <div class="parallax-image-wrapper" data-parallax-speed="0.16">
+        <img src="https://images.unsplash.com/photo-1624222247344-550fb60583dc?w=1000&q=85" alt="Veloir Paris â€” Nuit d'Atelier" loading="lazy">
+      </div>
+      <div class="closing-scrim"></div>
+
+      <div class="closing-content reveal-fade">
+        <span class="closing-wordmark">VELOIR PARIS</span>
+        <p class="closing-tagline">L'essentiel invisible.</p>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 9: NEXT CHAPTER TEASER (Bone Background)
+         ========================================================================== -->
+    <section class="section-next-teaser" id="next-chapter" data-theme="light">
+      <span class="eyebrow teaser-eyebrow reveal-fade">La prochaine collection</span>
+      
+      <h2 class="teaser-title">
+        <span class="line-mask">
+          <span class="line-mask-inner">Automne â€”</span>
+        </span>
+        <span class="line-mask">
+          <span class="line-mask-inner">Hiver 2025</span>
+        </span>
+      </h2>
+
+      <div class="reveal-fade delay-2">
+        <a href="#spread" class="teaser-link">
+          <span>Voir la collection</span>
+          <span class="teaser-link-arrow">â†’</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       LUXURY FOOTER
+       ========================================================================== -->
+  <footer class="site-footer" id="footer" data-theme="dark" role="contentinfo">
+    <div class="footer-grid">
+      <!-- Col 1: Brand & Atelier -->
+      <div class="footer-brand-col">
+        <div>
+          <a href="#spread" class="footer-wordmark">VELOIR PARIS</a>
+          <p class="footer-atelier-desc">L'art de la coupe pure et de la retenue silencieuse.</p>
+        </div>
+        <div class="footer-address">
+          Atelier & Salons PrivÃ©s<br>
+          2 Place VendÃ´me<br>
+          75001 Paris â€” France
+        </div>
+      </div>
+
+      <!-- Col 2: Carnets de Mode -->
+      <div>
+        <h4 class="footer-col-title">Carnets & Ã‰ditions</h4>
+        <ul class="footer-nav-list">
+          <li><a href="#spread" class="footer-nav-link">Printemps â€” Ã‰tÃ© 2025</a></li>
+          <li><a href="#next-chapter" class="footer-nav-link">Automne â€” Hiver 2024</a></li>
+          <li><a href="#spread" class="footer-nav-link">Cahiers d'Atelier</a></li>
+          <li><a href="#spread" class="footer-nav-link">Archives Visuelles</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Maison & DÃ©marche -->
+      <div>
+        <h4 class="footer-col-title">La Maison</h4>
+        <ul class="footer-nav-list">
+          <li><a href="#composition-detail" class="footer-nav-link">MatiÃ¨res & Filatures</a></li>
+          <li><a href="#chapitre-01" class="footer-nav-link">Philosophie du Geste</a></li>
+          <li><a href="#footer" class="footer-nav-link">Salons PrivÃ©s</a></li>
+          <li><a href="#footer" class="footer-nav-link">Conciergerie</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Correspondance PrivÃ©e -->
+      <div>
+        <h4 class="footer-col-title">Correspondance</h4>
+        <p class="footer-newsletter-text">
+          Recevez nos carnets imprimÃ©s et invitations aux prÃ©sentations privÃ©es.
+        </p>
+        <form class="footer-input-group" onsubmit="event.preventDefault(); alert('Votre demande a Ã©tÃ© transmise Ã  notre concierge.');">
+          <input type="email" class="footer-input" placeholder="Votre adresse courriel" required aria-label="Adresse courriel">
+          <button type="submit" class="footer-submit-btn" aria-label="Envoyer">âŸ¶</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom-bar">
+      <div>Â© 2025 VELOIR PARIS. Tous droits rÃ©servÃ©s.</div>
+      <div class="footer-bottom-links">
+        <a href="#footer">Mentions LÃ©gales</a>
+        <a href="#footer">DonnÃ©es PrivÃ©es</a>
+        <a href="#footer">Conditions d'Atelier</a>
+      </div>
+      <div>PARIS â€” VENISE â€” KYOTO</div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       JAVASCRIPT â€” MOTION, CURSOR, PARALLAX & REVEALS
+       ========================================================================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ------------------------------------------------------------------------
+         1. SITE LOADER
+         ------------------------------------------------------------------------ */
+      const siteLoader = document.getElementById('site-loader');
+      
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          if (siteLoader) {
+            siteLoader.classList.add('is-loaded');
+          }
+          initReveals();
+        }, 850);
+      });
+
+      // Fallback timeout in case window load fires slowly
+      setTimeout(() => {
+        if (siteLoader && !siteLoader.classList.contains('is-loaded')) {
+          siteLoader.classList.add('is-loaded');
+          initReveals();
+        }
+      }, 2500);
+
+      /* ------------------------------------------------------------------------
+         2. CUSTOM CURSOR
+         ------------------------------------------------------------------------ */
+      const cursorWrapper = document.getElementById('custom-cursor');
+      const cursorDot = document.getElementById('cursor-dot');
+      const cursorRing = document.getElementById('cursor-ring');
+
+      if (cursorWrapper && window.matchMedia('(hover: hover)').matches) {
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let ringX = mouseX;
+        let ringY = mouseY;
+        let isMoving = false;
+
+        window.addEventListener('mousemove', (e) => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+          cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+          if (!isMoving) {
+            isMoving = true;
+            requestAnimationFrame(renderCursor);
+          }
+        });
+
+        function renderCursor() {
+          // Smooth Lerp
+          ringX += (mouseX - ringX) * 0.16;
+          ringY += (mouseY - ringY) * 0.16;
+
+          cursorRing.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
+
+          if (Math.abs(mouseX - ringX) > 0.1 || Math.abs(mouseY - ringY) > 0.1) {
+            requestAnimationFrame(renderCursor);
+          } else {
+            isMoving = false;
+          }
+        }
+
+        // Hover scale on interactive elements
+        const interactiveTargets = document.querySelectorAll('a, button, input, .triptych-card');
+        interactiveTargets.forEach((el) => {
+          el.addEventListener('mouseenter', () => cursorWrapper.classList.add('is-hover'));
+          el.addEventListener('mouseleave', () => cursorWrapper.classList.remove('is-hover'));
+        });
+      }
+
+      /* ------------------------------------------------------------------------
+         3. ADAPTIVE NAVIGATION (Dark / Light Theme + Scrolled State)
+         ------------------------------------------------------------------------ */
+      const siteNav = document.getElementById('site-nav');
+      const sections = document.querySelectorAll('section, footer');
+
+      function updateNavTheme() {
+        const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+        const navHeight = siteNav.offsetHeight;
+        const triggerY = scrollY + navHeight / 2;
+
+        let currentTheme = 'dark'; // Fallback
+        sections.forEach((sec) => {
+          const top = sec.offsetTop;
+          const height = sec.offsetHeight;
+          if (triggerY >= top && triggerY < top + height) {
+            currentTheme = sec.getAttribute('data-theme') || 'light';
+          }
+        });
+
+        if (scrollY > 60) {
+          siteNav.classList.add('has-scrolled');
+        } else {
+          siteNav.classList.remove('has-scrolled');
+        }
+
+        if (currentTheme === 'dark') {
+          siteNav.classList.remove('is-light');
+          siteNav.classList.add('is-dark');
+        } else {
+          siteNav.classList.remove('is-dark');
+          siteNav.classList.add('is-light');
+        }
+      }
+
+      window.addEventListener('scroll', updateNavTheme, { passive: true });
+      window.addEventListener('resize', updateNavTheme);
+      updateNavTheme();
+
+      /* ------------------------------------------------------------------------
+         4. INTERSECTION OBSERVER FOR REVEALS & LINE-MASK ANIMATIONS
+         ------------------------------------------------------------------------ */
+      function initReveals() {
+        const revealElements = document.querySelectorAll('.line-mask, .reveal-fade');
+
+        const observerOptions = {
+          root: null,
+          rootMargin: '0px 0px -8% 0px',
+          threshold: 0.15
+        };
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-revealed');
+              // Unobserve once revealed
+              observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        revealElements.forEach((el) => revealObserver.observe(el));
+      }
+
+      /* ------------------------------------------------------------------------
+         5. SMOOTH PARALLAX ON SCROLL
+         ------------------------------------------------------------------------ */
+      const parallaxWrappers = document.querySelectorAll('[data-parallax-speed]');
+      let isTicking = false;
+
+      function handleParallax() {
+        const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+        const viewportHeight = window.innerHeight;
+
+        parallaxWrappers.forEach((wrapper) => {
+          const parent = wrapper.closest('section') || wrapper.parentElement;
+          const parentRect = parent.getBoundingClientRect();
+
+          // Only compute if parent is visible in or near viewport
+          if (parentRect.top < viewportHeight && parentRect.bottom > 0) {
+            const speed = parseFloat(wrapper.getAttribute('data-parallax-speed')) || 0.15;
+            // Center-relative calculation
+            const offset = (parentRect.top - viewportHeight * 0.5) * speed;
+            wrapper.style.transform = `translate3d(0, ${offset}px, 0)`;
+          }
+        });
+
+        isTicking = false;
+      }
+
+      window.addEventListener('scroll', () => {
+        if (!isTicking) {
+          requestAnimationFrame(handleParallax);
+          isTicking = true;
+        }
+      }, { passive: true });
+
+      handleParallax();
+
+      /* ------------------------------------------------------------------------
+         6. MOBILE DRAWER MENU
+         ------------------------------------------------------------------------ */
+      const mobileOpenBtn = document.getElementById('mobile-drawer-open');
+      const mobileCloseBtn = document.getElementById('mobile-drawer-close');
+      const mobileDrawer = document.getElementById('mobile-drawer');
+      const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+      function openDrawer() {
+        if (mobileDrawer) {
+          mobileDrawer.classList.add('is-open');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+
+      function closeDrawer() {
+        if (mobileDrawer) {
+          mobileDrawer.classList.remove('is-open');
+          document.body.style.overflow = '';
+        }
+      }
+
+      if (mobileOpenBtn) mobileOpenBtn.addEventListener('click', openDrawer);
+      if (mobileCloseBtn) mobileCloseBtn.addEventListener('click', closeDrawer);
+      mobileLinks.forEach(link => link.addEventListener('click', closeDrawer));
+
+    })();
+  </script>
+</body>
+</html>
+
+

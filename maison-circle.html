@@ -1,0 +1,2090 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maison Circle &bull; VELOIR PARIS &mdash; Cercle Privé</title>
+  <meta name="description" content="Maison Circle &bull; VELOIR PARIS. L'accès au cercle privé est réservé et délivré par cooptation exclusive. Salons privés et haute maroquinerie.">
+
+  <!-- Google Fonts: Cormorant Garamond + Raleway -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Raleway:wght@200;300;400;500&display=swap" rel="stylesheet">
+  
+  <!-- Shared stylesheet fallback -->
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* ==========================================================================
+       VELOIR PARIS — MAISON CIRCLE (MEMBERSHIP GATE)
+       Aesthetic: Chanel, Celine, Loewe, Bottega Veneta, Dior
+       Palette: ink, noir, charcoal, taupe, ash, parchment, warm-white, bone, ivory, gold
+       ========================================================================== */
+
+    :root {
+      --ivory: #F5F2ED;
+      --bone: #EDE9E2;
+      --warm-white: #FAF8F5;
+      --parchment: #E8E2D9;
+      --ash: #C8C2B8;
+      --taupe: #9C9488;
+      --charcoal: #3A3630;
+      --noir: #1A1714;
+      --ink: #0D0B09;
+      --gold: #B8A878;
+      --gold-muted: #A89860;
+
+      --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+      --font-sans: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+      --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-soft: cubic-bezier(0.25, 1, 0.5, 1);
+      --transition-reveal: 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-fast: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+      --space-section: clamp(7rem, 12vw, 11rem);
+    }
+
+    /* --- Base Reset & Typography --- */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      background-color: var(--ink);
+      color: var(--ivory);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.7;
+      background-color: var(--ink);
+      color: var(--ivory);
+      overflow-x: hidden;
+      cursor: default;
+    }
+
+    ::selection {
+      background: var(--gold);
+      color: var(--ink);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color var(--transition-fast), border-color var(--transition-fast), opacity var(--transition-fast);
+    }
+
+    button {
+      font-family: inherit;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: inherit;
+    }
+
+    input, select {
+      font-family: inherit;
+    }
+
+    /* --- Custom Cursor --- */
+    .cursor-dot, .cursor-ring {
+      pointer-events: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 99999;
+      transition: opacity 0.3s ease;
+    }
+
+    .cursor-dot {
+      width: 5px;
+      height: 5px;
+      background-color: var(--gold);
+      transition: transform 0.15s ease, background-color 0.4s ease;
+    }
+
+    .cursor-ring {
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(184, 168, 120, 0.55);
+      transition: width 0.35s var(--ease-luxury), height 0.35s var(--ease-luxury), border-color 0.4s ease, transform 0.1s linear;
+    }
+
+    /* Cursor adapts to light sections */
+    body.is-light-context .cursor-ring {
+      border-color: rgba(58, 54, 48, 0.45);
+    }
+
+    body.is-light-context .cursor-dot {
+      background-color: var(--charcoal);
+    }
+
+    /* Cursor hover state */
+    body.cursor-hover .cursor-ring {
+      width: 56px;
+      height: 56px;
+      border-color: var(--gold);
+      background-color: rgba(184, 168, 120, 0.06);
+    }
+
+    @media (pointer: coarse) {
+      .cursor-dot, .cursor-ring {
+        display: none !important;
+      }
+    }
+
+    /* --- Luxury Navigation (Minimal, changes on scroll) --- */
+    .site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 2.2rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 0.6s var(--ease-luxury), padding 0.6s var(--ease-luxury), border-color 0.6s var(--ease-luxury), color 0.5s ease;
+      background-color: transparent;
+      color: var(--ivory);
+    }
+
+    .site-nav.is-scrolled {
+      padding: 1.3rem 4rem;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    /* Nav color modes depending on section */
+    .site-nav.nav--dark {
+      color: var(--ivory);
+    }
+    .site-nav.nav--dark.is-scrolled {
+      background-color: rgba(13, 11, 9, 0.88);
+      border-bottom: 1px solid rgba(184, 168, 120, 0.15);
+    }
+
+    .site-nav.nav--light {
+      color: var(--charcoal);
+    }
+    .site-nav.nav--light.is-scrolled {
+      background-color: rgba(237, 233, 226, 0.92);
+      border-bottom: 1px solid rgba(184, 168, 120, 0.28);
+    }
+
+    .nav-left, .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      flex: 1;
+    }
+
+    .nav-right {
+      justify-content: flex-end;
+    }
+
+    .nav-link {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 300;
+      position: relative;
+      opacity: 0.82;
+      padding-bottom: 4px;
+    }
+
+    .nav-link:hover, .nav-link.is-active {
+      opacity: 1;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 1px;
+      background-color: var(--gold);
+      transition: width 0.4s var(--ease-luxury);
+    }
+
+    .nav-link:hover::after, .nav-link.is-active::after {
+      width: 100%;
+    }
+
+    /* Wordmark in center (no background, purely pristine typography) */
+    .nav-brand {
+      flex: 0 0 auto;
+      text-align: center;
+    }
+
+    .brand-wordmark {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      font-weight: 300;
+      display: block;
+      color: inherit;
+      padding-left: 0.38em;
+    }
+
+    .brand-submark {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 0.58rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      opacity: 0.65;
+      margin-top: 2px;
+    }
+
+    .nav-mobile-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      width: 28px;
+      height: 20px;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .nav-mobile-toggle span {
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: currentColor;
+      transition: transform 0.4s var(--ease-luxury), opacity 0.4s ease;
+    }
+
+    /* Mobile Drawer */
+    .mobile-drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: var(--ink);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-20px);
+      transition: opacity 0.5s var(--ease-luxury), transform 0.5s var(--ease-luxury), visibility 0.5s;
+      padding: 3rem 2rem;
+    }
+
+    .mobile-drawer.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .mobile-nav-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.2rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .mobile-nav-link {
+      font-family: var(--font-serif);
+      font-size: 1.75rem;
+      font-style: italic;
+      color: var(--ivory);
+      letter-spacing: 0.08em;
+    }
+
+    .mobile-nav-link:hover, .mobile-nav-link.is-active {
+      color: var(--gold);
+    }
+
+    .mobile-drawer-meta {
+      font-size: 0.72rem;
+      color: var(--taupe);
+      letter-spacing: 0.15em;
+      text-align: center;
+      text-transform: uppercase;
+      line-height: 2;
+    }
+
+    /* ==========================================================================
+       HERO GATE SECTION (STATE 1, 2, 3 + INVITATION CODE)
+       ========================================================================== */
+    .gate-section {
+      position: relative;
+      min-height: 100vh;
+      width: 100%;
+      background-color: var(--ink);
+      color: var(--ivory);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      padding: 7.5rem 1.5rem 4rem;
+    }
+
+    /* Subtle background image: 8% opacity with luminosity blend */
+    .gate-bg-media {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.08;
+      mix-blend-mode: luminosity;
+      pointer-events: none;
+      z-index: 1;
+      transform: scale(1.04);
+      transition: transform 12s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .gate-section:hover .gate-bg-media {
+      transform: scale(1);
+    }
+
+    /* Ambient luxury vignette */
+    .gate-vignette {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(13, 11, 9, 0.4) 0%, rgba(13, 11, 9, 0.94) 85%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Container for states */
+    .gate-stage {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 520px;
+      justify-content: center;
+    }
+
+    /* --- Shared Ornament & Details --- */
+    .gold-ornament {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.75rem auto;
+      position: relative;
+      background: radial-gradient(circle at center, rgba(184, 168, 120, 0.08) 0%, transparent 70%);
+      transition: transform 0.8s var(--ease-luxury), border-color 0.6s ease;
+    }
+
+    .gold-ornament::after {
+      content: '';
+      position: absolute;
+      width: calc(100% + 14px);
+      height: calc(100% + 14px);
+      border-radius: 50%;
+      border: 1px solid rgba(184, 168, 120, 0.14);
+      pointer-events: none;
+    }
+
+    .gold-ornament-initials {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      letter-spacing: 0.24em;
+      color: var(--gold);
+      padding-left: 0.24em;
+      font-weight: 300;
+      user-select: none;
+    }
+
+    .gate-brandmark {
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--ivory);
+      margin-bottom: 1.4rem;
+      font-weight: 300;
+      padding-left: 0.38em;
+    }
+
+    .gold-separator {
+      width: 40px;
+      height: 1px;
+      background-color: var(--gold);
+      margin: 0 auto 2.2rem auto;
+      opacity: 0.85;
+    }
+
+    .gold-separator-thin {
+      width: 30px;
+      height: 1px;
+      background-color: var(--gold);
+      margin: 1.8rem auto;
+      opacity: 0.55;
+    }
+
+    /* --- State Containers --- */
+    .gate-state {
+      width: 100%;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(28px);
+      transition: opacity 0.85s var(--ease-luxury), transform 0.85s var(--ease-luxury), visibility 0.85s;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+
+    .gate-state.is-active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
+      position: relative;
+    }
+
+    /* --- STATE 1: GATE (Default) --- */
+    .gate-hero-title {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(2.4rem, 4.8vw, 3.8rem);
+      line-height: 1.18;
+      color: var(--ivory);
+      margin-bottom: 1.6rem;
+      letter-spacing: -0.01em;
+      white-space: pre-line;
+    }
+
+    .gate-hero-body {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--ash);
+      max-width: 530px;
+      margin: 0 auto 2.4rem auto;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+    }
+
+    .gate-options-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.2rem;
+      margin-bottom: 2.8rem;
+      flex-wrap: wrap;
+    }
+
+    /* Left: ivory bordered button */
+    .btn-invitation {
+      display: inline-block;
+      padding: 1rem 2.6rem;
+      border: 1px solid var(--ivory);
+      color: var(--ivory);
+      font-family: var(--font-sans);
+      font-size: 0.74rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 400;
+      transition: all 0.5s var(--ease-luxury);
+      background: transparent;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .btn-invitation:hover {
+      background-color: var(--ivory);
+      color: var(--ink);
+      box-shadow: 0 0 25px rgba(245, 242, 237, 0.15);
+    }
+
+    /* Right: ivory text link */
+    .btn-request {
+      display: inline-block;
+      padding: 1rem 1.4rem;
+      color: var(--ivory);
+      font-family: var(--font-sans);
+      font-size: 0.74rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 400;
+      border-bottom: 1px solid transparent;
+      transition: all 0.4s var(--ease-luxury);
+      cursor: pointer;
+      background: transparent;
+    }
+
+    .btn-request:hover {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+
+    .gate-footnote {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.09em;
+      color: var(--taupe);
+      font-weight: 300;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* --- STATE 2: REQUEST FORM --- */
+    .request-form-card {
+      width: 100%;
+      max-width: 540px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .back-nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--taupe);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      transition: color 0.3s ease, transform 0.3s var(--ease-luxury);
+      padding: 0.4rem 0;
+    }
+
+    .back-nav-btn:hover {
+      color: var(--gold);
+      transform: translateX(-4px);
+    }
+
+    .back-nav-arrow {
+      font-size: 0.95rem;
+      line-height: 1;
+    }
+
+    .form-title {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      line-height: 1.16;
+      color: var(--ivory);
+      margin-bottom: 0.9rem;
+      white-space: pre-line;
+    }
+
+    .form-subtitle {
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      color: var(--ash);
+      line-height: 1.7;
+      margin-bottom: 2.8rem;
+      font-weight: 300;
+    }
+
+    /* Floating label inputs: underline only, no borders */
+    .floating-field-group {
+      position: relative;
+      margin-bottom: 2.2rem;
+    }
+
+    .floating-input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(200, 194, 184, 0.28);
+      color: var(--ivory);
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 300;
+      padding: 1.3rem 0 0.55rem 0;
+      outline: none;
+      border-radius: 0;
+      transition: border-color 0.4s var(--ease-luxury);
+    }
+
+    .floating-input:focus {
+      border-bottom-color: var(--gold);
+    }
+
+    .floating-label {
+      position: absolute;
+      top: 1.3rem;
+      left: 0;
+      color: var(--ash);
+      font-size: 0.9rem;
+      font-weight: 300;
+      pointer-events: none;
+      transition: all 0.38s var(--ease-luxury);
+      transform-origin: left top;
+    }
+
+    /* Float up on focus or populated */
+    .floating-input:focus ~ .floating-label,
+    .floating-input:not(:placeholder-shown) ~ .floating-label,
+    .floating-input.has-value ~ .floating-label {
+      top: -0.1rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* Minimal Dropdown: Vos intérêts */
+    .dropdown-field-group {
+      position: relative;
+      margin-bottom: 3rem;
+    }
+
+    .dropdown-label {
+      display: block;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .dropdown-select-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    .luxury-select {
+      width: 100%;
+      background-color: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(200, 194, 184, 0.28);
+      color: var(--ivory);
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 300;
+      padding: 0.6rem 2.2rem 0.6rem 0;
+      outline: none;
+      border-radius: 0;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      transition: border-color 0.4s var(--ease-luxury);
+    }
+
+    .luxury-select:focus {
+      border-bottom-color: var(--gold);
+    }
+
+    .luxury-select option {
+      background-color: #141210;
+      color: var(--ivory);
+      padding: 10px;
+    }
+
+    .select-chevron {
+      position: absolute;
+      right: 4px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      transition: transform 0.3s ease;
+    }
+
+    .luxury-select:focus + .select-chevron {
+      transform: translateY(-50%) rotate(180deg);
+    }
+
+    /* Form Action & Discretion */
+    .form-submit-row {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+
+    .btn-submit-gold {
+      display: inline-block;
+      padding: 1.15rem 3rem;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      background: transparent;
+      font-family: var(--font-sans);
+      font-size: 0.74rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      font-weight: 400;
+      transition: all 0.5s var(--ease-luxury);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-submit-gold:hover {
+      background-color: var(--gold);
+      color: var(--ink);
+    }
+
+    .discretion-note {
+      font-size: 0.72rem;
+      line-height: 1.6;
+      color: var(--ash);
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      max-width: 480px;
+    }
+
+    /* --- INVITATION CODE MODAL STATE --- */
+    .invitation-code-card {
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .invitation-code-input {
+      width: 100%;
+      max-width: 380px;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(184, 168, 120, 0.45);
+      color: var(--gold);
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      letter-spacing: 0.35em;
+      text-align: center;
+      padding: 1rem 0 0.5rem 0;
+      outline: none;
+      text-transform: uppercase;
+      margin: 1.5rem auto 2.5rem auto;
+      display: block;
+      transition: border-color 0.4s var(--ease-luxury);
+    }
+
+    .invitation-code-input:focus {
+      border-bottom-color: var(--gold);
+    }
+
+    .invitation-code-input::placeholder {
+      color: rgba(184, 168, 120, 0.25);
+      letter-spacing: 0.25em;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+    }
+
+    /* --- STATE 3: CONFIRMATION --- */
+    .confirmation-stage {
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .confirm-title {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+      line-height: 1.18;
+      color: var(--ivory);
+      margin-bottom: 1.6rem;
+      white-space: pre-line;
+    }
+
+    .confirm-body {
+      font-family: var(--font-sans);
+      font-size: 0.94rem;
+      line-height: 1.8;
+      color: var(--ash);
+      margin-bottom: 2.8rem;
+      font-weight: 300;
+    }
+
+    .confirm-links-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .confirm-btn-primary {
+      padding: 1rem 2.4rem;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 0.74rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      transition: all 0.45s var(--ease-luxury);
+    }
+
+    .confirm-btn-primary:hover {
+      background-color: var(--gold);
+      color: var(--ink);
+    }
+
+    .confirm-btn-secondary {
+      padding: 1rem 1.4rem;
+      color: var(--ivory);
+      font-size: 0.74rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      border-bottom: 1px solid transparent;
+      transition: all 0.35s ease;
+    }
+
+    .confirm-btn-secondary:hover {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+
+    /* Scroll Prompt Indicator at bottom of Hero */
+    .gate-scroll-hint {
+      position: absolute;
+      bottom: 2.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--taupe);
+      font-size: 0.62rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      opacity: 0.75;
+      transition: opacity 0.4s ease, color 0.4s ease;
+      text-decoration: none;
+    }
+
+    .gate-scroll-hint:hover {
+      opacity: 1;
+      color: var(--gold);
+    }
+
+    .gate-scroll-line {
+      width: 1px;
+      height: 38px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: pulseScrollLine 2.6s infinite ease-in-out;
+    }
+
+    @keyframes pulseScrollLine {
+      0% {
+        transform: scaleY(0.2);
+        transform-origin: top;
+        opacity: 0.2;
+      }
+      50% {
+        transform: scaleY(1);
+        transform-origin: top;
+        opacity: 0.9;
+      }
+      100% {
+        transform: scaleY(0.2);
+        transform-origin: bottom;
+        opacity: 0.2;
+      }
+    }
+
+    /* ==========================================================================
+       SECTION 2: BENEFITS SECTION
+       Background: bone (#EDE9E2)
+       ========================================================================== */
+    .benefits-section {
+      background-color: var(--bone);
+      color: var(--charcoal);
+      padding: var(--space-section) clamp(2rem, 6vw, 6rem);
+      position: relative;
+      text-align: center;
+    }
+
+    .section-eyebrow {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: var(--gold-muted);
+      margin-bottom: 1.2rem;
+      font-weight: 400;
+    }
+
+    .benefits-title {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      line-height: 1.15;
+      color: var(--charcoal);
+      margin-bottom: 5.5rem;
+      white-space: pre-line;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(2.5rem, 4.5vw, 4.5rem) clamp(2rem, 3.5vw, 3.5rem);
+      max-width: 1320px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .benefit-card {
+      border-top: 1px solid var(--gold);
+      padding-top: 2.2rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.6s var(--ease-luxury);
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .benefit-num {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      color: var(--gold-muted);
+      margin-bottom: 1rem;
+      letter-spacing: 0.12em;
+      font-style: italic;
+    }
+
+    .benefit-name {
+      font-family: var(--font-serif);
+      font-size: 1.45rem;
+      line-height: 1.25;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 1.1rem;
+      letter-spacing: 0.01em;
+    }
+
+    .benefit-desc {
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      line-height: 1.78;
+      color: var(--taupe);
+      font-weight: 300;
+    }
+
+    /* ==========================================================================
+       SECTION 3: TESTIMONIALS SECTION
+       Background: charcoal (#3A3630)
+       No names, no photos — luxury brands never name-drop
+       ========================================================================== */
+    .testimonials-section {
+      background-color: var(--charcoal);
+      color: var(--ivory);
+      padding: var(--space-section) clamp(2rem, 6vw, 6rem);
+      text-align: center;
+      position: relative;
+    }
+
+    .testimonials-eyebrow {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4.5rem;
+      font-weight: 400;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(2.5rem, 4vw, 4rem);
+      max-width: 1260px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 1rem;
+    }
+
+    .quote-gold-bar {
+      width: 32px;
+      height: 1px;
+      background-color: var(--gold);
+      margin-bottom: 2.4rem;
+      opacity: 0.9;
+    }
+
+    .testimonial-quote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.22rem, 1.8vw, 1.55rem);
+      line-height: 1.55;
+      color: var(--ivory);
+      margin-bottom: 1.8rem;
+      letter-spacing: 0.01em;
+    }
+
+    .testimonial-meta {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ash);
+      opacity: 0.68;
+      margin-top: auto;
+    }
+
+    /* ==========================================================================
+       SECTION 4: FOOTER
+       Background: ink (#0D0B09)
+       ========================================================================== */
+    .site-footer {
+      background-color: var(--ink);
+      color: var(--ivory);
+      padding: 6.5rem clamp(2rem, 5vw, 5rem) 3.5rem;
+      border-top: 1px solid rgba(184, 168, 120, 0.16);
+      position: relative;
+    }
+
+    .footer-container {
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.2fr;
+      gap: 3.5rem 2.5rem;
+      margin-bottom: 5.5rem;
+    }
+
+    .footer-brand-title {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      font-weight: 300;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-tagline {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--ash);
+      margin-bottom: 1.8rem;
+    }
+
+    .footer-address {
+      font-family: var(--font-sans);
+      font-style: normal;
+      font-size: 0.84rem;
+      line-height: 1.85;
+      color: var(--taupe);
+      font-weight: 300;
+    }
+
+    .footer-col-title {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.8rem;
+      font-weight: 400;
+    }
+
+    .footer-links-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .footer-link {
+      font-size: 0.85rem;
+      color: var(--ash);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+    }
+
+    .footer-link:hover {
+      color: var(--gold);
+    }
+
+    .footer-salon-meta {
+      font-size: 0.82rem;
+      line-height: 1.8;
+      color: var(--taupe);
+      font-weight: 300;
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-salon-action {
+      display: inline-block;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 3px;
+    }
+
+    .footer-salon-action:hover {
+      color: var(--ivory);
+      border-bottom-color: var(--ivory);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 2.8rem;
+      border-top: 1px solid rgba(200, 194, 184, 0.12);
+      font-size: 0.74rem;
+      color: var(--taupe);
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-legal-links {
+      display: flex;
+      gap: 2.2rem;
+    }
+
+    .footer-legal-link {
+      color: var(--taupe);
+    }
+
+    .footer-legal-link:hover {
+      color: var(--gold);
+    }
+
+    /* ==========================================================================
+       SCROLL REVEAL ANIMATIONS
+       ========================================================================== */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity var(--transition-reveal), transform var(--transition-reveal);
+      will-change: opacity, transform;
+    }
+
+    .reveal-on-scroll.is-revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stagger-1 { transition-delay: 0.08s; }
+    .stagger-2 { transition-delay: 0.16s; }
+    .stagger-3 { transition-delay: 0.24s; }
+    .stagger-4 { transition-delay: 0.32s; }
+    .stagger-5 { transition-delay: 0.40s; }
+    .stagger-6 { transition-delay: 0.48s; }
+
+    /* ==========================================================================
+       RESPONSIVE ADAPTATIONS
+       ========================================================================== */
+    @media (max-width: 1024px) {
+      .benefits-grid,
+      .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .site-nav {
+        padding: 1.5rem 1.8rem;
+      }
+
+      .site-nav.is-scrolled {
+        padding: 1rem 1.8rem;
+      }
+
+      .nav-left, .nav-right {
+        display: none;
+      }
+
+      .nav-mobile-toggle {
+        display: flex;
+      }
+
+      .benefits-grid,
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 3.5rem;
+      }
+
+      .gate-section {
+        padding: 6.5rem 1.25rem 3.5rem;
+      }
+
+      .gate-hero-title,
+      .benefits-title {
+        font-size: 2.2rem;
+      }
+
+      .gate-options-row {
+        flex-direction: column;
+        gap: 1.2rem;
+        width: 100%;
+      }
+
+      .btn-invitation, .btn-request {
+        width: 100%;
+        max-width: 320px;
+        text-align: center;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2.8rem;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.2rem;
+      }
+
+      .footer-legal-links {
+        flex-wrap: wrap;
+        gap: 1.4rem;
+      }
+    }
+  
+    /* UPDATED ACCORDING TO USER REQUIREMENTS */
+    :root {
+      --bone: #FFFFFF !important;
+      --ivory: #FFFFFF !important;
+      --warm-white: #FFFFFF !important;
+    }
+    .benefits-section {
+      background-color: #FFFFFF !important;
+      color: #000000 !important;
+    }
+    .benefits-title, .benefit-name, .benefit-desc, .benefit-num, .section-eyebrow {
+      color: #000000 !important;
+      font-weight: 700 !important;
+    }
+    
+</style>
+</head>
+<body class="is-dark-context">
+
+  <!-- =========================================================================
+       CUSTOM LUXURY CURSOR
+       ========================================================================= -->
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <!-- =========================================================================
+       NAVIGATION (Starts in dark mode on ink hero, no logo background)
+       ========================================================================= -->
+  <header class="site-nav nav--dark" id="siteNav" role="banner">
+    <div class="nav-left">
+      <a href="collection.html" class="nav-link">Collections</a>
+      <a href="index.html#maison" class="nav-link">La Maison</a>
+      <a href="lookbook.html" class="nav-link">Lookbook</a>
+    </div>
+
+    <div class="nav-brand">
+      <a href="index.html" aria-label="VELOIR PARIS &mdash; Accueil">
+        <span class="brand-wordmark">VELOIR</span>
+        <span class="brand-submark">Paris &bull; Maison Fondée en 1947</span>
+      </a>
+    </div>
+
+    <div class="nav-right">
+      <a href="lookbook.html#boutiques" class="nav-link">Boutiques</a>
+      <a href="maison-circle.html" class="nav-link is-active">Maison Circle</a>
+      <a href="collection.html" class="nav-link" aria-label="Panier Privé">Panier (0)</a>
+    </div>
+
+    <button class="nav-mobile-toggle" id="mobileMenuToggle" aria-label="Menu" aria-expanded="false" aria-controls="mobileDrawer">
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <div class="mobile-nav-list">
+      <a href="index.html" class="mobile-nav-link">Accueil</a>
+      <a href="collection.html" class="mobile-nav-link">Collections</a>
+      <a href="lookbook.html" class="mobile-nav-link">Lookbook</a>
+      <a href="index.html#maison" class="mobile-nav-link">La Maison</a>
+      <a href="maison-circle.html" class="mobile-nav-link is-active">Maison Circle</a>
+    </div>
+    <div class="mobile-drawer-meta">
+      <p>Salons Privés &bull; 28, Rue du Faubourg Saint-Honoré, Paris</p>
+      <p>Accès sur introduction &bull; +33 1 42 68 00 00</p>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <!-- =======================================================================
+         ATMOSPHERIC GATE HERO (STATE 1, 2, 3, AND INVITATION CODE)
+         ======================================================================= -->
+    <section class="gate-section" id="gateSection" aria-label="Le Cercle Privé VELOIR">
+      
+      <!-- Subtle Dark Atmospheric Background -->
+      <img 
+        src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=1920&q=80" 
+        alt="Texture d'Atelier VELOIR PARIS" 
+        class="gate-bg-media"
+        loading="eager"
+      >
+      <div class="gate-vignette" aria-hidden="true"></div>
+
+      <!-- State Machine Container -->
+      <div class="gate-stage">
+
+        <!-- ===================================================================
+             STATE 1: GATE (Default for non-members)
+             =================================================================== -->
+        <div class="gate-state is-active" id="stateGate" role="region" aria-label="Accès Maison Circle">
+          
+          <!-- Gold Circular Ornament with 'MC' initials -->
+          <div class="gold-ornament" aria-hidden="true">
+            <span class="gold-ornament-initials">MC</span>
+          </div>
+
+          <!-- VELOIR PARIS wordmark in ivory, tracked out -->
+          <div class="gate-brandmark">VELOIR PARIS</div>
+
+          <!-- Gold Separator (40px, 1px) -->
+          <div class="gold-separator" aria-hidden="true"></div>
+
+          <!-- Large italic serif in ivory -->
+          <h1 class="gate-hero-title">Certaines portes<br>n'ouvrent que<br>de l'intérieur.</h1>
+
+          <!-- Body in ash (small) -->
+          <p class="gate-hero-body">
+            The Maison Circle is our world for those who do not need it explained to them. Access is by introduction only.
+          </p>
+
+          <div class="gold-separator-thin" aria-hidden="true"></div>
+
+          <!-- Two Options Side by Side -->
+          <div class="gate-options-row">
+            <button type="button" class="btn-invitation" id="btnOpenInvitation">
+              J'ai une invitation
+            </button>
+            <button type="button" class="btn-request" id="btnOpenRequest">
+              Demander une audience
+            </button>
+          </div>
+
+          <!-- Footnote in tiny taupe -->
+          <p class="gate-footnote">
+            Si vous êtes membre, votre conseiller vous contactera directement.
+          </p>
+        </div>
+
+        <!-- ===================================================================
+             STATE 2: REQUEST FORM (Fades in over gate)
+             =================================================================== -->
+        <div class="gate-state" id="stateRequest" role="region" aria-label="Demande d'audience" aria-hidden="true">
+          <div class="request-form-card">
+            
+            <!-- Back arrow to return to gate state -->
+            <button type="button" class="back-nav-btn" id="btnBackToGateFromRequest" aria-label="Retour au Cercle">
+              <span class="back-nav-arrow">&larr;</span>
+              <span>Retour</span>
+            </button>
+
+            <!-- Title in ivory serif italic -->
+            <h2 class="form-title">Parlez-nous<br>de vous.</h2>
+
+            <!-- Subtitle in ash -->
+            <p class="form-subtitle">
+              Our private client team reviews each request personally. Responses within 48 hours.
+            </p>
+
+            <form id="audienceForm" novalidate>
+              
+              <!-- Field 1: Votre prénom et nom -->
+              <div class="floating-field-group">
+                <input 
+                  type="text" 
+                  id="clientFullName" 
+                  name="fullName" 
+                  class="floating-input" 
+                  placeholder=" " 
+                  required 
+                  autocomplete="name"
+                >
+                <label for="clientFullName" class="floating-label">Votre prénom et nom</label>
+              </div>
+
+              <!-- Field 2: Votre adresse électronique -->
+              <div class="floating-field-group">
+                <input 
+                  type="email" 
+                  id="clientEmail" 
+                  name="email" 
+                  class="floating-input" 
+                  placeholder=" " 
+                  required 
+                  autocomplete="email"
+                >
+                <label for="clientEmail" class="floating-label">Votre adresse électronique</label>
+              </div>
+
+              <!-- Field 3: Qui vous a recommandé ? (facultatif) -->
+              <div class="floating-field-group">
+                <input 
+                  type="text" 
+                  id="clientReferrer" 
+                  name="referrer" 
+                  class="floating-input" 
+                  placeholder=" " 
+                  autocomplete="off"
+                >
+                <label for="clientReferrer" class="floating-label">Qui vous a recommandé ? (facultatif)</label>
+              </div>
+
+              <!-- Field 4: Dropdown Vos intérêts -->
+              <div class="dropdown-field-group">
+                <label for="clientInterests" class="dropdown-label">Vos intérêts</label>
+                <div class="dropdown-select-wrapper">
+                  <select id="clientInterests" name="interests" class="luxury-select" required>
+                    <option value="" disabled selected hidden>Sélectionnez un intérêt</option>
+                    <option value="pret-a-porter">Prêt-à-Porter</option>
+                    <option value="maroquinerie">Maroquinerie</option>
+                    <option value="les-deux">Les Deux</option>
+                    <option value="objet-d-exception">Objet d'exception</option>
+                  </select>
+                  <span class="select-chevron" aria-hidden="true">
+                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+                      <path d="M1 1L5 5L9 1" stroke="#B8A878" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Submit button & Discretion note -->
+              <div class="form-submit-row">
+                <button type="submit" class="btn-submit-gold" id="btnSubmitForm">
+                  Soumettre ma candidature
+                </button>
+                <p class="discretion-note">
+                  Vos informations restent confidentielles et ne sont jamais partagées.
+                </p>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+        <!-- ===================================================================
+             STATE 1B: INVITATION KEY ACCESS (If user has invitation code)
+             =================================================================== -->
+        <div class="gate-state" id="stateInvitation" role="region" aria-label="Entrée par invitation" aria-hidden="true">
+          <div class="invitation-code-card">
+            
+            <button type="button" class="back-nav-btn" id="btnBackToGateFromInvitation" aria-label="Retour au Cercle">
+              <span class="back-nav-arrow">&larr;</span>
+              <span>Retour</span>
+            </button>
+
+            <div class="gold-ornament" aria-hidden="true">
+              <span class="gold-ornament-initials">MC</span>
+            </div>
+
+            <h2 class="form-title" style="text-align: center;">Code d'accès<br>personnel.</h2>
+
+            <p class="form-subtitle" style="text-align: center; max-width: 440px; margin-left: auto; margin-right: auto;">
+              Veuillez saisir la clé d'introduction transmise par votre parrain ou votre conseiller attitré.
+            </p>
+
+            <form id="invitationForm" novalidate>
+              <input 
+                type="text" 
+                id="invitationCode" 
+                class="invitation-code-input" 
+                placeholder="MC-&bull;&bull;&bull;&bull;-&bull;&bull;&bull;&bull;" 
+                maxlength="16" 
+                required 
+                autocomplete="off"
+                spellcheck="false"
+              >
+              <button type="submit" class="btn-submit-gold" style="margin: 0 auto; display: block;">
+                Valider l'accès
+              </button>
+            </form>
+
+            <p class="discretion-note" style="margin-top: 2rem; text-align: center;">
+              Chaque clé est nominative et réservée à son titulaire exclusif.
+            </p>
+          </div>
+        </div>
+
+        <!-- ===================================================================
+             STATE 3: CONFIRMATION (After form submit)
+             =================================================================== -->
+        <div class="gate-state" id="stateConfirm" role="region" aria-label="Confirmation de réception" aria-hidden="true">
+          <div class="confirmation-stage">
+            
+            <!-- Gold Circle Ornament -->
+            <div class="gold-ornament" aria-hidden="true">
+              <span class="gold-ornament-initials">&#10003;</span>
+            </div>
+
+            <!-- Ivory serif italic -->
+            <h2 class="confirm-title">Nous vous avons<br>bien reçu.</h2>
+
+            <!-- Ash text -->
+            <p class="confirm-body">
+              Notre équipe examinera votre demande et vous contactera dans les 48 heures. En attendant, nous vous invitons à parcourir nos collections publiques.
+            </p>
+
+            <!-- Links: Voir les Collections, Retour à l'accueil -->
+            <div class="confirm-links-row">
+              <a href="collection.html" class="confirm-btn-primary">
+                Voir les Collections
+              </a>
+              <a href="index.html" class="confirm-btn-secondary">
+                Retour à l'accueil
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Scroll hint -->
+      <a href="#benefitsSection" class="gate-scroll-hint" aria-label="Découvrir les privilèges du Cercle">
+        <span>Découvrir</span>
+        <div class="gate-scroll-line" aria-hidden="true"></div>
+      </a>
+
+    </section>
+
+    <!-- =======================================================================
+         BELOW GATE: BENEFITS SECTION
+         Bone background (#EDE9E2), centered
+         ======================================================================= -->
+    <section class="benefits-section" id="benefitsSection" aria-label="Ce que signifie appartenir">
+      
+      <!-- Eyebrow in gold -->
+      <span class="section-eyebrow reveal-on-scroll">LE CERCLE</span>
+
+      <!-- Title in charcoal serif italic -->
+      <h2 class="benefits-title reveal-on-scroll">Ce que signifie<br>appartenir.</h2>
+
+      <!-- 3-Column Grid of 6 Benefits -->
+      <div class="benefits-grid">
+        
+        <!-- Benefit 1 -->
+        <article class="benefit-card reveal-on-scroll stagger-1">
+          <span class="benefit-num">I</span>
+          <h3 class="benefit-name">Accès prioritaire</h3>
+          <p class="benefit-desc">
+            Preview every collection before the public. Reserve from the atelier before a single piece reaches the floor.
+          </p>
+        </article>
+
+        <!-- Benefit 2 -->
+        <article class="benefit-card reveal-on-scroll stagger-2">
+          <span class="benefit-num">II</span>
+          <h3 class="benefit-name">Le Conseiller Personnel</h3>
+          <p class="benefit-desc">
+            Your dedicated Veloir advisor, available by call, message, or visit to any of our maisons worldwide.
+          </p>
+        </article>
+
+        <!-- Benefit 3 -->
+        <article class="benefit-card reveal-on-scroll stagger-3">
+          <span class="benefit-num">III</span>
+          <h3 class="benefit-name">Les Commandes Sur Mesure</h3>
+          <p class="benefit-desc">
+            Direct access to our pattern-makers for bespoke pieces crafted entirely to your specifications.
+          </p>
+        </article>
+
+        <!-- Benefit 4 -->
+        <article class="benefit-card reveal-on-scroll stagger-4">
+          <span class="benefit-num">IV</span>
+          <h3 class="benefit-name">Cadeaux &amp; Attentions</h3>
+          <p class="benefit-desc">
+            Quarterly gifts selected by our ateliers. Seasonal pieces. Archive fragments. Objects made for no catalog.
+          </p>
+        </article>
+
+        <!-- Benefit 5 -->
+        <article class="benefit-card reveal-on-scroll stagger-5">
+          <span class="benefit-num">V</span>
+          <h3 class="benefit-name">Les Événements Privés</h3>
+          <p class="benefit-desc">
+            Invitations to closed runway presentations, atelier visits, and private dinners in Paris, New York, Tokyo, and Dubai.
+          </p>
+        </article>
+
+        <!-- Benefit 6 -->
+        <article class="benefit-card reveal-on-scroll stagger-6">
+          <span class="benefit-num">VI</span>
+          <h3 class="benefit-name">La Livraison Ultime</h3>
+          <p class="benefit-desc">
+            White-glove delivery worldwide. Your pieces arrive wrapped as they deserve. Collected and returned by hand.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         BELOW GATE: TESTIMONIALS SECTION
+         Charcoal background (#3A3630)
+         No names, no photos — luxury brands never name-drop
+         ======================================================================= -->
+    <section class="testimonials-section" id="testimonialsSection" aria-label="Témoignages du Cercle">
+      
+      <!-- Eyebrow in gold -->
+      <span class="testimonials-eyebrow reveal-on-scroll">CE QU'ON DIT</span>
+
+      <!-- 3-Column Pull Quotes -->
+      <div class="testimonials-grid">
+        
+        <!-- Quote 1 -->
+        <blockquote class="testimonial-card reveal-on-scroll stagger-1">
+          <div class="quote-gold-bar" aria-hidden="true"></div>
+          <p class="testimonial-quote">
+            &ldquo;I have never needed to explain what I am wearing. That is the point.&rdquo;
+          </p>
+          <cite class="testimonial-meta">&mdash; Membre depuis 2018 &bull; Paris VIII</cite>
+        </blockquote>
+
+        <!-- Quote 2 -->
+        <blockquote class="testimonial-card reveal-on-scroll stagger-2">
+          <div class="quote-gold-bar" aria-hidden="true"></div>
+          <p class="testimonial-quote">
+            &ldquo;The advisor knew my size before I said a word. That was three years ago.&rdquo;
+          </p>
+          <cite class="testimonial-meta">&mdash; Membre depuis 2021 &bull; Genève</cite>
+        </blockquote>
+
+        <!-- Quote 3 -->
+        <blockquote class="testimonial-card reveal-on-scroll stagger-3">
+          <div class="quote-gold-bar" aria-hidden="true"></div>
+          <p class="testimonial-quote">
+            &ldquo;It is not a membership. It is a language spoken fluently by very few.&rdquo;
+          </p>
+          <cite class="testimonial-meta">&mdash; Membre depuis 2016 &bull; Tokyo</cite>
+        </blockquote>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       FOOTER: INK FOOTER (#0D0B09)
+       ========================================================================= -->
+  <footer class="site-footer" id="siteFooter" role="contentinfo">
+    <div class="footer-container">
+      
+      <div class="footer-grid">
+        <!-- Brand Column -->
+        <div>
+          <h2 class="footer-brand-title">VELOIR</h2>
+          <p class="footer-tagline">L'essentiel invisible.</p>
+          <address class="footer-address">
+            28, Rue du Faubourg Saint-Honoré<br>
+            75008 Paris, France<br>
+            Maison Fondée en 1947
+          </address>
+        </div>
+
+        <!-- Maison Column -->
+        <div>
+          <h3 class="footer-col-title">Maison</h3>
+          <ul class="footer-links-list">
+            <li><a href="index.html#maison" class="footer-link">Histoire &amp; Ateliers</a></li>
+            <li><a href="lookbook.html" class="footer-link">Campagne 2025</a></li>
+            <li><a href="lookbook.html#presse" class="footer-link">Revue &amp; Presse</a></li>
+            <li><a href="lookbook.html#carrieres" class="footer-link">Carrières</a></li>
+          </ul>
+        </div>
+
+        <!-- Collections Column -->
+        <div>
+          <h3 class="footer-col-title">Collections</h3>
+          <ul class="footer-links-list">
+            <li><a href="collection.html?cat=pret-a-porter" class="footer-link">Prêt-à-Porter</a></li>
+            <li><a href="collection.html?cat=maroquinerie" class="footer-link">Maroquinerie d'Art</a></li>
+            <li><a href="collection.html?cat=sur-mesure" class="footer-link">Commandes Spéciales</a></li>
+            <li><a href="collection.html?cat=objets" class="footer-link">Objets d'Exception</a></li>
+          </ul>
+        </div>
+
+        <!-- Private Salons Column -->
+        <div>
+          <h3 class="footer-col-title">Salons Privés</h3>
+          <p class="footer-salon-meta">
+            Sur rendez-vous et introduction exclusivement. Votre conseiller privé reste joignable 24 heures sur 24.
+          </p>
+          <a href="#gateSection" class="footer-salon-action" id="footerSalonAction">
+            Demander une audience &rarr;
+          </a>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+        <p class="footer-copyright">
+          &copy; 1947 &ndash; 2026 VELOIR PARIS. Tous droits réservés.
+        </p>
+        <div class="footer-legal-links">
+          <a href="#" class="footer-legal-link">Mentions Légales</a>
+          <a href="#" class="footer-legal-link">Politique de Confidentialité</a>
+          <a href="#" class="footer-legal-link">Discrétion &amp; Déontologie</a>
+          <a href="#" class="footer-legal-link">Cookies</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       JAVASCRIPT: INTERACTIONS, STATE MACHINE, AND MOTION
+       ========================================================================= -->
+  <script>
+    (function () {
+      'use strict';
+
+      // --- 1. Custom Smooth Lag Cursor ---
+      const dot = document.getElementById('cursorDot');
+      const ring = document.getElementById('cursorRing');
+
+      let mouseX = window.innerWidth / 2;
+      let mouseY = window.innerHeight / 2;
+      let ringX = mouseX;
+      let ringY = mouseY;
+      let isCursorMoving = false;
+
+      window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        if (dot) {
+          dot.style.left = mouseX + 'px';
+          dot.style.top = mouseY + 'px';
+        }
+
+        if (!isCursorMoving) {
+          isCursorMoving = true;
+          renderCursor();
+        }
+      });
+
+      function renderCursor() {
+        ringX += (mouseX - ringX) * 0.16;
+        ringY += (mouseY - ringY) * 0.16;
+
+        if (ring) {
+          ring.style.left = ringX + 'px';
+          ring.style.top = ringY + 'px';
+        }
+
+        const delta = Math.abs(mouseX - ringX) + Math.abs(mouseY - ringY);
+        if (delta > 0.08) {
+          requestAnimationFrame(renderCursor);
+        } else {
+          isCursorMoving = false;
+        }
+      }
+
+      // Cursor hover states for interactive targets
+      const interactiveTargets = 'a, button, input, select, .benefit-card, .btn-invitation, .btn-request, .btn-submit-gold';
+      document.querySelectorAll(interactiveTargets).forEach((el) => {
+        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+      });
+
+
+      // --- 2. Gate State Machine (Default -> Request Form -> Confirmation / Invitation) ---
+      const stateGate = document.getElementById('stateGate');
+      const stateRequest = document.getElementById('stateRequest');
+      const stateInvitation = document.getElementById('stateInvitation');
+      const stateConfirm = document.getElementById('stateConfirm');
+
+      const allStates = [stateGate, stateRequest, stateInvitation, stateConfirm];
+
+      function transitionToState(targetState) {
+        allStates.forEach((state) => {
+          if (state === targetState) {
+            state.classList.add('is-active');
+            state.setAttribute('aria-hidden', 'false');
+          } else {
+            state.classList.remove('is-active');
+            state.setAttribute('aria-hidden', 'true');
+          }
+        });
+      }
+
+      // Trigger buttons
+      const btnOpenRequest = document.getElementById('btnOpenRequest');
+      const btnOpenInvitation = document.getElementById('btnOpenInvitation');
+      const btnBackToGateFromRequest = document.getElementById('btnBackToGateFromRequest');
+      const btnBackToGateFromInvitation = document.getElementById('btnBackToGateFromInvitation');
+      const footerSalonAction = document.getElementById('footerSalonAction');
+
+      if (btnOpenRequest) {
+        btnOpenRequest.addEventListener('click', () => {
+          transitionToState(stateRequest);
+          const firstField = document.getElementById('clientFullName');
+          if (firstField) setTimeout(() => firstField.focus(), 300);
+        });
+      }
+
+      if (footerSalonAction) {
+        footerSalonAction.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          setTimeout(() => {
+            transitionToState(stateRequest);
+            const firstField = document.getElementById('clientFullName');
+            if (firstField) firstField.focus();
+          }, 450);
+        });
+      }
+
+      if (btnOpenInvitation) {
+        btnOpenInvitation.addEventListener('click', () => {
+          transitionToState(stateInvitation);
+          const codeField = document.getElementById('invitationCode');
+          if (codeField) setTimeout(() => codeField.focus(), 300);
+        });
+      }
+
+      if (btnBackToGateFromRequest) {
+        btnBackToGateFromRequest.addEventListener('click', () => transitionToState(stateGate));
+      }
+
+      if (btnBackToGateFromInvitation) {
+        btnBackToGateFromInvitation.addEventListener('click', () => transitionToState(stateGate));
+      }
+
+
+      // --- 3. Form Handling: Floating Labels & Submission ---
+      const floatingInputs = document.querySelectorAll('.floating-input');
+
+      function checkInputValue(input) {
+        if (input.value && input.value.trim().length > 0) {
+          input.classList.add('has-value');
+        } else {
+          input.classList.remove('has-value');
+        }
+      }
+
+      floatingInputs.forEach((input) => {
+        checkInputValue(input);
+        input.addEventListener('input', () => checkInputValue(input));
+        input.addEventListener('change', () => checkInputValue(input));
+        input.addEventListener('blur', () => checkInputValue(input));
+      });
+
+      // Submit State 2 Form
+      const audienceForm = document.getElementById('audienceForm');
+      const btnSubmitForm = document.getElementById('btnSubmitForm');
+
+      if (audienceForm) {
+        audienceForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+
+          const nameField = document.getElementById('clientFullName');
+          const emailField = document.getElementById('clientEmail');
+
+          if (!nameField.value.trim()) {
+            nameField.focus();
+            nameField.style.borderBottomColor = 'var(--gold)';
+            return;
+          }
+
+          if (!emailField.value.trim() || !emailField.checkValidity()) {
+            emailField.focus();
+            emailField.style.borderBottomColor = 'var(--gold)';
+            return;
+          }
+
+          // Subtle loading transition
+          if (btnSubmitForm) {
+            btnSubmitForm.textContent = 'Transmission...';
+            btnSubmitForm.style.pointerEvents = 'none';
+          }
+
+          setTimeout(() => {
+            transitionToState(stateConfirm);
+            if (btnSubmitForm) {
+              btnSubmitForm.textContent = 'Soumettre ma candidature';
+              btnSubmitForm.style.pointerEvents = 'auto';
+            }
+          }, 850);
+        });
+      }
+
+      // Submit Invitation Key Form
+      const invitationForm = document.getElementById('invitationForm');
+      const invitationCode = document.getElementById('invitationCode');
+
+      if (invitationForm && invitationCode) {
+        invitationForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const codeVal = invitationCode.value.trim();
+          if (codeVal.length < 3) {
+            invitationCode.focus();
+            return;
+          }
+
+          // Simulated exclusive key recognition
+          const confirmTitle = stateConfirm.querySelector('.confirm-title');
+          const confirmBody = stateConfirm.querySelector('.confirm-body');
+
+          if (confirmTitle) confirmTitle.innerHTML = 'Bienvenue dans<br>le Cercle.';
+          if (confirmBody) {
+            confirmBody.textContent = 'Votre invitation nominative a été authentifiée. Votre conseiller personnel prend contact dans un instant pour convenir de votre première visite en salon privé.';
+          }
+
+          transitionToState(stateConfirm);
+        });
+      }
+
+
+      // --- 4. Navigation Adaptive State on Scroll ---
+      const siteNav = document.getElementById('siteNav');
+      const benefitsSection = document.getElementById('benefitsSection');
+      const testimonialsSection = document.getElementById('testimonialsSection');
+
+      function updateNavOnScroll() {
+        const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+
+        // Scrolled header background
+        if (scrollY > 40) {
+          siteNav.classList.add('is-scrolled');
+        } else {
+          siteNav.classList.remove('is-scrolled');
+        }
+
+        // Section bounds for dark/light navigation mode
+        if (benefitsSection && testimonialsSection) {
+          const benefitsTop = benefitsSection.offsetTop - 80;
+          const benefitsBottom = testimonialsSection.offsetTop - 80;
+
+          if (scrollY >= benefitsTop && scrollY < benefitsBottom) {
+            // In Bone benefits section: dark text, bone nav
+            siteNav.classList.remove('nav--dark');
+            siteNav.classList.add('nav--light');
+            document.body.classList.add('is-light-context');
+          } else {
+            // Over Ink gate, Charcoal testimonials, or Ink footer: ivory text
+            siteNav.classList.remove('nav--light');
+            siteNav.classList.add('nav--dark');
+            document.body.classList.remove('is-light-context');
+          }
+        }
+      }
+
+      window.addEventListener('scroll', updateNavOnScroll, { passive: true });
+      updateNavOnScroll();
+
+
+      // --- 5. Mobile Menu Toggle ---
+      const mobileToggle = document.getElementById('mobileMenuToggle');
+      const mobileDrawer = document.getElementById('mobileDrawer');
+
+      if (mobileToggle && mobileDrawer) {
+        mobileToggle.addEventListener('click', () => {
+          const isOpen = mobileDrawer.classList.toggle('is-open');
+          mobileToggle.setAttribute('aria-expanded', isOpen);
+          mobileDrawer.setAttribute('aria-hidden', !isOpen);
+          document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+
+        mobileDrawer.querySelectorAll('a').forEach((link) => {
+          link.addEventListener('click', () => {
+            mobileDrawer.classList.remove('is-open');
+            mobileToggle.setAttribute('aria-expanded', 'false');
+            mobileDrawer.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+          });
+        });
+      }
+
+
+      // --- 6. Scroll Reveal Observer ---
+      const revealElements = document.querySelectorAll('.reveal-on-scroll');
+
+      if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.15,
+          rootMargin: '0px 0px -40px 0px'
+        });
+
+        revealElements.forEach((el) => revealObserver.observe(el));
+      } else {
+        revealElements.forEach((el) => el.classList.add('is-revealed'));
+      }
+
+      // Smooth scroll for internal links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+          const href = this.getAttribute('href');
+          if (href && href.length > 1) {
+            const target = document.querySelector(href);
+            if (target) {
+              e.preventDefault();
+              target.scrollIntoView({ behavior: 'smooth' });
+            }
+          }
+        });
+      });
+
+    })();
+  </script>
+</body>
+</html>

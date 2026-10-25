@@ -1,0 +1,2477 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VELOIR PARIS — Maison Fondée en 1947 | L'essentiel invisible</title>
+  <meta name="description" content="VELOIR PARIS — Maison de haute couture, prêt-à-porter d'exception et maroquinerie d'art. 8e arrondissement, Paris. Fondée en 1947.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Raleway:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ==========================================================================
+       VELOIR PARIS — Maison Fondée en 1947
+       Design System & Luxury Stylesheet
+       Tagline: "L'essentiel invisible."
+       Aesthetic references: Celine, Chanel, Loewe, Bottega Veneta, The Row
+       ========================================================================== */
+
+    :root {
+      /* Palette */
+      --ivory: #FFFFFF;
+      --bone: #FFFFFF;
+      --warm-white: #FFFFFF;
+      --parchment: #F5F5F5;
+      --ash: #C8C2B8;
+      --taupe: #9C9488;
+      --charcoal: #3A3630;
+      --noir: #1A1714;
+      --ink: #0D0B09;
+      --gold: #B8A878;
+      --gold-muted: #A89860;
+      --gold-subtle: rgba(184, 168, 120, 0.25);
+
+      /* Borders */
+      --border-light: rgba(26, 23, 20, 0.08);
+      --border-medium: rgba(26, 23, 20, 0.16);
+      --border-dark: rgba(245, 242, 237, 0.12);
+      --border-dark-hover: rgba(245, 242, 237, 0.35);
+
+      /* Typography */
+      --font-serif: 'Cormorant Garamond', Garamond, 'Didot', 'Bodoni MT', Georgia, serif;
+      --font-sans: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+      /* Motion & Easing */
+      --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-fast: 0.35s var(--ease-luxury);
+      --transition-base: 0.7s var(--ease-luxury);
+      --transition-slow: 1.2s var(--ease-luxury);
+
+      /* Spacing */
+      --space-unit: 1rem;
+      --section-spacing: clamp(6rem, 11vw, 10.5rem);
+      --container-max: 1440px;
+      --gutter: clamp(1.5rem, 4vw, 4rem);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      background-color: #FFFFFF;
+      color: var(--noir);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      font-weight: 300;
+      font-size: 0.95rem;
+      line-height: 1.75;
+      letter-spacing: 0.02em;
+      background-color: #FFFFFF;
+      color: var(--noir);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    h1, h2, h3, h4, h5, h6,
+    .font-serif {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+
+    .italic {
+      font-style: italic;
+    }
+
+    p {
+      margin-bottom: 1.25rem;
+      color: var(--charcoal);
+      font-weight: 300;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color var(--transition-fast), border-color var(--transition-fast), opacity var(--transition-fast);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    button {
+      background: transparent;
+      border: none;
+      font-family: inherit;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    ::selection {
+      background-color: var(--noir);
+      color: var(--ivory);
+    }
+
+    /* Custom Cursor */
+    .cursor-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--noir);
+      border-radius: 50%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 10000;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s var(--ease-luxury), height 0.3s var(--ease-luxury), background-color 0.3s ease;
+      mix-blend-mode: difference;
+    }
+
+    .cursor-ring {
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(26, 23, 20, 0.4);
+      border-radius: 50%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.35s var(--ease-luxury), height 0.35s var(--ease-luxury), border-color 0.3s ease, background-color 0.35s var(--ease-luxury);
+      will-change: transform;
+    }
+
+    body.is-dark-context .cursor-dot {
+      background-color: var(--warm-white);
+    }
+
+    body.is-dark-context .cursor-ring {
+      border-color: rgba(245, 242, 237, 0.45);
+    }
+
+    .cursor-hover .cursor-dot {
+      width: 4px;
+      height: 4px;
+      background-color: var(--gold);
+    }
+
+    .cursor-hover .cursor-ring {
+      width: 62px;
+      height: 62px;
+      border-color: var(--gold);
+      background-color: rgba(184, 168, 120, 0.06);
+    }
+
+    @media (pointer: coarse), (hover: none) {
+      .cursor-dot, .cursor-ring {
+        display: none !important;
+      }
+    }
+
+    /* Site Loader */
+    .site-loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: var(--ink);
+      color: var(--ivory);
+      z-index: 11000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 1s var(--ease-luxury), visibility 1s var(--ease-luxury);
+      pointer-events: all;
+    }
+
+    .site-loader.is-loaded {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader-content {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .loader-brand {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 300;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      animation: loaderPulse 2.4s ease-in-out infinite;
+    }
+
+    .loader-subtitle {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      margin-bottom: 2.5rem;
+    }
+
+    .loader-bar-track {
+      width: 160px;
+      height: 1px;
+      background-color: rgba(245, 242, 237, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .loader-bar-progress {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0%;
+      background-color: var(--gold);
+      transition: width 2.2s var(--ease-luxury);
+    }
+
+    @keyframes loaderPulse {
+      0%, 100% { opacity: 0.55; }
+      50% { opacity: 1; }
+    }
+
+    /* Navigation Header */
+    .header-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 2.2rem var(--gutter);
+      transition: padding var(--transition-fast), background var(--transition-fast), backdrop-filter var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .header-inner {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+    }
+
+    .brand-mark {
+      display: inline-flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      justify-self: start;
+    }
+
+    .brand-name {
+      font-family: var(--font-serif);
+      font-size: 1.45rem;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      line-height: 1;
+      text-transform: uppercase;
+      color: inherit;
+    }
+
+    .brand-location {
+      font-family: var(--font-sans);
+      font-size: 0.55rem;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      margin-top: 0.25rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.8rem;
+      justify-self: center;
+    }
+
+    .nav-link {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: inherit;
+      position: relative;
+      padding: 0.4rem 0;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 1px;
+      background-color: currentColor;
+      transition: width 0.4s var(--ease-luxury), left 0.4s var(--ease-luxury);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+      left: 0;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+      justify-self: end;
+    }
+
+    .action-link {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      position: relative;
+    }
+
+    .bag-count {
+      font-size: 0.65rem;
+      opacity: 0.75;
+    }
+
+    .mobile-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      width: 32px;
+      height: 32px;
+      z-index: 1010;
+    }
+
+    .mobile-toggle span {
+      display: block;
+      width: 22px;
+      height: 1px;
+      background-color: currentColor;
+      transition: transform 0.4s var(--ease-luxury), opacity 0.3s ease;
+    }
+
+    .header-nav.is-dark {
+      color: var(--warm-white);
+      background: transparent;
+    }
+
+    .header-nav.is-dark .brand-location {
+      color: var(--ash);
+    }
+
+    .header-nav.is-scrolled {
+      padding: 1.3rem var(--gutter);
+      background: rgba(245, 242, 237, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-light);
+      color: var(--noir);
+    }
+
+    .header-nav.is-scrolled .brand-location {
+      color: var(--taupe);
+    }
+
+    /* Mobile Drawer */
+    .mobile-menu-drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: var(--ink);
+      color: var(--ivory);
+      z-index: 1005;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 7rem var(--gutter) 4rem var(--gutter);
+      transform: translateY(-100%);
+      transition: transform 0.8s var(--ease-luxury);
+      pointer-events: none;
+    }
+
+    .mobile-menu-drawer.is-active {
+      transform: translateY(0);
+      pointer-events: all;
+    }
+
+    .mobile-nav-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+
+    .mobile-nav-link {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 8vw, 3.2rem);
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      color: var(--warm-white);
+      transition: color 0.3s ease, transform 0.3s var(--ease-luxury);
+      display: inline-block;
+    }
+
+    .mobile-nav-link:hover {
+      color: var(--gold);
+      transform: translateX(12px);
+    }
+
+    .mobile-menu-footer {
+      border-top: 1px solid var(--border-dark);
+      padding-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .mobile-menu-meta {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--taupe);
+    }
+
+    .mobile-toggle.is-active span:nth-child(1) {
+      transform: translateY(3.5px) rotate(45deg);
+    }
+
+    .mobile-toggle.is-active span:nth-child(2) {
+      transform: translateY(-3.5px) rotate(-45deg);
+    }
+
+    /* Layout Utilities */
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    .container-narrow {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    .container-editorial {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    .section {
+      padding-top: var(--section-spacing);
+      padding-bottom: var(--section-spacing);
+      position: relative;
+    }
+
+    .section-dark {
+      background-color: var(--noir);
+      color: var(--warm-white);
+    }
+
+    .section-dark p {
+      color: var(--ash);
+    }
+
+    .section-charcoal {
+      background-color: var(--charcoal);
+      color: var(--warm-white);
+    }
+
+    .section-charcoal p {
+      color: var(--ash);
+    }
+
+    .section-white {
+      background-color: var(--warm-white);
+      color: var(--noir);
+    }
+
+    .eyebrow {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      margin-bottom: 1.4rem;
+    }
+
+    .eyebrow-gold {
+      color: var(--gold);
+    }
+
+    .eyebrow-ash {
+      color: var(--ash);
+    }
+
+    .title-hero {
+      font-size: clamp(3rem, 7.5vw, 7rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.015em;
+    }
+
+    .title-large {
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      font-weight: 300;
+      line-height: 1.15;
+    }
+
+    .title-medium {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 300;
+      line-height: 1.22;
+    }
+
+    .link-subtle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: inherit;
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .link-subtle::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: currentColor;
+      transition: transform 0.45s var(--ease-luxury);
+      transform-origin: right;
+    }
+
+    .link-subtle:hover::after {
+      transform: scaleX(0);
+    }
+
+    .btn-luxury-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.1rem 2.8rem;
+      border: 1px solid currentColor;
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 300;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: inherit;
+      background: transparent;
+      position: relative;
+      overflow: hidden;
+      transition: color 0.45s var(--ease-luxury), border-color 0.45s ease;
+    }
+
+    .btn-luxury-outline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: currentColor;
+      transform: translateY(100%);
+      transition: transform 0.6s var(--ease-luxury);
+      z-index: 0;
+    }
+
+    .btn-luxury-outline span {
+      position: relative;
+      z-index: 1;
+      transition: color 0.45s var(--ease-luxury);
+    }
+
+    .btn-luxury-outline:hover {
+      border-color: var(--gold);
+    }
+
+    .btn-luxury-outline:hover span {
+      color: var(--ink);
+    }
+
+    .btn-luxury-outline:hover::before {
+      transform: translateY(0);
+      background-color: var(--gold);
+    }
+
+    .btn-gold-subtle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 2.5rem;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      transition: all 0.4s var(--ease-luxury);
+    }
+
+    .btn-gold-subtle:hover {
+      background-color: var(--gold);
+      color: var(--noir);
+    }
+
+    /* Section 1: Hero */
+    .hero-section {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      width: 100%;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: clamp(3.5rem, 8vh, 6rem);
+      color: var(--warm-white);
+      overflow: hidden;
+      background-color: var(--ink);
+    }
+
+    .hero-media-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      transform: scale(1.05);
+      animation: heroKenBurns 18s ease-out infinite alternate;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        180deg,
+        rgba(13, 11, 9, 0.4) 0%,
+        rgba(13, 11, 9, 0.2) 35%,
+        rgba(13, 11, 9, 0.5) 70%,
+        rgba(13, 11, 9, 0.85) 100%
+      );
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+    }
+
+    .hero-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 2rem;
+    }
+
+    .hero-text-block {
+      max-width: 820px;
+    }
+
+    .hero-title {
+      margin-bottom: 2rem;
+      color: var(--warm-white);
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-cta-wrap {
+      margin-top: 0.5rem;
+    }
+
+    .hero-scroll-indicator {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+      color: var(--ash);
+      align-self: flex-end;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-scroll-text {
+      writing-mode: vertical-rl;
+      font-family: var(--font-sans);
+      font-size: 0.58rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--ash);
+      opacity: 0.75;
+    }
+
+    .hero-scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(180deg, var(--gold) 0%, rgba(184, 168, 120, 0) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-scroll-line::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      background-color: var(--warm-white);
+      animation: scrollDown 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+    }
+
+    @keyframes scrollDown {
+      0% { transform: translateY(-100%); }
+      50% { transform: translateY(100%); }
+      100% { transform: translateY(200%); }
+    }
+
+    @keyframes heroKenBurns {
+      0% { transform: scale(1.02); }
+      100% { transform: scale(1.09); }
+    }
+
+    /* Section 2: Marquee */
+    .marquee-band {
+      background-color: var(--bone);
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+      padding: 1.4rem 0;
+      overflow: hidden;
+      user-select: none;
+      position: relative;
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marqueeScroll 34s linear infinite;
+    }
+
+    .marquee-content {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      padding-right: 2rem;
+    }
+
+    .marquee-glyph {
+      display: inline-block;
+      margin: 0 2rem;
+      color: var(--gold);
+      font-size: 0.65rem;
+    }
+
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .marquee-band:hover .marquee-track {
+      animation-play-state: paused;
+    }
+
+    /* Section 3: Editorial Intro */
+    .editorial-intro {
+      background-color: var(--warm-white);
+      text-align: center;
+    }
+
+    .editorial-header {
+      max-width: 820px;
+      margin: 0 auto clamp(3.5rem, 6vw, 5rem);
+    }
+
+    .editorial-title {
+      margin-top: 1rem;
+      color: var(--noir);
+    }
+
+    .editorial-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 5.5rem);
+      text-align: left;
+      border-top: 1px solid var(--border-light);
+      padding-top: 3.5rem;
+    }
+
+    .editorial-col p {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--charcoal);
+    }
+
+    .editorial-col p.lead {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      line-height: 1.6;
+      font-weight: 300;
+      color: var(--noir);
+    }
+
+    .editorial-signoff {
+      margin-top: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .editorial-signature {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-style: italic;
+      color: var(--taupe);
+    }
+
+    .editorial-divider {
+      width: 40px;
+      height: 1px;
+      background-color: var(--gold);
+    }
+
+    /* Section 4: Collection */
+    .collection-section {
+      background-color: #FFFFFF;
+    }
+
+    .collection-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: clamp(3rem, 5vw, 4.5rem);
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .collection-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(1.8rem, 3.2vw, 3.5rem) clamp(1.5rem, 2.5vw, 2.8rem);
+    }
+
+    .product-card {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .product-image-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      background-color: var(--bone);
+      margin-bottom: 1.4rem;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.9s var(--ease-luxury), filter 0.9s ease;
+    }
+
+    .product-card:hover .product-image {
+      transform: scale(1.04);
+    }
+
+    .product-overlay-action {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.2rem;
+      background: linear-gradient(180deg, transparent 0%, rgba(26, 23, 20, 0.45) 100%);
+      display: flex;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.5s var(--ease-luxury), transform 0.5s var(--ease-luxury);
+    }
+
+    .product-card:hover .product-overlay-action {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .product-quick-view {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--warm-white);
+      padding-bottom: 2px;
+      border-bottom: 1px solid var(--warm-white);
+    }
+
+    .product-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .product-category {
+      font-family: var(--font-sans);
+      font-size: 0.58rem;
+      font-weight: 400;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--taupe);
+    }
+
+    .product-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+    }
+
+    .product-name {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: var(--noir);
+      transition: color 0.3s ease;
+    }
+
+    .product-card:hover .product-name {
+      color: var(--gold-muted);
+    }
+
+    .product-price {
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--charcoal);
+      white-space: nowrap;
+    }
+
+    .collection-footer-cta {
+      margin-top: clamp(4rem, 6vw, 6rem);
+      text-align: center;
+    }
+
+    /* Section 5: Full Bleed */
+    .full-bleed-editorial {
+      position: relative;
+      height: 100vh;
+      min-height: 680px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--warm-white);
+      overflow: hidden;
+      background-color: var(--ink);
+    }
+
+    .bleed-image-wrap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .bleed-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transform: scale(1.03);
+      transition: transform 1.6s var(--ease-luxury);
+    }
+
+    .full-bleed-editorial:hover .bleed-image {
+      transform: scale(1.06);
+    }
+
+    .bleed-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(13, 11, 9, 0.45);
+      z-index: 2;
+    }
+
+    .bleed-content {
+      position: relative;
+      z-index: 3;
+      max-width: 900px;
+      padding: 0 var(--gutter);
+    }
+
+    .bleed-title {
+      margin-bottom: 2.5rem;
+      color: var(--warm-white);
+      text-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .bleed-cta {
+      color: var(--warm-white);
+      border-color: var(--warm-white);
+    }
+
+    .bleed-cta:hover {
+      border-color: var(--gold);
+    }
+
+    /* Section 6: The Maison */
+    .maison-section {
+      background-color: var(--warm-white);
+    }
+
+    .maison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: clamp(3rem, 7vw, 7.5rem);
+      align-items: center;
+    }
+
+    .maison-visual {
+      position: relative;
+    }
+
+    .maison-image-wrap {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background-color: var(--bone);
+    }
+
+    .maison-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1.2s var(--ease-luxury);
+    }
+
+    .maison-visual:hover .maison-image {
+      transform: scale(1.03);
+    }
+
+    .maison-image-caption {
+      margin-top: 1rem;
+      font-family: var(--font-sans);
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .maison-image-caption::before {
+      content: '';
+      width: 16px;
+      height: 1px;
+      background-color: var(--gold);
+    }
+
+    .maison-content {
+      max-width: 540px;
+    }
+
+    .maison-title {
+      margin-bottom: 2.2rem;
+      color: var(--noir);
+    }
+
+    .maison-body {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--charcoal);
+      margin-bottom: 1.6rem;
+    }
+
+    .maison-meta-quote {
+      border-left: 1px solid var(--gold);
+      padding-left: 1.5rem;
+      margin: 2.2rem 0;
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-style: italic;
+      color: var(--charcoal);
+    }
+
+    .maison-cta-wrap {
+      margin-top: 2.5rem;
+    }
+
+    /* Section 7: Maison Circle */
+    .circle-teaser-section {
+      background-color: var(--noir);
+      color: var(--warm-white);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .circle-ornament-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .gold-circle-ornament {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gold-circle-ornament::after {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--gold);
+    }
+
+    .gold-circle-ornament::before {
+      content: '';
+      position: absolute;
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      border: 1px dashed rgba(184, 168, 120, 0.35);
+      animation: rotateCircle 32s linear infinite;
+    }
+
+    @keyframes rotateCircle {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .circle-title {
+      color: var(--ivory);
+      margin-bottom: 1.8rem;
+    }
+
+    .circle-body {
+      font-size: 1.05rem;
+      color: var(--ash);
+      max-width: 520px;
+      margin: 0 auto 3rem auto;
+      line-height: 1.8;
+    }
+
+    .circle-actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .link-circle-secondary {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--ash);
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .link-circle-secondary::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: var(--taupe);
+      transition: background-color 0.3s ease;
+    }
+
+    .link-circle-secondary:hover {
+      color: var(--warm-white);
+    }
+
+    .link-circle-secondary:hover::after {
+      background-color: var(--gold);
+    }
+
+    /* Section 8: Newsletter */
+    .newsletter-section {
+      background-color: var(--charcoal);
+      color: var(--warm-white);
+      text-align: center;
+    }
+
+    .newsletter-inner {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .newsletter-title {
+      color: var(--warm-white);
+      margin-bottom: 2.5rem;
+    }
+
+    .newsletter-form {
+      position: relative;
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .form-field-wrap {
+      display: flex;
+      align-items: flex-end;
+      border-bottom: 1px solid rgba(245, 242, 237, 0.25);
+      padding-bottom: 0.6rem;
+      transition: border-color 0.4s ease;
+    }
+
+    .form-field-wrap:focus-within {
+      border-color: var(--gold);
+    }
+
+    .newsletter-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--warm-white);
+      padding: 0.5rem 0;
+      outline: none;
+      letter-spacing: 0.05em;
+    }
+
+    .newsletter-input::placeholder {
+      color: rgba(200, 194, 184, 0.55);
+      font-weight: 300;
+    }
+
+    .newsletter-submit {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding: 0.5rem 0 0.5rem 1rem;
+      transition: color 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .newsletter-submit:hover {
+      color: var(--warm-white);
+    }
+
+    .newsletter-privacy {
+      margin-top: 1.4rem;
+      font-size: 0.68rem;
+      color: var(--taupe);
+      letter-spacing: 0.04em;
+      line-height: 1.6;
+    }
+
+    .newsletter-status-msg {
+      display: none;
+      margin-top: 1.2rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+    }
+
+    /* Section 9: Footer */
+    .footer-main {
+      background-color: var(--ink);
+      color: var(--warm-white);
+      padding-top: clamp(5rem, 9vw, 8rem);
+      padding-bottom: 3.5rem;
+      border-top: 1px solid var(--border-dark);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr 1fr 1.2fr;
+      gap: clamp(2.5rem, 5vw, 5rem);
+      margin-bottom: clamp(4rem, 7vw, 6.5rem);
+    }
+
+    .footer-brand-col {
+      padding-right: 2rem;
+    }
+
+    .footer-brand-title {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-tagline {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--taupe);
+      margin-bottom: 1.8rem;
+    }
+
+    .footer-address {
+      font-size: 0.8rem;
+      line-height: 1.8;
+      color: var(--ash);
+      font-style: normal;
+    }
+
+    .footer-col-title {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.8rem;
+    }
+
+    .footer-links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.95rem;
+    }
+
+    .footer-link {
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      color: var(--ash);
+      transition: color 0.3s ease, transform 0.3s var(--ease-luxury);
+      display: inline-block;
+    }
+
+    .footer-link:hover {
+      color: var(--warm-white);
+      transform: translateX(4px);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(245, 242, 237, 0.08);
+      padding-top: 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-copyright {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: var(--taupe);
+    }
+
+    .footer-legal-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-legal-link {
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      color: var(--taupe);
+    }
+
+    .footer-legal-link:hover {
+      color: var(--warm-white);
+    }
+
+    .footer-social-links {
+      display: flex;
+      gap: 1.8rem;
+    }
+
+    .footer-social-link {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--ash);
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .footer-social-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: var(--gold);
+      transition: width 0.35s ease;
+    }
+
+    .footer-social-link:hover {
+      color: var(--gold);
+    }
+
+    .footer-social-link:hover::after {
+      width: 100%;
+    }
+
+    /* Reveals & Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1.2s var(--ease-luxury), transform 1.2s var(--ease-luxury);
+      will-change: opacity, transform;
+    }
+
+    .reveal.is-revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-stagger > * {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1.2s var(--ease-luxury), transform 1.2s var(--ease-luxury);
+      will-change: opacity, transform;
+    }
+
+    .reveal-stagger.is-revealed > *:nth-child(1) { transition-delay: 0.05s; opacity: 1; transform: translateY(0); }
+    .reveal-stagger.is-revealed > *:nth-child(2) { transition-delay: 0.18s; opacity: 1; transform: translateY(0); }
+    .reveal-stagger.is-revealed > *:nth-child(3) { transition-delay: 0.31s; opacity: 1; transform: translateY(0); }
+    .reveal-stagger.is-revealed > *:nth-child(4) { transition-delay: 0.44s; opacity: 1; transform: translateY(0); }
+    .reveal-stagger.is-revealed > *:nth-child(5) { transition-delay: 0.57s; opacity: 1; transform: translateY(0); }
+    .reveal-stagger.is-revealed > *:nth-child(6) { transition-delay: 0.70s; opacity: 1; transform: translateY(0); }
+    .reveal-stagger.is-revealed > *:nth-child(7) { transition-delay: 0.83s; opacity: 1; transform: translateY(0); }
+    .reveal-stagger.is-revealed > *:nth-child(8) { transition-delay: 0.96s; opacity: 1; transform: translateY(0); }
+
+    .line-reveal-wrap {
+      overflow: hidden;
+      display: block;
+    }
+
+    .line-reveal {
+      display: block;
+      transform: translateY(115%);
+      transition: transform 1.2s var(--ease-luxury);
+      will-change: transform;
+    }
+
+    .line-reveal-wrap.is-revealed .line-reveal {
+      transform: translateY(0%);
+    }
+
+    .delay-1 { transition-delay: 0.15s !important; }
+    .delay-2 { transition-delay: 0.3s !important; }
+    .delay-3 { transition-delay: 0.45s !important; }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .collection-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .maison-grid {
+        grid-template-columns: 1fr;
+        gap: 3.5rem;
+      }
+
+      .maison-image-wrap {
+        aspect-ratio: 16 / 10;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .nav-links, .nav-actions .action-text {
+        display: none;
+      }
+
+      .mobile-toggle {
+        display: flex;
+      }
+
+      .editorial-columns {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .hero-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-scroll-indicator {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .collection-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .circle-actions {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .btn-luxury-outline {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  
+    /* HIGH CONTRAST HERO & DARK TEXT IMPROVEMENTS */
+    .hero-section {
+      color: #FFFFFF !important;
+    }
+    .hero-title {
+      color: #FFFFFF !important;
+      font-size: clamp(3.5rem, 8.5vw, 7.8rem) !important;
+      font-weight: 500 !important;
+      text-shadow: 0 4px 24px rgba(0,0,0,0.85) !important;
+    }
+    .eyebrow-ash, .hero-scroll-text, .brand-location, .nav-link, .action-link {
+      color: #FFFFFF !important;
+      font-size: 0.85rem !important;
+      font-weight: 600 !important;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.8) !important;
+    }
+    .header-nav.is-dark {
+      color: #FFFFFF !important;
+    }
+    .header-nav.is-dark .brand-name,
+    .header-nav.is-dark .brand-location,
+    .header-nav.is-dark .nav-link,
+    .header-nav.is-dark .action-link {
+      color: #FFFFFF !important;
+      opacity: 1 !important;
+    }
+
+    /* COMPLETE WHITE BACKGROUND (IMAGE 2 REPLACEMENT) */
+    body, html, .editorial-intro, .collection-section, .maison-section, .marquee-band {
+      background-color: #FFFFFF !important;
+    }
+    .header-nav.is-scrolled {
+      background: rgba(255, 255, 255, 0.98) !important;
+      border-bottom: 1px solid #E0E0E0 !important;
+      color: #000000 !important;
+    }
+    .header-nav.is-scrolled .brand-name,
+    .header-nav.is-scrolled .brand-location,
+    .header-nav.is-scrolled .nav-link,
+    .header-nav.is-scrolled .action-link {
+      color: #000000 !important;
+    }
+
+    /* PRODUCT GRID BLOCK SIZES & TEXT BOLD/FULL BLACK (IMAGE 4 & 5 REPLACEMENT) */
+    .collection-grid {
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 2rem 2rem !important;
+      max-width: 1200px !important;
+      margin: 0 auto !important;
+    }
+    .product-image-wrap {
+      aspect-ratio: 1 / 1 !important;
+      max-height: 340px !important;
+      border-radius: 4px !important;
+      overflow: hidden !important;
+      background-color: #F8F8F8 !important;
+    }
+    .product-category {
+      color: #000000 !important;
+      font-weight: 700 !important;
+      font-size: 0.72rem !important;
+      letter-spacing: 0.2em !important;
+    }
+    .product-name, .product-name a {
+      color: #000000 !important;
+      font-weight: 700 !important;
+      font-size: 1.25rem !important;
+    }
+    .product-price {
+      color: #000000 !important;
+      font-weight: 800 !important;
+      font-size: 1rem !important;
+    }
+    .editorial-col p, .editorial-title, .maison-title, .maison-body, .eyebrow {
+      color: #000000 !important;
+      font-weight: 600 !important;
+    }
+
+</style>
+</head>
+<body class="is-dark-context">
+
+  <!-- =========================================================================
+       CUSTOM CURSOR
+       ========================================================================= -->
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <!-- =========================================================================
+       SITE LOADER
+       ========================================================================= -->
+  <aside class="site-loader" id="siteLoader" aria-label="Chargement de la Maison VELOIR">
+    <div class="loader-content">
+      <h1 class="loader-brand">VELOIR</h1>
+      <span class="loader-subtitle">Paris — 1947</span>
+      <div class="loader-bar-track">
+        <div class="loader-bar-progress" id="loaderBar"></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       NAVIGATION
+       ========================================================================= -->
+  <header class="header-nav is-dark" id="headerNav" role="banner">
+    <div class="header-inner">
+      <!-- Left: Brand Wordmark -->
+      <a href="index.html" class="brand-mark" aria-label="VELOIR Paris Accueil">
+        <span class="brand-name">VELOIR</span>
+        <span class="brand-location">Paris &bull; 1947</span>
+      </a>
+
+      <!-- Center: Navigation Links -->
+      <nav class="nav-links" aria-label="Navigation Principale">
+        <a href="collection.html" class="nav-link">La Collection</a>
+        <a href="lookbook.html" class="nav-link">Lookbook</a>
+        <a href="#maison" class="nav-link">La Maison</a>
+        <a href="maison-circle.html" class="nav-link">Maison Circle</a>
+      </nav>
+
+      <!-- Right: Actions & Mobile Toggle -->
+      <div class="nav-actions">
+        <a href="maison-circle.html" class="action-link" aria-label="Prendre rendez-vous">
+          <span class="action-text">Rendez-Vous</span>
+        </a>
+        <a href="collection.html" class="action-link" aria-label="Panier">
+          <span class="action-text">Panier</span>
+          <span class="bag-count">(0)</span>
+        </a>
+        <button class="mobile-toggle" id="mobileMenuToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileDrawer">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Drawer -->
+  <div class="mobile-menu-drawer" id="mobileDrawer" aria-hidden="true">
+    <div class="mobile-nav-list">
+      <a href="index.html" class="mobile-nav-link">Accueil</a>
+      <a href="collection.html" class="mobile-nav-link">La Collection</a>
+      <a href="lookbook.html" class="mobile-nav-link">Lookbook</a>
+      <a href="#maison" class="mobile-nav-link">La Maison</a>
+      <a href="maison-circle.html" class="mobile-nav-link">Maison Circle</a>
+    </div>
+    <div class="mobile-menu-footer">
+      <p class="mobile-menu-meta">28, Rue du Faubourg Saint-Honoré &bull; Paris VIII</p>
+      <p class="mobile-menu-meta">Sur rendez-vous exclusivement &bull; +33 1 42 68 00 00</p>
+    </div>
+  </div>
+
+  <main id="mainContent">
+
+    <!-- =======================================================================
+         SECTION 1: HERO
+         ======================================================================= -->
+    <section class="hero-section" id="hero" aria-label="Campagne Printemps — Été 2025">
+      <div class="hero-media-wrapper">
+        <img 
+          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=90" 
+          alt="Campagne VELOIR Printemps — Été 2025" 
+          class="hero-image"
+        >
+        <div class="hero-overlay"></div>
+      </div>
+
+      <div class="container hero-content">
+        <div class="hero-inner">
+          <div class="hero-text-block reveal">
+            <span class="eyebrow eyebrow-ash">Printemps — Été 2025</span>
+            <div class="line-reveal-wrap">
+              <h1 class="title-hero italic hero-title line-reveal">
+                Chaque détail<br>compte.
+              </h1>
+            </div>
+            <div class="hero-cta-wrap delay-1 reveal">
+              <a href="#editorial" class="link-subtle" aria-label="Découvrir l'univers VELOIR">
+                <span>Découvrir</span>
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-scroll-indicator" aria-hidden="true">
+            <span class="hero-scroll-text">Défiler</span>
+            <div class="hero-scroll-line"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 2: MARQUEE BAND
+         ======================================================================= -->
+    <section class="marquee-band" aria-label="Domaines de création VELOIR">
+      <div class="marquee-track">
+        <div class="marquee-content" aria-hidden="true">
+          <span>PRÊT-À-PORTER</span>
+          <span class="marquee-glyph">✦</span>
+          <span>MAROQUINERIE</span>
+          <span class="marquee-glyph">✦</span>
+          <span>HAUTE COUTURE</span>
+          <span class="marquee-glyph">✦</span>
+          <span>OBJETS</span>
+          <span class="marquee-glyph">✦</span>
+          <span>PARIS</span>
+          <span class="marquee-glyph">✦</span>
+          <span>VELOIR</span>
+          <span class="marquee-glyph">✦</span>
+        </div>
+        <div class="marquee-content" aria-hidden="true">
+          <span>PRÊT-À-PORTER</span>
+          <span class="marquee-glyph">✦</span>
+          <span>MAROQUINERIE</span>
+          <span class="marquee-glyph">✦</span>
+          <span>HAUTE COUTURE</span>
+          <span class="marquee-glyph">✦</span>
+          <span>OBJETS</span>
+          <span class="marquee-glyph">✦</span>
+          <span>PARIS</span>
+          <span class="marquee-glyph">✦</span>
+          <span>VELOIR</span>
+          <span class="marquee-glyph">✦</span>
+        </div>
+        <div class="marquee-content" aria-hidden="true">
+          <span>PRÊT-À-PORTER</span>
+          <span class="marquee-glyph">✦</span>
+          <span>MAROQUINERIE</span>
+          <span class="marquee-glyph">✦</span>
+          <span>HAUTE COUTURE</span>
+          <span class="marquee-glyph">✦</span>
+          <span>OBJETS</span>
+          <span class="marquee-glyph">✦</span>
+          <span>PARIS</span>
+          <span class="marquee-glyph">✦</span>
+          <span>VELOIR</span>
+          <span class="marquee-glyph">✦</span>
+        </div>
+        <div class="marquee-content" aria-hidden="true">
+          <span>PRÊT-À-PORTER</span>
+          <span class="marquee-glyph">✦</span>
+          <span>MAROQUINERIE</span>
+          <span class="marquee-glyph">✦</span>
+          <span>HAUTE COUTURE</span>
+          <span class="marquee-glyph">✦</span>
+          <span>OBJETS</span>
+          <span class="marquee-glyph">✦</span>
+          <span>PARIS</span>
+          <span class="marquee-glyph">✦</span>
+          <span>VELOIR</span>
+          <span class="marquee-glyph">✦</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 3: EDITORIAL INTRO
+         ======================================================================= -->
+    <section class="section section-white editorial-intro" id="editorial" aria-labelledby="introHeading">
+      <div class="container-editorial">
+        <div class="editorial-header reveal">
+          <span class="eyebrow">MAISON VELOIR</span>
+          <h2 id="introHeading" class="title-large italic editorial-title">
+            We have been here since 1947.<br>So has the silence.
+          </h2>
+        </div>
+
+        <div class="editorial-columns reveal-stagger">
+          <div class="editorial-col">
+            <p class="lead">
+              Born in the arrondissements of post-war Paris, VELOIR was founded on a single conviction: that the finest things resist announcement. Our ateliers have remained in the 8th ever since.
+            </p>
+          </div>
+          <div class="editorial-col">
+            <p>
+              In an era dominated by urgency and visual clamor, our artisans continue to practice an architecture of restraint. Every seam is considered; every grain of calfskin is selected by hand under northern natural light. True luxury requires neither emblem nor volume.
+            </p>
+            <div class="editorial-signoff">
+              <span class="editorial-divider" aria-hidden="true"></span>
+              <span class="editorial-signature">Ateliers Faubourg Saint-Honoré</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 4: COLLECTION GRID
+         ======================================================================= -->
+    <section class="section collection-section" id="collection" aria-labelledby="collectionHeading">
+      <div class="container">
+        <div class="collection-header reveal">
+          <div>
+            <span class="eyebrow">Sélection Singulière</span>
+            <h2 id="collectionHeading" class="title-large italic">La Collection</h2>
+          </div>
+          <a href="collection.html" class="link-subtle" aria-label="Consulter l'ensemble de la collection">
+            <span>Tout Voir</span>
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+
+        <div class="collection-grid reveal-stagger">
+          <!-- Product 1 -->
+          <article class="product-card" aria-label="Le Manteau Cinq">
+            <a href="product.html?id=manteau-cinq" class="product-image-wrap">
+              <img 
+                src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=600&q=85" 
+                alt="Le Manteau Cinq en cachemire double-face" 
+                class="product-image"
+                loading="lazy"
+              >
+              <div class="product-overlay-action" aria-hidden="true">
+                <span class="product-quick-view">Découvrir la Pièce</span>
+              </div>
+            </a>
+            <div class="product-details">
+              <span class="product-category">Ready-to-Wear</span>
+              <div class="product-meta-row">
+                <h3 class="product-name">
+                  <a href="product.html?id=manteau-cinq">Le Manteau Cinq</a>
+                </h3>
+                <span class="product-price">€4,200</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 2 -->
+          <article class="product-card" aria-label="Sac Brume">
+            <a href="product.html?id=sac-brume" class="product-image-wrap">
+              <img 
+                src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&q=85" 
+                alt="Sac Brume en veau sellier" 
+                class="product-image"
+                loading="lazy"
+              >
+              <div class="product-overlay-action" aria-hidden="true">
+                <span class="product-quick-view">Découvrir la Pièce</span>
+              </div>
+            </a>
+            <div class="product-details">
+              <span class="product-category">Maroquinerie</span>
+              <div class="product-meta-row">
+                <h3 class="product-name">
+                  <a href="product.html?id=sac-brume">Sac Brume</a>
+                </h3>
+                <span class="product-price">€3,800</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 3 -->
+          <article class="product-card" aria-label="La Robe Silence">
+            <a href="product.html?id=robe-silence" class="product-image-wrap">
+              <img 
+                src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=85" 
+                alt="La Robe Silence en crêpe de soie" 
+                class="product-image"
+                loading="lazy"
+              >
+              <div class="product-overlay-action" aria-hidden="true">
+                <span class="product-quick-view">Découvrir la Pièce</span>
+              </div>
+            </a>
+            <div class="product-details">
+              <span class="product-category">Ready-to-Wear</span>
+              <div class="product-meta-row">
+                <h3 class="product-name">
+                  <a href="product.html?id=robe-silence">La Robe Silence</a>
+                </h3>
+                <span class="product-price">€6,500</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 4 -->
+          <article class="product-card" aria-label="Ceinture Cuir">
+            <a href="product.html?id=ceinture-cuir" class="product-image-wrap">
+              <img 
+                src="https://images.unsplash.com/photo-1624222247344-550fb60583dc?w=600&q=85" 
+                alt="Ceinture Cuir boucle laiton brossé" 
+                class="product-image"
+                loading="lazy"
+              >
+              <div class="product-overlay-action" aria-hidden="true">
+                <span class="product-quick-view">Découvrir la Pièce</span>
+              </div>
+            </a>
+            <div class="product-details">
+              <span class="product-category">Accessoires</span>
+              <div class="product-meta-row">
+                <h3 class="product-name">
+                  <a href="product.html?id=ceinture-cuir">Ceinture Cuir</a>
+                </h3>
+                <span class="product-price">€890</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 5 -->
+          <article class="product-card" aria-label="Le Blazer 1947">
+            <a href="product.html?id=blazer-1947" class="product-image-wrap">
+              <img 
+                src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=600&q=85" 
+                alt="Le Blazer 1947 en laine vierge peignée" 
+                class="product-image"
+                loading="lazy"
+              >
+              <div class="product-overlay-action" aria-hidden="true">
+                <span class="product-quick-view">Découvrir la Pièce</span>
+              </div>
+            </a>
+            <div class="product-details">
+              <span class="product-category">Ready-to-Wear</span>
+              <div class="product-meta-row">
+                <h3 class="product-name">
+                  <a href="product.html?id=blazer-1947">Le Blazer 1947</a>
+                </h3>
+                <span class="product-price">€3,200</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 6 -->
+          <article class="product-card" aria-label="Sac Velours">
+            <a href="product.html?id=sac-velours" class="product-image-wrap">
+              <img 
+                src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=600&q=85" 
+                alt="Sac Velours en suède et veau grainé" 
+                class="product-image"
+                loading="lazy"
+              >
+              <div class="product-overlay-action" aria-hidden="true">
+                <span class="product-quick-view">Découvrir la Pièce</span>
+              </div>
+            </a>
+            <div class="product-details">
+              <span class="product-category">Maroquinerie</span>
+              <div class="product-meta-row">
+                <h3 class="product-name">
+                  <a href="product.html?id=sac-velours">Sac Velours</a>
+                </h3>
+                <span class="product-price">€4,600</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="collection-footer-cta reveal">
+          <a href="collection.html" class="btn-luxury-outline">
+            <span>Explorer Toute la Collection</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 5: FULL BLEED EDITORIAL (100VH)
+         ======================================================================= -->
+    <section class="full-bleed-editorial" aria-label="Carnets de Mode VELOIR">
+      <div class="bleed-image-wrap">
+        <img 
+          src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1920&q=90" 
+          alt="Carnets de Mode VELOIR Édition 2025" 
+          class="bleed-image"
+          loading="lazy"
+        >
+        <div class="bleed-overlay"></div>
+      </div>
+
+      <div class="bleed-content reveal">
+        <span class="eyebrow eyebrow-ash">Carnets de Mode</span>
+        <h2 class="title-large italic bleed-title">
+          Ce que l'on<br>ne dit jamais.
+        </h2>
+        <div>
+          <a href="lookbook.html" class="btn-luxury-outline bleed-cta">
+            <span>Voir le Lookbook</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 6: THE MAISON
+         ======================================================================= -->
+    <section class="section maison-section" id="maison" aria-labelledby="maisonHeading">
+      <div class="container">
+        <div class="maison-grid" style="grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
+          <!-- Left: Refined Image Showcase -->
+          <div class="maison-visual reveal">
+            <div class="maison-image-wrap" style="aspect-ratio: 4/3; max-height: 480px; border-radius: 6px; overflow: hidden;">
+              <img 
+                src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1000&q=85" 
+                alt="L'Atelier VELOIR, 8e arrondissement de Paris" 
+                class="maison-image"
+                loading="lazy"
+                style="width:100%; height:100%; object-fit:cover;"
+              >
+            </div>
+          </div>
+
+          <!-- Right: Visual Cards & Essential Highlight (Replacing heavy text) -->
+          <div class="maison-content reveal" style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <span class="eyebrow" style="color:#000000; font-weight:800; font-size:0.8rem;">Notre Maison</span>
+            <h2 id="maisonHeading" class="title-large italic maison-title" style="color:#000000; font-size:2.8rem; font-weight:700; margin:0;">
+              L'Artisanat de Précision.
+            </h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
+              <div style="background:#F5F5F5; padding:1.2rem; border-radius:6px; border-left:3px solid #000000;">
+                <h4 style="color:#000000; font-weight:800; font-size:1rem; margin-bottom:0.4rem;">Haute Couture</h4>
+                <p style="color:#000000; font-weight:600; font-size:0.85rem; margin:0;">Ateliers d'exception Paris 8e.</p>
+              </div>
+              <div style="background:#F5F5F5; padding:1.2rem; border-radius:6px; border-left:3px solid #000000;">
+                <h4 style="color:#000000; font-weight:800; font-size:1rem; margin-bottom:0.4rem;">Savoir-Faire</h4>
+                <p style="color:#000000; font-weight:600; font-size:0.85rem; margin:0;">Séries limitées numérotées.</p>
+              </div>
+            </div>
+
+            <div class="maison-cta-wrap" style="margin-top: 1rem;">
+              <a href="lookbook.html" class="btn-luxury-outline" style="color:#000000; border-color:#000000; font-weight:800; border-width:2px;">
+                <span>Découvrir nos Ateliers</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 7: MAISON CIRCLE TEASER
+         ======================================================================= -->
+    <section class="section section-dark circle-teaser-section" id="circle" aria-labelledby="circleHeading">
+      <div class="container-narrow reveal">
+        <!-- Gold Circle Ornament -->
+        <div class="circle-ornament-wrap">
+          <div class="gold-circle-ornament" aria-hidden="true"></div>
+        </div>
+
+        <span class="eyebrow eyebrow-gold">MAISON CIRCLE</span>
+        <h2 id="circleHeading" class="title-large italic circle-title">
+          Some doors<br>open only<br>from the inside.
+        </h2>
+        <p class="circle-body">
+          The Maison Circle is our private client world. Reserved for our most discerning patrons, members receive bespoke commissions, private salon viewings, and confidential acquisitions prior to public release. By invitation only.
+        </p>
+        <div class="circle-actions">
+          <a href="maison-circle.html#audience" class="btn-gold-subtle">
+            Request an Audience
+          </a>
+          <a href="maison-circle.html" class="link-circle-secondary">
+            Learn More
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 8: NEWSLETTER
+         ======================================================================= -->
+    <section class="section section-charcoal newsletter-section" aria-labelledby="newsletterHeading">
+      <div class="container newsletter-inner reveal">
+        <span class="eyebrow eyebrow-gold">Correspondance</span>
+        <h2 id="newsletterHeading" class="title-medium italic newsletter-title">
+          Stay within<br>our silence.
+        </h2>
+        <form class="newsletter-form" id="newsletterForm" novalidate>
+          <div class="form-field-wrap">
+            <label for="newsletterEmail" class="sr-only" style="display:none;">Votre adresse électronique</label>
+            <input 
+              type="email" 
+              id="newsletterEmail" 
+              class="newsletter-input" 
+              placeholder="Your email address" 
+              required
+              autocomplete="email"
+            >
+            <button type="submit" class="newsletter-submit" aria-label="Souscrire à la correspondance">
+              Souscrire
+            </button>
+          </div>
+          <p class="newsletter-privacy">
+            Discrétion assurée. Vos coordonnées ne seront jamais divulguées. Vous pouvez interrompre cette correspondance à tout instant.
+          </p>
+          <p class="newsletter-status-msg" id="newsletterSuccess" role="status">
+            Votre adresse a été enregistrée avec discrétion. Merci.
+          </p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       SECTION 9: FOOTER
+       ========================================================================= -->
+  <footer class="footer-main" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand Column -->
+        <div class="footer-brand-col">
+          <h3 class="footer-brand-title">VELOIR</h3>
+          <p class="footer-tagline">L'essentiel invisible.</p>
+          <address class="footer-address">
+            28, Rue du Faubourg Saint-Honoré<br>
+            75008 Paris, France<br>
+            Maison Fondée en 1947
+          </address>
+        </div>
+
+        <!-- Maison Column -->
+        <div>
+          <h4 class="footer-col-title">Maison</h4>
+          <ul class="footer-links-list">
+            <li><a href="lookbook.html" class="footer-link">Notre Histoire</a></li>
+            <li><a href="#maison" class="footer-link">Nos Ateliers</a></li>
+            <li><a href="lookbook.html#presse" class="footer-link">Presse</a></li>
+            <li><a href="lookbook.html#carrieres" class="footer-link">Carrières</a></li>
+          </ul>
+        </div>
+
+        <!-- Collections Column -->
+        <div>
+          <h4 class="footer-col-title">Collections</h4>
+          <ul class="footer-links-list">
+            <li><a href="collection.html?cat=pret-a-porter" class="footer-link">Prêt-à-Porter</a></li>
+            <li><a href="collection.html?cat=maroquinerie" class="footer-link">Maroquinerie</a></li>
+            <li><a href="collection.html?cat=accessoires" class="footer-link">Accessoires</a></li>
+            <li><a href="collection.html?cat=objets" class="footer-link">Objets &bull; Art de Vivre</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Column -->
+        <div>
+          <h4 class="footer-col-title">Contact</h4>
+          <ul class="footer-links-list">
+            <li><a href="lookbook.html#boutiques" class="footer-link">Boutiques &bull; Salons</a></li>
+            <li><a href="maison-circle.html#audience" class="footer-link">Prendre Rendez-vous</a></li>
+            <li><a href="maison-circle.html#concierge" class="footer-link">Service Client</a></li>
+            <li><a href="maison-circle.html" class="footer-link">Maison Circle</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+        <p class="footer-copyright">
+          &copy; 1947 &ndash; 2025 VELOIR PARIS. Tous droits réservés.
+        </p>
+        <div class="footer-legal-links">
+          <a href="#" class="footer-legal-link">Mentions Légales</a>
+          <a href="#" class="footer-legal-link">Confidentialité</a>
+          <a href="#" class="footer-legal-link">Cookies</a>
+        </div>
+        <div class="footer-social-links">
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social-link">Instagram</a>
+          <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" class="footer-social-link">Pinterest</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       JAVASCRIPT
+       ========================================================================= -->
+  <script>
+    (function () {
+      'use strict';
+
+      // --- 1. Custom Cursor with Lerp Lag ---
+      const dot = document.getElementById('cursorDot');
+      const ring = document.getElementById('cursorRing');
+      
+      let mouseX = window.innerWidth / 2;
+      let mouseY = window.innerHeight / 2;
+      let ringX = mouseX;
+      let ringY = mouseY;
+      let isMoving = false;
+
+      window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        if (dot) {
+          dot.style.left = `${mouseX}px`;
+          dot.style.top = `${mouseY}px`;
+        }
+        if (!isMoving) {
+          isMoving = true;
+          renderCursor();
+        }
+      });
+
+      function renderCursor() {
+        // Linear interpolation for smooth trailing ring
+        ringX += (mouseX - ringX) * 0.16;
+        ringY += (mouseY - ringY) * 0.16;
+        
+        if (ring) {
+          ring.style.left = `${ringX}px`;
+          ring.style.top = `${ringY}px`;
+        }
+
+        const delta = Math.abs(mouseX - ringX) + Math.abs(mouseY - ringY);
+        if (delta > 0.1) {
+          requestAnimationFrame(renderCursor);
+        } else {
+          isMoving = false;
+        }
+      }
+
+      // Cursor hover states on interactive elements
+      const interactiveSelector = 'a, button, input, .product-card, .btn-luxury-outline, .btn-gold-subtle';
+      document.querySelectorAll(interactiveSelector).forEach((el) => {
+        el.addEventListener('mouseenter', () => {
+          document.body.classList.add('cursor-hover');
+        });
+        el.addEventListener('mouseleave', () => {
+          document.body.classList.remove('cursor-hover');
+        });
+      });
+
+      // --- 2. Site Loader with Progress Line ---
+      const loader = document.getElementById('siteLoader');
+      const loaderBar = document.getElementById('loaderBar');
+
+      // Trigger line progress immediately
+      requestAnimationFrame(() => {
+        if (loaderBar) {
+          loaderBar.style.width = '100%';
+        }
+      });
+
+      // Hide loader after 2.5s
+      setTimeout(() => {
+        if (loader) {
+          loader.classList.add('is-loaded');
+        }
+      }, 2500);
+
+      // --- 3. Navigation Scroll State & Dark Mode Adaptation ---
+      const headerNav = document.getElementById('headerNav');
+      const heroSection = document.getElementById('hero');
+
+      function updateNavOnScroll() {
+        const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+        const heroHeight = heroSection ? heroSection.offsetHeight : 600;
+
+        // Class .is-scrolled at > 50px
+        if (scrollY > 50) {
+          headerNav.classList.add('is-scrolled');
+        } else {
+          headerNav.classList.remove('is-scrolled');
+        }
+
+        // Over dark hero: text is light (.is-dark)
+        // Beyond hero: text adapts to page background
+        if (scrollY < heroHeight - 80) {
+          headerNav.classList.add('is-dark');
+          document.body.classList.add('is-dark-context');
+        } else {
+          headerNav.classList.remove('is-dark');
+          document.body.classList.remove('is-dark-context');
+        }
+      }
+
+      window.addEventListener('scroll', updateNavOnScroll, { passive: true });
+      updateNavOnScroll();
+
+      // --- 4. Mobile Menu Drawer Toggle ---
+      const mobileToggle = document.getElementById('mobileMenuToggle');
+      const mobileDrawer = document.getElementById('mobileDrawer');
+
+      if (mobileToggle && mobileDrawer) {
+        mobileToggle.addEventListener('click', () => {
+          const isOpen = mobileDrawer.classList.toggle('is-active');
+          mobileToggle.classList.toggle('is-active', isOpen);
+          mobileToggle.setAttribute('aria-expanded', isOpen);
+          mobileDrawer.setAttribute('aria-hidden', !isOpen);
+          document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+
+        // Close drawer when clicking a link
+        mobileDrawer.querySelectorAll('a').forEach((link) => {
+          link.addEventListener('click', () => {
+            mobileDrawer.classList.remove('is-active');
+            mobileToggle.classList.remove('is-active');
+            mobileToggle.setAttribute('aria-expanded', 'false');
+            mobileDrawer.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+          });
+        });
+      }
+
+      // --- 5. Intersection Observer for Scroll Reveals ---
+      const revealElements = document.querySelectorAll('.reveal, .reveal-stagger, .line-reveal-wrap');
+
+      if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-revealed');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            root: null,
+            threshold: 0.12,
+            rootMargin: '0px 0px -40px 0px'
+          }
+        );
+
+        revealElements.forEach((el) => revealObserver.observe(el));
+      } else {
+        // Fallback for older browsers
+        revealElements.forEach((el) => el.classList.add('is-revealed'));
+      }
+
+      // --- 6. Newsletter Subscription Handler ---
+      const newsletterForm = document.getElementById('newsletterForm');
+      const newsletterSuccess = document.getElementById('newsletterSuccess');
+      const newsletterEmail = document.getElementById('newsletterEmail');
+
+      if (newsletterForm && newsletterSuccess) {
+        newsletterForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          if (newsletterEmail && newsletterEmail.value && newsletterEmail.checkValidity()) {
+            newsletterSuccess.style.display = 'block';
+            newsletterEmail.value = '';
+            newsletterEmail.blur();
+            setTimeout(() => {
+              newsletterSuccess.style.opacity = '1';
+            }, 50);
+          }
+        });
+      }
+
+      // Smooth scroll for internal anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+          const targetId = this.getAttribute('href');
+          if (targetId && targetId !== '#') {
+            const targetEl = document.querySelector(targetId);
+            if (targetEl) {
+              e.preventDefault();
+              targetEl.scrollIntoView({ behavior: 'smooth' });
+            }
+          }
+        });
+      });
+
+    })();
+  </script>
+</body>
+</html>

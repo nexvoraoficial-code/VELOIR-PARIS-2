@@ -1,0 +1,1757 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collections â€” Printemps â€” Ã‰tÃ© 2025 | VELOIR PARIS</title>
+  <meta name="description" content="DÃ©couvrez la collection Printemps â€” Ã‰tÃ© 2025 de VELOIR PARIS. PrÃªt-Ã -Porter, Maroquinerie d'art et Accessoires d'atelier faÃ§onnÃ©s selon les traditions de la Haute Couture franÃ§aise.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Raleway:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* ==========================================================================
+       Page-Specific Styles: VELOIR PARIS Collection Page
+       ========================================================================== */
+
+    :root {
+      --ivory: #F5F2ED;
+      --bone: #EDE9E2;
+      --warm-white: #FAF8F5;
+      --parchment: #E8E2D9;
+      --ash: #C8C2B8;
+      --taupe: #9C9488;
+      --charcoal: #3A3630;
+      --noir: #1A1714;
+      --ink: #0D0B09;
+      --gold: #B8A878;
+      --font-serif: 'Cormorant Garamond', Garamond, 'Didot', Georgia, serif;
+      --font-sans: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    body {
+      background-color: var(--warm-white);
+      color: var(--noir);
+      font-family: var(--font-sans);
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* --------------------------------------------------------------------------
+       1. Header Section (Tall 60vh, Bone Background, Parallax)
+       -------------------------------------------------------------------------- */
+    .collection-header {
+      position: relative;
+      height: 62vh;
+      min-height: 520px;
+      background-color: var(--bone);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      padding: 0 2rem;
+      border-bottom: 1px solid rgba(26, 23, 20, 0.06);
+    }
+
+    .header-parallax-wrapper {
+      position: absolute;
+      top: -25%;
+      left: 0;
+      width: 100%;
+      height: 150%;
+      pointer-events: none;
+      z-index: 1;
+      will-change: transform;
+    }
+
+    .header-parallax-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      opacity: 0.15;
+      filter: grayscale(40%) contrast(105%);
+      transition: filter 0.8s ease;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 2;
+      max-width: 860px;
+      margin: 0 auto;
+      padding-top: 3.5rem;
+    }
+
+    .header-eyebrow {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      margin-bottom: 1.6rem;
+      position: relative;
+    }
+
+    .header-eyebrow::after {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background-color: var(--gold);
+      margin: 0.8rem auto 0;
+    }
+
+    .header-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.8rem, 5.5vw, 4.6rem);
+      font-weight: 300;
+      line-height: 1.15;
+      letter-spacing: 0.03em;
+      color: var(--noir);
+      margin-bottom: 1.4rem;
+    }
+
+    .header-title em {
+      font-style: italic;
+      font-family: var(--font-serif);
+      font-weight: 300;
+    }
+
+    .header-subtext {
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 300;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      opacity: 0.85;
+    }
+
+    /* --------------------------------------------------------------------------
+       2. Filter & Utility Bar
+       -------------------------------------------------------------------------- */
+    .filter-bar-sticky-wrap {
+      position: sticky;
+      top: 76px;
+      z-index: 900;
+      background-color: rgba(250, 248, 245, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(26, 23, 20, 0.08);
+      transition: top 0.4s var(--ease-expo), background-color 0.4s ease;
+    }
+
+    .filter-bar {
+      max-width: 1540px;
+      margin: 0 auto;
+      padding: 1.4rem 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .filter-categories {
+      display: flex;
+      align-items: center;
+      gap: 2.2rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      font-family: var(--font-sans);
+      font-size: 0.74rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      padding: 0.4rem 0;
+      position: relative;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .filter-btn::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: var(--noir);
+      transition: width 0.35s var(--ease-expo);
+    }
+
+    .filter-btn:hover {
+      color: var(--noir);
+    }
+
+    .filter-btn.active {
+      color: var(--noir);
+      font-weight: 500;
+    }
+
+    .filter-btn.active::after {
+      width: 100%;
+    }
+
+    .filter-controls-right {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    .filter-count {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      font-weight: 300;
+      white-space: nowrap;
+    }
+
+    /* Luxury Sort Dropdown */
+    .sort-dropdown {
+      position: relative;
+    }
+
+    .sort-trigger-btn {
+      font-family: var(--font-sans);
+      font-size: 0.74rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      cursor: pointer;
+      padding: 0.4rem 0;
+      transition: color 0.3s ease;
+    }
+
+    .sort-trigger-btn:hover {
+      color: var(--noir);
+    }
+
+    .sort-trigger-btn svg {
+      width: 10px;
+      height: 10px;
+      transition: transform 0.3s var(--ease-expo);
+    }
+
+    .sort-dropdown.open .sort-trigger-btn svg {
+      transform: rotate(180deg);
+    }
+
+    .sort-menu {
+      position: absolute;
+      top: calc(100% + 12px);
+      right: 0;
+      background: var(--ivory);
+      border: 1px solid rgba(26, 23, 20, 0.08);
+      min-width: 220px;
+      padding: 0.8rem 0;
+      box-shadow: 0 16px 40px rgba(13, 11, 9, 0.06);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: opacity 0.3s var(--ease-expo), transform 0.3s var(--ease-expo), visibility 0.3s;
+      z-index: 100;
+    }
+
+    .sort-dropdown.open .sort-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .sort-item {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 0.7rem 1.6rem;
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      transition: background-color 0.2s ease, color 0.2s ease;
+      cursor: pointer;
+    }
+
+    .sort-item:hover,
+    .sort-item.selected {
+      background-color: var(--bone);
+      color: var(--noir);
+    }
+
+    .sort-item.selected {
+      font-weight: 500;
+      position: relative;
+    }
+
+    .sort-item.selected::before {
+      content: '';
+      position: absolute;
+      left: 0.9rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: var(--gold);
+    }
+
+    /* --------------------------------------------------------------------------
+       3. Product Grid Section
+       -------------------------------------------------------------------------- */
+    .collection-main {
+      max-width: 1540px;
+      margin: 0 auto;
+      padding: 5rem 3.5rem 8rem;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5rem 3.5rem;
+      transition: opacity 0.4s ease;
+    }
+
+    .product-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      opacity: 1;
+      transform: scale(1);
+      transition: opacity 0.5s var(--ease-expo), transform 0.5s var(--ease-expo);
+      will-change: transform, opacity;
+    }
+
+    .product-card.is-hidden {
+      display: none;
+      opacity: 0;
+      transform: scale(0.96);
+    }
+
+    .product-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .product-media {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      background-color: var(--bone);
+      overflow: hidden;
+      margin-bottom: 1.6rem;
+    }
+
+    .product-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+      display: block;
+      transform: scale(1);
+      transition: transform 1.2s var(--ease-expo);
+      filter: saturate(96%);
+    }
+
+    .product-card:hover .product-img {
+      transform: scale(1.05);
+    }
+
+    /* Subtle luxury atelier tag overlay */
+    .product-atelier-tag {
+      position: absolute;
+      top: 1.2rem;
+      left: 1.2rem;
+      font-size: 0.58rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--noir);
+      background: rgba(250, 248, 245, 0.88);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 0.35rem 0.75rem;
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: opacity 0.4s ease, transform 0.4s var(--ease-expo);
+      pointer-events: none;
+    }
+
+    .product-card:hover .product-atelier-tag {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .product-card-overlay {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      opacity: 0;
+      transition: opacity 0.4s var(--ease-expo), transform 0.4s var(--ease-expo);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .product-card:hover .product-card-overlay {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .view-discovery-pill {
+      font-family: var(--font-sans);
+      font-size: 0.64rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      background: rgba(250, 248, 245, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: var(--noir);
+      padding: 0.65rem 1.4rem;
+      border: 1px solid rgba(26, 23, 20, 0.08);
+      box-shadow: 0 4px 16px rgba(13, 11, 9, 0.04);
+      display: inline-block;
+    }
+
+    .product-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      text-align: left;
+    }
+
+    .product-category {
+      font-family: var(--font-sans);
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      line-height: 1;
+    }
+
+    .product-title {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      color: var(--noir);
+      line-height: 1.25;
+      margin: 0;
+      transition: color 0.3s ease;
+    }
+
+    .product-card:hover .product-title {
+      color: var(--charcoal);
+    }
+
+    .product-price {
+      font-family: var(--font-sans);
+      font-size: 0.84rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--charcoal);
+      margin-top: 0.2rem;
+    }
+
+    /* --------------------------------------------------------------------------
+       4. Load More Section
+       -------------------------------------------------------------------------- */
+    .load-more-section {
+      text-align: center;
+      margin-top: 6rem;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .btn-load-more {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: var(--font-sans);
+      font-size: 0.76rem;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--noir);
+      padding: 0.8rem 1rem;
+      position: relative;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      transition: color 0.3s ease, transform 0.3s var(--ease-expo);
+    }
+
+    .btn-load-more-line {
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: var(--noir);
+      margin-top: 0.5rem;
+      transition: width 0.4s var(--ease-expo), background-color 0.3s ease;
+    }
+
+    .btn-load-more:hover {
+      color: var(--charcoal);
+      transform: translateY(-2px);
+    }
+
+    .btn-load-more:hover .btn-load-more-line {
+      background-color: var(--gold);
+    }
+
+    .load-more-status {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      color: var(--taupe);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.5s ease, transform 0.5s var(--ease-expo);
+    }
+
+    .load-more-status.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* --------------------------------------------------------------------------
+       5. Atelier Philosophy Banner
+       -------------------------------------------------------------------------- */
+    .atelier-quote-section {
+      border-top: 1px solid rgba(26, 23, 20, 0.08);
+      background-color: var(--bone);
+      padding: 7rem 2rem;
+      text-align: center;
+    }
+
+    .atelier-quote-inner {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .atelier-quote-text {
+      font-family: var(--font-serif);
+      font-size: clamp(1.4rem, 2.5vw, 2.1rem);
+      font-weight: 300;
+      line-height: 1.5;
+      letter-spacing: 0.04em;
+      color: var(--noir);
+      margin-bottom: 1.6rem;
+    }
+
+    .atelier-quote-author {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* --------------------------------------------------------------------------
+       Modal: Atelier Private Appointment / Client Service
+       -------------------------------------------------------------------------- */
+    .client-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(13, 11, 9, 0.45);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 2100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s var(--ease-expo), visibility 0.4s;
+    }
+
+    .client-modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .client-modal-card {
+      background-color: var(--ivory);
+      max-width: 520px;
+      width: 100%;
+      padding: 3.5rem 3rem;
+      position: relative;
+      border: 1px solid rgba(26, 23, 20, 0.08);
+      box-shadow: 0 30px 60px rgba(13, 11, 9, 0.12);
+      transform: translateY(20px);
+      transition: transform 0.4s var(--ease-expo);
+    }
+
+    .client-modal.active .client-modal-card {
+      transform: translateY(0);
+    }
+
+    .client-modal-close {
+      position: absolute;
+      top: 1.6rem;
+      right: 1.6rem;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: var(--taupe);
+      transition: color 0.3s;
+    }
+
+    .client-modal-close:hover {
+      color: var(--noir);
+    }
+
+    .client-modal-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+
+    .client-modal-title {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--noir);
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.04em;
+    }
+
+    .client-modal-p {
+      font-size: 0.82rem;
+      color: var(--charcoal);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .client-input-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .client-input-group label {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      margin-bottom: 0.4rem;
+    }
+
+    .client-input {
+      width: 100%;
+      padding: 0.6rem 0;
+      border: none;
+      border-bottom: 1px solid var(--ash);
+      background: transparent;
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      color: var(--noir);
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .client-input:focus {
+      border-bottom-color: var(--noir);
+    }
+
+    .client-submit-btn {
+      width: 100%;
+      background-color: var(--noir);
+      color: var(--ivory);
+      padding: 1rem 0;
+      font-size: 0.72rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+      margin-top: 1rem;
+    }
+
+    .client-submit-btn:hover {
+      background-color: var(--charcoal);
+      color: var(--gold);
+    }
+
+    /* --------------------------------------------------------------------------
+       Responsive Breakpoints
+       -------------------------------------------------------------------------- */
+    @media (max-width: 1200px) {
+      .filter-bar {
+        padding: 1.2rem 2.5rem;
+      }
+      .collection-main {
+        padding: 4rem 2.5rem 6rem;
+      }
+      .products-grid {
+        gap: 4rem 2.5rem;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .collection-header {
+        height: 52vh;
+        min-height: 440px;
+      }
+      .filter-bar-sticky-wrap {
+        top: 68px;
+      }
+      .filter-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.2rem;
+        padding: 1.2rem 2rem;
+      }
+      .filter-controls-right {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3.5rem 2rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .collection-header {
+        height: 48vh;
+        min-height: 380px;
+        padding: 0 1.5rem;
+      }
+      .header-title {
+        font-size: 2.3rem;
+      }
+      .filter-categories {
+        gap: 1.2rem;
+        overflow-x: auto;
+        width: 100%;
+        padding-bottom: 0.4rem;
+        scrollbar-width: none;
+      }
+      .filter-categories::-webkit-scrollbar {
+        display: none;
+      }
+      .filter-btn {
+        white-space: nowrap;
+        font-size: 0.68rem;
+      }
+      .products-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .collection-main {
+        padding: 3rem 1.5rem 5rem;
+      }
+    }
+  
+    /* UPDATED ACCORDING TO USER REQUIREMENTS */
+    :root {
+      --ivory: #FFFFFF !important;
+      --bone: #FFFFFF !important;
+      --warm-white: #FFFFFF !important;
+      --parchment: #F5F5F5 !important;
+      --noir: #000000 !important;
+      --charcoal: #000000 !important;
+      --taupe: #222222 !important;
+    }
+    body, html, .collection-header, .filter-bar-sticky-wrap, .atelier-quote-section {
+      background-color: #FFFFFF !important;
+      color: #000000 !important;
+    }
+    .header-eyebrow, .header-title, .header-subtext, .filter-btn, .filter-count, .sort-trigger-btn, .product-title, .product-category, .product-price, .atelier-quote-text {
+      color: #000000 !important;
+      font-weight: 700 !important;
+    }
+    .products-grid {
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 2.5rem 2rem !important;
+      max-width: 1200px !important;
+      margin: 0 auto !important;
+    }
+    .product-media {
+      aspect-ratio: 1 / 1 !important;
+      max-height: 320px !important;
+      border-radius: 4px !important;
+      overflow: hidden !important;
+      background-color: #F8F8F8 !important;
+    }
+    .product-title {
+      font-weight: 800 !important;
+      font-size: 1.25rem !important;
+    }
+    .product-price {
+      font-weight: 800 !important;
+      font-size: 1rem !important;
+    }
+    .filter-btn {
+      font-weight: 800 !important;
+    }
+    
+</style>
+</head>
+<body>
+
+  <!-- Custom Luxury Cursor -->
+  <div class="custom-cursor-dot" id="cursorDot"></div>
+  <div class="custom-cursor-ring" id="cursorRing"></div>
+
+  <!-- Shared Luxury Navigation -->
+  <header class="luxury-nav" id="mainNav">
+    <div class="nav-container">
+      <!-- Left: Brand Wordmark -->
+      <a href="index.html" class="nav-brand" aria-label="VELOIR PARIS â€” Accueil">
+        <span class="brand-wordmark">VELOIR PARIS</span>
+        <span class="brand-location">FondÃ©e en 1947</span>
+      </a>
+
+      <!-- Center-Right: Navigation Links -->
+      <nav class="nav-center-links" aria-label="Navigation Principale">
+        <a href="index.html" class="nav-link">Maison</a>
+        <a href="collection.html" class="nav-link active" aria-current="page">Collections</a>
+        <a href="lookbook.html" class="nav-link">Carnets</a>
+        <a href="maison-circle.html" class="nav-link">Le Cercle</a>
+      </nav>
+
+      <!-- Right: Search & Account Icons & Mobile Toggle -->
+      <div class="nav-right-actions">
+        <button class="nav-icon-btn" id="searchTriggerBtn" aria-label="Rechercher" title="Rechercher">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+
+        <button class="nav-icon-btn" id="accountTriggerBtn" aria-label="Compte Client" title="Le Cercle PrivÃ©">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </button>
+
+        <button class="mobile-toggle" id="mobileToggleBtn" aria-label="Ouvrir le menu">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Overlay -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay">
+    <div class="mobile-menu-links">
+      <a href="index.html">Maison</a>
+      <a href="collection.html" style="color: var(--gold);">Collections</a>
+      <a href="lookbook.html">Carnets</a>
+      <a href="maison-circle.html">Le Cercle</a>
+    </div>
+    <div class="mobile-nav-footer">
+      <span>24 Rue du Faubourg Saint-HonorÃ©, Paris</span>
+      <span>Conciergerie PrivÃ©e : +33 1 42 68 55 00</span>
+      <span>Â© VELOIR PARIS 1947</span>
+    </div>
+  </div>
+
+  <!-- Search Modal Drawer -->
+  <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Recherche">
+    <div class="search-box">
+      <button class="search-close-btn" id="searchCloseBtn" aria-label="Fermer la recherche">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="search-title">Recherche DÃ©diÃ©e â€” Collections & Ateliers</div>
+      <div class="search-input-wrap">
+        <input type="text" class="search-input" id="collectionSearchInput" placeholder="Rechercher une piÃ¨ce, un cuir, une Ã©toffe..." autocomplete="off">
+      </div>
+      <div class="search-suggestions">
+        <span class="search-chip" data-search="Manteau">Manteau</span>
+        <span class="search-chip" data-search="Sac">Sac</span>
+        <span class="search-chip" data-search="Robe">Robe</span>
+        <span class="search-chip" data-search="Cuir">Cuir</span>
+        <span class="search-chip" data-search="Accessoires">Accessoires</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Client Service / Le Cercle Modal -->
+  <div class="client-modal" id="clientModal" role="dialog" aria-modal="true" aria-label="Le Cercle PrivÃ©">
+    <div class="client-modal-card">
+      <button class="client-modal-close" id="clientModalClose" aria-label="Fermer">âœ•</button>
+      <div class="client-modal-tag">Service DÃ©diÃ©</div>
+      <h2 class="client-modal-title">Le Cercle PrivÃ©</h2>
+      <p class="client-modal-p">AccÃ©dez Ã  votre espace exclusif, gÃ©rez vos commandes de sur-mesure ou prenez rendez-vous avec un maÃ®tre d'atelier.</p>
+      <form id="clientLoginForm" onsubmit="event.preventDefault(); alert('Bienvenue dans Le Cercle VELOIR PARIS.'); document.getElementById('clientModal').classList.remove('active');">
+        <div class="client-input-group">
+          <label for="clientEmail">Adresse Ã‰lectronique</label>
+          <input type="email" id="clientEmail" class="client-input" placeholder="nom@maison.com" required>
+        </div>
+        <div class="client-input-group">
+          <label for="clientCode">Code Invitation PrivÃ©</label>
+          <input type="password" id="clientCode" class="client-input" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" required>
+        </div>
+        <button type="submit" class="client-submit-btn">AccÃ©der aux Salons</button>
+      </form>
+    </div>
+  </div>
+
+  <main>
+    <!-- ========================================================================
+         SECTION 1: PAGE HEADER (60vh, Bone #EDE9E2, Subtle Parallax Image)
+         ======================================================================== -->
+    <section class="collection-header" id="collectionHeader">
+      <div class="header-parallax-wrapper" id="headerParallax">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1920&q=80" alt="VELOIR PARIS DÃ©filÃ© Printemps â€” Ã‰tÃ© 2025" class="header-parallax-img">
+      </div>
+      <div class="header-content reveal-init">
+        <span class="header-eyebrow">COLLECTION</span>
+        <h1 class="header-title">Printemps â€” <em>Ã‰tÃ©</em> 2025</h1>
+        <p class="header-subtext">PrÃªt-Ã -Porter, Maroquinerie, Accessoires</p>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 2: FILTER BAR (Under Header, Interactive Filtering & Sorting)
+         ======================================================================== -->
+    <div class="filter-bar-sticky-wrap" id="filterBarWrap">
+      <div class="filter-bar">
+        <!-- Category Filters -->
+        <div class="filter-categories" role="tablist" aria-label="Filtrer la collection">
+          <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">Tout</button>
+          <button class="filter-btn" data-filter="pret-a-porter" role="tab" aria-selected="false">PrÃªt-Ã -Porter</button>
+          <button class="filter-btn" data-filter="maroquinerie" role="tab" aria-selected="false">Maroquinerie</button>
+          <button class="filter-btn" data-filter="accessoires" role="tab" aria-selected="false">Accessoires</button>
+          <button class="filter-btn" data-filter="objets" role="tab" aria-selected="false">Objets</button>
+        </div>
+
+        <!-- Controls: Item Count & Sort -->
+        <div class="filter-controls-right">
+          <span class="filter-count" id="productCount">12 PiÃ¨ces</span>
+
+          <div class="sort-dropdown" id="sortDropdown">
+            <button class="sort-trigger-btn" id="sortTriggerBtn" aria-expanded="false" aria-haspopup="true">
+              <span>Trier par : <span id="currentSortLabel" style="font-weight: 500;">NouveautÃ©s</span></span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="sort-menu" id="sortMenu">
+              <button class="sort-item selected" data-sort="newest">NouveautÃ©s</button>
+              <button class="sort-item" data-sort="price-asc">Prix : Croissant</button>
+              <button class="sort-item" data-sort="price-desc">Prix : DÃ©croissant</button>
+              <button class="sort-item" data-sort="name-asc">Nom : A Ã  Z</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================================
+         SECTION 3: PRODUCT GRID (3 columns, 12 Products with smooth filters)
+         ======================================================================== -->
+    <section class="collection-main">
+      <div class="products-grid" id="productsGrid">
+
+        <!-- Product 1: Le Manteau Cinq -->
+        <article class="product-card reveal-init" data-category="pret-a-porter" data-price="4200" data-name="Le Manteau Cinq" data-id="1" data-order="1">
+          <a href="product.html?item=le-manteau-cinq" class="product-link">
+            <div class="product-media">
+              <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=600&q=85" alt="Le Manteau Cinq â€” Laine double-face et drap d'atelier" class="product-img" loading="lazy">
+              <span class="product-atelier-tag">Atelier 1947</span>
+              <div class="product-card-overlay">
+                <span class="view-discovery-pill">DÃ©couvrir la piÃ¨ce</span>
+              </div>
+            </div>
+            <div class="product-details">
+              <span class="product-category">PrÃªt-Ã -Porter</span>
+              <h2 class="product-title">Le Manteau Cinq</h2>
+              <span class="product-price">â‚¬4,200</span>
+            </div>
+          </a>
+        </article>
+
+        <!-- Product 2: Sac Brume -->
+        <article class="product-card reveal-init delay-1" data-category="maroquinerie" data-price="3800" data-name="Sac Brume" data-id="2" data-order="2">
+          <a href="product.html?item=sac-brume" class="product-link">
+            <div class="product-media">
+              <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&q=85" alt="Sac Brume â€” Cuir grainÃ© pleine fleur et fermoir or brossÃ©" class="product-img" loading="lazy">
+              <span class="product-atelier-tag">Maroquinerie d'Art</span>
+              <div class="product-card-overlay">
+                <span class="view-discovery-pill">DÃ©couvrir la piÃ¨ce</span>
+              </div>
+            </div>
+            <div class="product-details">
+              <span class="product-category">Maroquinerie</span>
+              <h2 class="product-title">Sac Brume</h2>
+              <span class="product-price">â‚¬3,800</span>
+            </div>
+          </a>
+        </article>
+
+        <!-- Product 3: La Robe Silence -->
+        <article class="product-card reveal-init delay-2" data-category="pret-a-porter" data-price="6500" data-name="La Robe Silence" data-id="3" data-order="3">
+          <a href="product.html?item=la-robe-silence" class="product-link">
+            <div class="product-media">
+              <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=85" alt="La Robe Silence â€” Mousseline de soie noire et plis d'atelier" class="product-img" loading="lazy">
+              <span class="product-atelier-tag">Haute FaÃ§on</span>
+              <div class="product-card-overlay">
+                <span class="view-discovery-pill">DÃ©couvrir la piÃ¨ce</span>
+              </div>
+            </div>
+            <div class="product-details">
+              <span class="product-category">PrÃªt-Ã -Porter</span>
+              <h2 class="product-title">La Robe Silence</h2>
+              <span class="product-price">â‚¬6,500</span>
+            </div>
+          </a>
+        </article>
+
+        <!-- Product 4: Ceinture Cuir Nuit -->
+        <article class="product-card reveal-init" data-category="accessoires" data-price="890" data-name="Ceinture Cuir Nuit" data-id="4" data-order="4">
+          <a href="product.html?item=ceinture-cuir-nuit" class="product-link">
+            <div class="product-media">
+              <img src="https://images.unsplash.com/photo-1624222247344-550fb60583dc?w=600&q=85" alt="Ceinture Cuir Nuit â€” Veau sellier et boucle sculptÃ©e" class="product-img" loading="lazy">
+              <span class="product-atelier-tag">Accessoires</span>
+              <div class="product-card-overlay">
+                <span class="view-discovery-pill">DÃ©couvrir la piÃ¨ce</span>
+              </div>
+            </div>
+            <div class="product-details">
+              <span class="product-category">Accessoires</span>
+              <h2 class="product-title">Ceinture Cuir Nuit</h2>
+              <span class="product-price">â‚¬890</span>
+            </div>
+          </a>
+        </article>
+
+        <!-- Product 5: Le Blazer 1947 -->
+        <article class="product-card reveal-init delay-1" data-category="pret-a-porter" data-price="3200" data-name="Le Blazer 1947" data-id="5" data-order="5">
+          <a href="product.html?item=le-blazer-1947" class="product-link">
+            <div class="product-media">
+              <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=600&q=85" alt="Le Blazer 1947 â€” Coupe architecturale et laine fine" class="product-img" loading="lazy">
+              <span class="product-atelier-tag">Signature 1947</span>
+              <div class="product-card-overlay">
+                <span class="view-discovery-pill">DÃ©couvrir la piÃ¨ce</span>
+              </div>
+            </div>
+            <div class="product-details">
+              <span class="product-category">PrÃªt-Ã -Porter</span>
+              <h2 class="product-title">Le Blazer 1947</h2>
+              <span class="product-price">â‚¬3,200</span>
+            </div>
+          </a>
+        </article>
+
+        <!-- Product 6: Sac Velours -->
+        <article class="product-card reveal-init delay-2" data-category="maroquinerie" data-price="4600" data-name="Sac Velours" data-id="6" data-order="6">
+          <a href="product.html?item=sac-velours" class="product-link">
+            <div class="product-media">
+              <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=600&q=85" alt="Sac Velours â€” Velours de soie et armature gÃ©omÃ©trique" class="product-img" loading="lazy">
+              <span class="product-atelier-tag">Ã‰dition Rare</span>
+              <div class="product-card-overlay">
+                <span class="view-discovery-pill">DÃ©couvrir la piÃ¨ce</span>
+              </div>
+            </div>
+            <div class="product-details">
+              <span class="product-category">Maroquinerie</span>
+              <h2 class="product-title">Sac Velours</h2>
+              <span class="product-price">â‚¬4,600</span>
+            </div>
+          </a>
+        </article>
+
+        <!-- Product 7: Veste LinÃ©aire -->
+        <article class="product-card reveal-init" data-category="pret-a-porter" data-price="2900" data-name="Veste LinÃ©aire" data-id="7" data-order="7">
+          <a href="product.html?item=veste-lineaire" class="product-link">
+            <div class="product-media">
+              <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&q=85" alt="Veste LinÃ©aire â€” Lignes Ã©purÃ©es et finitions intÃ©rieures cousues main" class="product-img" loading="lazy">
+              <span class="product-atelier-tag">PrÃªt-Ã -Porter</span>
+              <div class="product-card-overlay">
+                <span class="view-discovery-pill">DÃ©couvrir la piÃ¨ce</span>
+              </div>
+            </div>
+            <div class="product-details">
+              <span class="product-category">PrÃªt-Ã -Porter</span>
+              <h2 class="product-title">Veste LinÃ©aire</h2>
+              <span class="product-price">â‚¬2,900</span>
+            </div>
+          </a>
+        </article>
+
+        <!-- Product 8: Porte-monnaie -->
+        <article class="product-card reveal-init delay-1" data-category="maroquinerie" data-price="480" data-name="Porte-monnaie" data-id="8" data-order="8">
+          <a href="product.html?item=porte-monnaie" class="product-link">
+            <div class="product-media">
+              <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&q=85" alt="Porte-monnaie â€” Cuir pleine fleur et surpiqÃ»res ton sur ton" class="product-img" loading="lazy">
+              <span class="product-atelier-tag">Petite Maroquinerie</span>
+              <div class="product-card-overlay">
+                <span class="view-discovery-pill">DÃ©couvrir la piÃ¨ce</span>
+              </div>
+            </div>
+            <div class="product-details">
+              <span class="product-category">Maroquinerie</span>
+              <h2 class="product-title">Porte-monnaie</h2>
+              <span class="product-price">â‚¬480</span>
+            </div>
+          </a>
+        </article>
+
+        <!-- Product 9: Broche Veloir -->
+        <article class="product-card reveal-init delay-2" data-category="accessoires" data-price="620" data-name="Broche Veloir" data-id="9" data-order="9">
+          <a href="product.html?item=broche-veloir" class="product-link">
+            <div class="product-media">
+              <img src="https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=600&q=85" alt="Broche Veloir â€” Laiton dorÃ© Ã  la feuille et ciselures" class="product-img" loading="lazy">
+              <span class="product-atelier-tag">Joaillerie d'Atelier</span>
+              <div class="product-card-overlay">
+                <span class="view-discovery-pill">DÃ©couvrir la piÃ¨ce</span>
+              </div>
+            </div>
+            <div class="product-details">
+              <span class="product-category">Accessoires</span>
+              <h2 class="product-title">Broche Veloir</h2>
+              <span class="product-price">â‚¬620</span>
+            </div>
+          </a>
+        </article>
+
+        <!-- Product 10: Objet SphÃ¨re -->
+        <article class="product-card reveal-init" data-category="objets" data-price="1200" data-name="Objet SphÃ¨re" data-id="10" data-order="10">
+          <a href="product.html?item=objet-sphere" class="product-link">
+            <div class="product-media">
+              <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600&q=85" alt="Objet SphÃ¨re â€” Pierre calcaire travaillÃ©e Ã  la main" class="product-img" loading="lazy">
+              <span class="product-atelier-tag">Art de Vivre</span>
+              <div class="product-card-overlay">
+                <span class="view-discovery-pill">DÃ©couvrir la piÃ¨ce</span>
+              </div>
+            </div>
+            <div class="product-details">
+              <span class="product-category">Objets</span>
+              <h2 class="product-title">Objet SphÃ¨re</h2>
+              <span class="product-price">â‚¬1,200</span>
+            </div>
+          </a>
+        </article>
+
+        <!-- Product 11: La Jupe Ombre -->
+        <article class="product-card reveal-init delay-1" data-category="pret-a-porter" data-price="1800" data-name="La Jupe Ombre" data-id="11" data-order="11">
+          <a href="product.html?item=la-jupe-ombre" class="product-link">
+            <div class="product-media">
+              <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&q=85" alt="La Jupe Ombre â€” CrÃªpe georgette plissÃ© et tombÃ© fluide" class="product-img" loading="lazy">
+              <span class="product-atelier-tag">PrÃªt-Ã -Porter</span>
+              <div class="product-card-overlay">
+                <span class="view-discovery-pill">DÃ©couvrir la piÃ¨ce</span>
+              </div>
+            </div>
+            <div class="product-details">
+              <span class="product-category">PrÃªt-Ã -Porter</span>
+              <h2 class="product-title">La Jupe Ombre</h2>
+              <span class="product-price">â‚¬1,800</span>
+            </div>
+          </a>
+        </article>
+
+        <!-- Product 12: Carnet de Cuir -->
+        <article class="product-card reveal-init delay-2" data-category="objets" data-price="340" data-name="Carnet de Cuir" data-id="12" data-order="12">
+          <a href="product.html?item=carnet-de-cuir" class="product-link">
+            <div class="product-media">
+              <img src="https://images.unsplash.com/photo-1455634975218-5eb4aef9e5a4?w=600&q=85" alt="Carnet de Cuir â€” Reliure manuelle et papier vergÃ© pur coton" class="product-img" loading="lazy">
+              <span class="product-atelier-tag">Objets</span>
+              <div class="product-card-overlay">
+                <span class="view-discovery-pill">DÃ©couvrir la piÃ¨ce</span>
+              </div>
+            </div>
+            <div class="product-details">
+              <span class="product-category">Objets</span>
+              <h2 class="product-title">Carnet de Cuir</h2>
+              <span class="product-price">â‚¬340</span>
+            </div>
+          </a>
+        </article>
+
+        <!-- Additional Archival Products revealed via "Voir plus" -->
+        <article class="product-card is-hidden archival-product" data-category="accessoires" data-price="540" data-name="Le Foulard Soie Brute" data-id="13" data-order="13">
+          <a href="product.html?item=le-foulard-soie-brute" class="product-link">
+            <div class="product-media">
+              <img src="https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=600&q=85" alt="Le Foulard Soie Brute â€” RoulottÃ© Ã  la main" class="product-img" loading="lazy">
+              <span class="product-atelier-tag">Soie d'Atelier</span>
+              <div class="product-card-overlay">
+                <span class="view-discovery-pill">DÃ©couvrir la piÃ¨ce</span>
+              </div>
+            </div>
+            <div class="product-details">
+              <span class="product-category">Accessoires</span>
+              <h2 class="product-title">Le Foulard Soie Brute</h2>
+              <span class="product-price">â‚¬540</span>
+            </div>
+          </a>
+        </article>
+
+        <article class="product-card is-hidden archival-product" data-category="pret-a-porter" data-price="5100" data-name="Manteau dâ€™Atelier" data-id="14" data-order="14">
+          <a href="product.html?item=manteau-atelier" class="product-link">
+            <div class="product-media">
+              <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=85" alt="Manteau dâ€™Atelier â€” Cachemire noir profond" class="product-img" loading="lazy">
+              <span class="product-atelier-tag">Haute FaÃ§on</span>
+              <div class="product-card-overlay">
+                <span class="view-discovery-pill">DÃ©couvrir la piÃ¨ce</span>
+              </div>
+            </div>
+            <div class="product-details">
+              <span class="product-category">PrÃªt-Ã -Porter</span>
+              <h2 class="product-title">Manteau dâ€™Atelier</h2>
+              <span class="product-price">â‚¬5,100</span>
+            </div>
+          </a>
+        </article>
+
+        <article class="product-card is-hidden archival-product" data-category="objets" data-price="1650" data-name="Vase AlbÃ¢tre" data-id="15" data-order="15">
+          <a href="product.html?item=vase-albatre" class="product-link">
+            <div class="product-media">
+              <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=600&q=85" alt="Vase AlbÃ¢tre â€” Taille directe dans le minÃ©ral" class="product-img" loading="lazy">
+              <span class="product-atelier-tag">Art de Vivre</span>
+              <div class="product-card-overlay">
+                <span class="view-discovery-pill">DÃ©couvrir la piÃ¨ce</span>
+              </div>
+            </div>
+            <div class="product-details">
+              <span class="product-category">Objets</span>
+              <h2 class="product-title">Vase AlbÃ¢tre</h2>
+              <span class="product-price">â‚¬1,650</span>
+            </div>
+          </a>
+        </article>
+
+      </div>
+
+      <!-- ======================================================================
+           SECTION 4: LOAD MORE BUTTON ('Voir plus')
+           ====================================================================== -->
+      <div class="load-more-section">
+        <button class="btn-load-more" id="loadMoreBtn" aria-label="Afficher plus de piÃ¨ces de la collection">
+          <span>Voir plus</span>
+          <span class="btn-load-more-line"></span>
+        </button>
+        <span class="load-more-status" id="loadMoreStatus">Toutes les crÃ©ations de la saison Printemps â€” Ã‰tÃ© 2025 sont dÃ©sormais visibles.</span>
+      </div>
+    </section>
+
+    <!-- Atelier Craft Heritage Section -->
+    <section class="atelier-quote-section reveal-init">
+      <div class="atelier-quote-inner">
+        <blockquote class="atelier-quote-text">
+          Â« Donner au vÃªtement la puretÃ© du silence, oÃ¹ chaque point de piqÃ»re disparaÃ®t au profit de la silhouette. Â»
+        </blockquote>
+        <div class="atelier-quote-author">Les Ateliers VELOIR PARIS â€” Depuis 1947</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       SECTION 5: LUXURY FOOTER (Ink Background, 4-column Grid)
+       ======================================================================== -->
+  <footer class="luxury-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <!-- Col 1: Maison & Heritage -->
+        <div class="footer-col reveal-init">
+          <div class="footer-brand-title">VELOIR PARIS</div>
+          <div class="footer-tagline">Â« L'essentiel invisible. Â»</div>
+          <p class="footer-heritage-text">
+            Maison de Haute Couture et de maroquinerie d'art fondÃ©e en 1947 au 24 Rue du Faubourg Saint-HonorÃ©, Paris. Gardienne d'une Ã©lÃ©gance souveraine et d'un savoir-faire artisanal perpÃ©tuel.
+          </p>
+        </div>
+
+        <!-- Col 2: Collections & DÃ©filÃ©s -->
+        <div class="footer-col reveal-init delay-1">
+          <div class="footer-col-title">Collections</div>
+          <ul class="footer-links-list">
+            <li><a href="collection.html">Printemps â€” Ã‰tÃ© 2025</a></li>
+            <li><a href="collection.html?cat=pret-a-porter">PrÃªt-Ã -Porter d'Atelier</a></li>
+            <li><a href="collection.html?cat=maroquinerie">Maroquinerie d'Art</a></li>
+            <li><a href="collection.html?cat=accessoires">Accessoires & Souliers</a></li>
+            <li><a href="collection.html?cat=objets">Objets & Art de Vivre</a></li>
+            <li><a href="collection.html">Archives Patrimoniales 1947</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Services & Conciergerie -->
+        <div class="footer-col reveal-init delay-2">
+          <div class="footer-col-title">Services & Ateliers</div>
+          <ul class="footer-links-list">
+            <li><a href="cercle.html#rendez-vous">Prise de Rendez-vous PrivÃ©</a></li>
+            <li><a href="cercle.html#sur-mesure">Salons de Sur-Mesure</a></li>
+            <li><a href="cercle.html#soin">Entretien & Restauration Cuir</a></li>
+            <li><a href="cercle.html#livraison">Livraison DÃ©diÃ©e & Ã‰crins</a></li>
+            <li><a href="cercle.html#contact">Conciergerie Faubourg Saint-HonorÃ©</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Le Cercle & Newsletter -->
+        <div class="footer-col reveal-init delay-3">
+          <div class="footer-col-title">Le Cercle PrivÃ©</div>
+          <div class="newsletter-box">
+            <p>
+              Recevez les carnets d'atelier, les invitations exclusives aux dÃ©filÃ©s et les aperÃ§us confidentiels de nos futures crÃ©ations.
+            </p>
+            <form class="newsletter-form" id="newsletterForm">
+              <div class="newsletter-input-group">
+                <input type="email" class="newsletter-input" id="newsletterEmail" placeholder="Votre adresse Ã©lectronique..." required autocomplete="email">
+                <button type="submit" class="newsletter-submit-btn" aria-label="S'inscrire">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </button>
+              </div>
+              <div class="newsletter-msg" id="newsletterMsg">Votre invitation aux correspondances privÃ©es a Ã©tÃ© enregistrÃ©e.</div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <div>Â© 1947 â€” 2025 VELOIR PARIS. Tous droits rÃ©servÃ©s.</div>
+        <div class="footer-legal-links">
+          <a href="#">Mentions LÃ©gales</a>
+          <a href="#">ConfidentialitÃ© & DonnÃ©es</a>
+          <a href="#">Conditions GÃ©nÃ©rales de Vente</a>
+          <a href="#">AccessibilitÃ©</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       SECTION 6: JAVASCRIPT LOGIC
+       ======================================================================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ----------------------------------------------------------------------
+         1. Custom Cursor (Dot + Lagging Ring)
+         ---------------------------------------------------------------------- */
+      const cursorDot = document.getElementById('cursorDot');
+      const cursorRing = document.getElementById('cursorRing');
+
+      let mouseX = -100;
+      let mouseY = -100;
+      let ringX = -100;
+      let ringY = -100;
+      let isVisible = false;
+
+      window.addEventListener('mousemove', function (e) {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        if (!isVisible) {
+          isVisible = true;
+          cursorDot.style.opacity = '1';
+          cursorRing.style.opacity = '1';
+        }
+
+        cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+      });
+
+      window.addEventListener('mouseleave', function () {
+        isVisible = false;
+        cursorDot.style.opacity = '0';
+        cursorRing.style.opacity = '0';
+      });
+
+      function renderCursorRing() {
+        // Easing interpolation for trailing ring
+        ringX += (mouseX - ringX) * 0.16;
+        ringY += (mouseY - ringY) * 0.16;
+        cursorRing.style.transform = `translate(${ringX}px, ${ringY}px)`;
+        requestAnimationFrame(renderCursorRing);
+      }
+      requestAnimationFrame(renderCursorRing);
+
+      // Expand ring on interactive elements
+      const interactiveTargets = 'a, button, input, [role="tab"], .product-card, .sort-item, .search-chip';
+      document.addEventListener('mouseover', function (e) {
+        if (e.target.closest(interactiveTargets)) {
+          cursorRing.classList.add('cursor-hover');
+        }
+      });
+      document.addEventListener('mouseout', function (e) {
+        if (e.target.closest(interactiveTargets)) {
+          cursorRing.classList.remove('cursor-hover');
+        }
+      });
+
+      /* ----------------------------------------------------------------------
+         2. Navigation Scroll Effect & Parallax
+         ---------------------------------------------------------------------- */
+      const mainNav = document.getElementById('mainNav');
+      const headerParallax = document.getElementById('headerParallax');
+      let ticking = false;
+
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          window.requestAnimationFrame(function () {
+            const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+
+            // Frosted glass transition on scroll
+            if (scrollY > 40) {
+              mainNav.classList.add('scrolled');
+            } else {
+              mainNav.classList.remove('scrolled');
+            }
+
+            // Subtle smooth parallax on header image
+            if (headerParallax && scrollY < window.innerHeight) {
+              const parallaxOffset = scrollY * 0.28;
+              headerParallax.style.transform = `translate3d(0, ${parallaxOffset}px, 0)`;
+            }
+
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+
+      /* ----------------------------------------------------------------------
+         3. Mobile Navigation Menu
+         ---------------------------------------------------------------------- */
+      const mobileToggleBtn = document.getElementById('mobileToggleBtn');
+      const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+
+      if (mobileToggleBtn && mobileNavOverlay) {
+        mobileToggleBtn.addEventListener('click', function () {
+          const isOpen = mobileNavOverlay.classList.toggle('is-open');
+          mobileToggleBtn.classList.toggle('active', isOpen);
+          document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+
+        // Close when clicking any menu link
+        mobileNavOverlay.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', function () {
+            mobileNavOverlay.classList.remove('is-open');
+            mobileToggleBtn.classList.remove('active');
+            document.body.style.overflow = '';
+          });
+        });
+      }
+
+      /* ----------------------------------------------------------------------
+         4. Search Overlay & Quick Filter
+         ---------------------------------------------------------------------- */
+      const searchTriggerBtn = document.getElementById('searchTriggerBtn');
+      const searchOverlay = document.getElementById('searchOverlay');
+      const searchCloseBtn = document.getElementById('searchCloseBtn');
+      const searchInput = document.getElementById('collectionSearchInput');
+      const searchChips = document.querySelectorAll('.search-chip');
+
+      function openSearch() {
+        searchOverlay.classList.add('active');
+        setTimeout(() => searchInput && searchInput.focus(), 150);
+      }
+
+      function closeSearch() {
+        searchOverlay.classList.remove('active');
+      }
+
+      if (searchTriggerBtn) searchTriggerBtn.addEventListener('click', openSearch);
+      if (searchCloseBtn) searchCloseBtn.addEventListener('click', closeSearch);
+
+      searchOverlay.addEventListener('click', function (e) {
+        if (e.target === searchOverlay) closeSearch();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          closeSearch();
+          closeClientModal();
+          sortDropdown.classList.remove('open');
+        }
+      });
+
+      // Search input filter
+      if (searchInput) {
+        searchInput.addEventListener('input', function (e) {
+          const term = e.target.value.toLowerCase().trim();
+          filterBySearchTerm(term);
+        });
+      }
+
+      searchChips.forEach(chip => {
+        chip.addEventListener('click', function () {
+          const query = this.getAttribute('data-search').toLowerCase();
+          if (searchInput) searchInput.value = query;
+          filterBySearchTerm(query);
+          closeSearch();
+        });
+      });
+
+      function filterBySearchTerm(query) {
+        const cards = document.querySelectorAll('.product-card:not(.archival-product)');
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+          const name = (card.getAttribute('data-name') || '').toLowerCase();
+          const category = (card.getAttribute('data-category') || '').toLowerCase();
+
+          if (!query || name.includes(query) || category.includes(query)) {
+            card.classList.remove('is-hidden');
+            visibleCount++;
+          } else {
+            card.classList.add('is-hidden');
+          }
+        });
+
+        updateProductCount(visibleCount);
+      }
+
+      /* ----------------------------------------------------------------------
+         5. Client Modal (Le Cercle)
+         ---------------------------------------------------------------------- */
+      const accountTriggerBtn = document.getElementById('accountTriggerBtn');
+      const clientModal = document.getElementById('clientModal');
+      const clientModalClose = document.getElementById('clientModalClose');
+
+      function openClientModal() {
+        clientModal.classList.add('active');
+      }
+
+      function closeClientModal() {
+        clientModal.classList.remove('active');
+      }
+
+      if (accountTriggerBtn) accountTriggerBtn.addEventListener('click', openClientModal);
+      if (clientModalClose) clientModalClose.addEventListener('click', closeClientModal);
+
+      clientModal.addEventListener('click', function (e) {
+        if (e.target === clientModal) closeClientModal();
+      });
+
+      /* ----------------------------------------------------------------------
+         6. Category Filtering (Tout, PrÃªt-Ã -Porter, Maroquinerie, Accessoires, Objets)
+         ---------------------------------------------------------------------- */
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const productGrid = document.getElementById('productsGrid');
+      const productCountEl = document.getElementById('productCount');
+      let currentFilterCategory = 'all';
+
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function () {
+          const selectedFilter = this.getAttribute('data-filter');
+
+          // Update active states
+          filterButtons.forEach(btn => {
+            btn.classList.remove('active');
+            btn.setAttribute('aria-selected', 'false');
+          });
+          this.classList.add('active');
+          this.setAttribute('aria-selected', 'true');
+
+          currentFilterCategory = selectedFilter;
+          applyCategoryFilter(selectedFilter);
+        });
+      });
+
+      function applyCategoryFilter(category) {
+        const cards = document.querySelectorAll('.product-card');
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+          const cardCategory = card.getAttribute('data-category');
+          const isArchival = card.classList.contains('archival-product') && !card.dataset.revealedByLoadMore;
+
+          if (isArchival) {
+            card.classList.add('is-hidden');
+            return;
+          }
+
+          if (category === 'all' || cardCategory === category) {
+            card.classList.remove('is-hidden');
+            visibleCount++;
+          } else {
+            card.classList.add('is-hidden');
+          }
+        });
+
+        updateProductCount(visibleCount);
+      }
+
+      function updateProductCount(count) {
+        if (productCountEl) {
+          productCountEl.textContent = `${count} ${count > 1 ? 'PiÃ¨ces' : 'PiÃ¨ce'}`;
+        }
+      }
+
+      /* ----------------------------------------------------------------------
+         7. Sorting Logic (Trier par: NouveautÃ©s, Prix, Nom)
+         ---------------------------------------------------------------------- */
+      const sortDropdown = document.getElementById('sortDropdown');
+      const sortTriggerBtn = document.getElementById('sortTriggerBtn');
+      const currentSortLabel = document.getElementById('currentSortLabel');
+      const sortItems = document.querySelectorAll('.sort-item');
+
+      if (sortTriggerBtn) {
+        sortTriggerBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          sortDropdown.classList.toggle('open');
+          const isOpen = sortDropdown.classList.contains('open');
+          sortTriggerBtn.setAttribute('aria-expanded', isOpen);
+        });
+      }
+
+      document.addEventListener('click', function (e) {
+        if (sortDropdown && !sortDropdown.contains(e.target)) {
+          sortDropdown.classList.remove('open');
+          sortTriggerBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      sortItems.forEach(item => {
+        item.addEventListener('click', function () {
+          const sortMode = this.getAttribute('data-sort');
+          const sortText = this.textContent.trim();
+
+          sortItems.forEach(si => si.classList.remove('selected'));
+          this.classList.add('selected');
+
+          if (currentSortLabel) currentSortLabel.textContent = sortText;
+          sortDropdown.classList.remove('open');
+          sortTriggerBtn.setAttribute('aria-expanded', 'false');
+
+          executeSort(sortMode);
+        });
+      });
+
+      function executeSort(mode) {
+        const cardsArray = Array.from(productGrid.children);
+
+        cardsArray.sort((a, b) => {
+          const priceA = parseInt(a.getAttribute('data-price') || '0', 10);
+          const priceB = parseInt(b.getAttribute('data-price') || '0', 10);
+          const nameA = a.getAttribute('data-name') || '';
+          const nameB = b.getAttribute('data-name') || '';
+          const orderA = parseInt(a.getAttribute('data-order') || '0', 10);
+          const orderB = parseInt(b.getAttribute('data-order') || '0', 10);
+
+          if (mode === 'price-asc') {
+            return priceA - priceB;
+          } else if (mode === 'price-desc') {
+            return priceB - priceA;
+          } else if (mode === 'name-asc') {
+            return nameA.localeCompare(nameB, 'fr');
+          } else {
+            // Newest / original order
+            return orderA - orderB;
+          }
+        });
+
+        // Re-append cards in sorted sequence with smooth fade
+        productGrid.style.opacity = '0.4';
+        setTimeout(() => {
+          cardsArray.forEach(card => productGrid.appendChild(card));
+          productGrid.style.opacity = '1';
+        }, 120);
+      }
+
+      /* ----------------------------------------------------------------------
+         8. Load More Button ('Voir plus')
+         ---------------------------------------------------------------------- */
+      const loadMoreBtn = document.getElementById('loadMoreBtn');
+      const loadMoreStatus = document.getElementById('loadMoreStatus');
+
+      if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', function () {
+          const archivalItems = document.querySelectorAll('.archival-product');
+
+          archivalItems.forEach((item, index) => {
+            item.dataset.revealedByLoadMore = 'true';
+            setTimeout(() => {
+              item.classList.remove('is-hidden');
+              item.classList.add('is-revealed');
+            }, index * 100);
+          });
+
+          // Refresh current category filtering on newly loaded items
+          setTimeout(() => {
+            applyCategoryFilter(currentFilterCategory);
+          }, 350);
+
+          // Change load more button state
+          loadMoreBtn.style.opacity = '0';
+          loadMoreBtn.style.pointerEvents = 'none';
+
+          setTimeout(() => {
+            loadMoreBtn.style.display = 'none';
+            if (loadMoreStatus) loadMoreStatus.classList.add('is-visible');
+          }, 400);
+        });
+      }
+
+      /* ----------------------------------------------------------------------
+         9. Intersection Observer (Reveal on scroll)
+         ---------------------------------------------------------------------- */
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      document.querySelectorAll('.reveal-init').forEach(el => {
+        revealObserver.observe(el);
+      });
+
+      /* ----------------------------------------------------------------------
+         10. Newsletter Form Handling
+         ---------------------------------------------------------------------- */
+      const newsletterForm = document.getElementById('newsletterForm');
+      const newsletterMsg = document.getElementById('newsletterMsg');
+      const newsletterEmail = document.getElementById('newsletterEmail');
+
+      if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          if (newsletterEmail && newsletterEmail.value) {
+            newsletterMsg.classList.add('visible');
+            newsletterEmail.value = '';
+            setTimeout(() => {
+              newsletterMsg.classList.remove('visible');
+            }, 6000);
+          }
+        });
+      }
+
+    })();
+  </script>
+</body>
+</html>
+
